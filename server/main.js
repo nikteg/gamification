@@ -6,10 +6,24 @@ import historyApiFallback from 'koa-connect-history-api-fallback'
 import serve from 'koa-static'
 import _debug from 'debug'
 import config from '../config'
+import Router from 'koa-router'
 
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
+
+const api = new Router({
+  prefix: '/api'
+})
+
+const test = new Router()
+
+test.get('/hello', (ctx, next) => {
+  ctx.body = 'Hello world'
+})
+
+api.use('/test', test.routes())
+app.use(api.routes())
 
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement isomorphic
