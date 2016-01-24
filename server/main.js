@@ -7,22 +7,35 @@ import serve from 'koa-static'
 import _debug from 'debug'
 import config from '../config'
 import Router from 'koa-router'
+import koajwt from 'koa-jwt'
+
+import auth from './routes/auth'
 
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
 
-const api = new Router({
-  prefix: '/api'
+const JWT_SECRET = 'shared-secret'
+
+const api = new Router({ prefix: '/api' })
+
+api.use(auth(JWT_SECRET).routes())
+api.use(convert(koajwt({ secret: JWT_SECRET })))
+
+api.get('/hello', (ctx, next) => {
+  ctx.body = ctx.state
 })
 
-const test = new Router()
-
-test.get('/hello', (ctx, next) => {
-  ctx.body = 'Hello world'
+// Error handling
+app.use(async (ctx, next) => {
+  try {
+    await next() // next is now a function
+  } catch (err) {
+    ctx.body = { message: err.message }
+    ctx.status = err.status || 500
+  }
 })
 
-api.use('/test', test.routes())
 app.use(api.routes())
 
 // This rewrites all routes requests to the root /index.html file
