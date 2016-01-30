@@ -9,21 +9,21 @@ import config from '../config'
 import Router from 'koa-router'
 import koajwt from 'koa-jwt'
 
+// Routes
 import auth from './routes/auth'
 
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
 
-const JWT_SECRET = 'shared-secret'
-
 const api = new Router({ prefix: '/api' })
 
-api.use(auth(JWT_SECRET).routes())
-api.use(convert(koajwt({ secret: JWT_SECRET })))
+api.use('/auth', auth.routes())
+api.use('/auth', auth.allowedMethods())
+api.use(convert(koajwt({ secret: config.secret })))
 
 api.get('/hello', (ctx, next) => {
-  ctx.body = ctx.state
+  ctx.body = ctx.state || 'No state'
 })
 
 // Error handling
@@ -39,18 +39,19 @@ app.use(async (ctx, next) => {
 app.use(api.routes())
 app.use(api.allowedMethods())
 
-app.use(async (ctx, next) => {
-  let err = new Error('Not found')
-  err.status = 404
-
-  throw err
-})
-
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement isomorphic
 // rendering, you'll want to remove this middleware.
 app.use(convert(historyApiFallback({
-  verbose: false
+  verbose: false,
+  rewrites: [
+    {
+      from: /([^\/]*\..*)$/i,
+      to: function (context) {
+        return context.match[0]
+      }
+    }
+  ]
 })))
 
 // ------------------------------------

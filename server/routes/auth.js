@@ -3,18 +3,17 @@ import koajwt from 'koa-jwt'
 import koabody from 'koa-body'
 import convert from 'koa-convert'
 import required from '../util/required'
+import config from '../../config'
 
-export default (secret) => {
-  const auth = new Router()
+const auth = new Router()
 
-  auth.use(convert(koabody()))
+auth.use(convert(koabody()))
 
-  auth.post('/auth', (ctx, next) => {
-    let params = required('username', 'password')(ctx.request.body)
-    let token = koajwt.sign({ username: params.username }, secret)
+auth.post('/', (ctx, next) => {
+  let params = required('username', 'password')(ctx.request.body)
+  let token = koajwt.sign({ username: params.username }, config.secret)
 
-    ctx.body = { token: token }
-  })
+  ctx.body = { token: token }
+})
 
-  return auth
-}
+export default auth

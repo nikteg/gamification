@@ -53,7 +53,8 @@ const config = {
   coverage_reporters : [
     { type : 'text-summary' },
     { type : 'html', dir : 'coverage' }
-  ]
+  ],
+  secret: process.env.SECRET || 'shared-secret'
 }
 
 /************************************************
