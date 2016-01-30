@@ -37,6 +37,14 @@ app.use(async (ctx, next) => {
 })
 
 app.use(api.routes())
+app.use(api.allowedMethods())
+
+app.use(async (ctx, next) => {
+  let err = new Error('Not found')
+  err.status = 404
+
+  throw err
+})
 
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement isomorphic
