@@ -46,15 +46,7 @@ app.use(api.allowedMethods())
 // (ignoring file requests). If you want to implement isomorphic
 // rendering, you'll want to remove this middleware.
 app.use(convert(historyApiFallback({
-  verbose: false,
-  rewrites: [
-    {
-      from: /([^\/]*\..*)$/i,
-      to: function (context) {
-        return context.match[0]
-      }
-    }
-  ]
+  verbose: false
 })))
 
 // ------------------------------------
