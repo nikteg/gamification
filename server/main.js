@@ -8,6 +8,7 @@ import _debug from 'debug'
 import config from '../config'
 import Router from 'koa-router'
 import koajwt from 'koa-jwt'
+import conn from './conn'
 
 // Routes
 import auth from './routes/auth'
@@ -25,6 +26,8 @@ api.use(convert(koajwt({ secret: config.secret })))
 api.get('/hello', (ctx, next) => {
   ctx.body = ctx.state || 'No state'
 })
+
+api.get('/two', async ctx => ctx.body = await conn.one('SELECT 1+1 as answer'))
 
 // Error handling
 app.use(async (ctx, next) => {
