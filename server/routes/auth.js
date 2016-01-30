@@ -4,14 +4,17 @@ import koabody from 'koa-body'
 import convert from 'koa-convert'
 import required from '../util/required'
 import config from '../../config'
+import conn from '../conn'
 
 const auth = new Router()
 
 auth.use(convert(koabody()))
 
-auth.post('/', (ctx, next) => {
+auth.post('/', async (ctx, next) => {
   let params = required('username', 'password')(ctx.request.body)
-  let token = koajwt.sign({ username: params.username }, config.secret)
+
+  let result = await conn.one('SELECT username FROM "user" WHERE username = $1', params.username)
+  let token = koajwt.sign({ username: result.username }, config.secret)
 
   ctx.body = { token: token }
 })
