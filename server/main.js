@@ -8,7 +8,9 @@ import _debug from 'debug'
 import config from '../config'
 import Router from 'koa-router'
 import koajwt from 'koa-jwt'
+import koabody from 'koa-body'
 import conn from './conn'
+import multipart from './middleware/multipart'
 
 // Routes
 import auth from './routes/auth'
@@ -16,6 +18,9 @@ import auth from './routes/auth'
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
+
+app.use(convert(koabody({ multipart: true })))
+app.use(multipart)
 
 const api = new Router({ prefix: '/api' })
 

@@ -1,7 +1,5 @@
 import Router from 'koa-router'
 import koajwt from 'koa-jwt'
-import koabody from 'koa-body'
-import convert from 'koa-convert'
 import required from '../util/required'
 import config from '../../config'
 import conn from '../conn'
@@ -9,7 +7,6 @@ import { hash } from 'crypto-promise'
 
 const auth = new Router()
 
-auth.use(convert(koabody({ multipart: true })))
 
 auth.post('/login', async (ctx, next) => {
   let params = required('username', 'password')(ctx.request.body)
