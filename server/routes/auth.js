@@ -9,7 +9,7 @@ import { hash } from 'crypto-promise'
 
 const auth = new Router()
 
-auth.use(convert(koabody()))
+auth.use(convert(koabody({ multipart: true })))
 
 auth.post('/login', async (ctx, next) => {
   let params = required('username', 'password')(ctx.request.body)
