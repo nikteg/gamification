@@ -3,11 +3,11 @@ class RequiredError extends Error {
 }
 
 const required = (...params) => {
-  return (reqBody) => {
+  return (body) => {
     let errors = []
 
     for (let param of params) {
-      if (!reqBody[param]) {
+      if (!body[param]) {
         errors.push(param)
       }
     }
@@ -16,7 +16,7 @@ const required = (...params) => {
       throw new RequiredError(`${errors.join(', ')} required`)
     }
 
-    return reqBody
+    return body
   }
 }
 
