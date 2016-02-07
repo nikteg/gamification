@@ -1,16 +1,16 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import { syncHistory } from 'redux-simple-router'
 import thunk from 'redux-thunk'
-import rootReducer from './rootReducer'
+import rootReducer from '../reducers/rootReducer'
 
-function withDevTools (middleware) {
+function withDevTools(middleware) {
   const devTools = window.devToolsExtension
     ? window.devToolsExtension()
-    : require('containers/DevTools').default.instrument()
+    : require('../containers/DevTools').default.instrument()
   return compose(middleware, devTools)
 }
 
-export default function configureStore ({ initialState = {}, history }) {
+export default function configureStore({ initialState = {}, history }) {
   // Sync with router via history instance (main.js)
   const routerMiddleware = syncHistory(history)
 
@@ -23,8 +23,8 @@ export default function configureStore ({ initialState = {}, history }) {
   if (__DEBUG__) routerMiddleware.listenForReplays(store, ({ router }) => router)
 
   if (module.hot) {
-    module.hot.accept('./rootReducer', () => {
-      const nextRootReducer = require('./rootReducer').default
+    module.hot.accept('../reducers/rootReducer', () => {
+      const nextRootReducer = require('../reducers/rootReducer').default
 
       store.replaceReducer(nextRootReducer)
     })
