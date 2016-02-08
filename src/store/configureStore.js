@@ -6,7 +6,7 @@ import rootReducer from '../reducers/rootReducer'
 function withDevTools(middleware) {
   const devTools = window.devToolsExtension
     ? window.devToolsExtension()
-    : require('../components/DevTools').default.instrument()
+    : require('../components/DevTools').instrument()
   return compose(middleware, devTools)
 }
 
@@ -24,7 +24,7 @@ export default function configureStore({ initialState = {}, history }) {
 
   if (module.hot) {
     module.hot.accept('../reducers/rootReducer', () => {
-      const nextRootReducer = require('../reducers/rootReducer').default
+      const nextRootReducer = require('../reducers/rootReducer')
 
       store.replaceReducer(nextRootReducer)
     })
