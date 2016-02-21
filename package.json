@@ -54,7 +54,7 @@
     "crypto-promise": "^1.0.2",
     "debug": "^2.2.0",
     "dotenv": "^1.2.0",
-    "eslint-import-resolver-webpack": "^0.1.4",
+    "eslint-import-resolver-webpack": "^0.1.5",
     "eslint-plugin-import": "^0.12.1",
     "history": "^2.0.0-rc2",
     "koa": "^2.0.0-alpha.3",
