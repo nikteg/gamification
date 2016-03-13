@@ -1,3 +1,16 @@
+$avatar-size: 64px;
+$profile-image-size: 48px;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 16px/1.5em arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .counter {
   font-weight: bold;
 }
@@ -22,4 +35,66 @@
   fill: none;
   stroke: steelblue;
   stroke-width: 1.5px;
+}
+
+.content {
+  padding: 1em;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #f2f2f2;
+  padding: 0.5em;
+  border-bottom: 1px solid #dedede;
+
+  .avatar {
+    background: #ddd;
+    padding: 1.2em 0.5em 0;
+    border-radius: 50%;
+    width: $avatar-size;
+    height: $avatar-size;
+    text-align: center;
+    color: white;
+  }
+
+  nav {
+    margin-left: 0.5em;
+    flex: 1;
+    display: flex;
+    text-transform: uppercase;
+
+    a {
+      margin: 0 0.25em;
+      padding: 0.25em 0.75em;
+      text-decoration: none;
+      color: black;
+      border-radius: 1em;
+
+      &.active {
+        background: #5677fc;
+        color: white;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .profile {
+    margin-right: 0.5em;
+    display: flex;
+    align-items: center;
+
+    .profile-image {
+      background: url(https://df0179xsabjj8.cloudfront.net/small/216592_O3DSzwCDG6WPpm6q_308492.jpg);
+      background-size: cover;
+      border-radius: 50%;
+      width: $profile-image-size;
+      height: $profile-image-size;
+      margin-left: 1em;
+    }
+  }
 }
