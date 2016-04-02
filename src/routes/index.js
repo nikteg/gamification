@@ -5,6 +5,7 @@ import NotFound from '../components/NotFound'
 import Chart from '../components/Chart'
 import Navbar from '../components/Navbar'
 import Avatar from '../containers/AvatarContainer'
+import { requireAuth } from '../components/AuthenticatedComponent'
 
 import classes from '../styles/Home.scss'
 
@@ -40,7 +41,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={ HomeContainer } />
     <Route path="/404" component={ NotFound } />
-    <Route path="/stats" component={ Chart } />
+    <Route path="/stats" component={ requireAuth(Chart) } />
     <Redirect from="*" to="/404" />
   </Route>
 )
