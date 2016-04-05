@@ -80,7 +80,7 @@
     "url": "^0.11.0",
     "yargs": "^3.18.0",
     "lodash.isequal": "^3.0.4",
-    "progressbar.js": "^0.9.0",
+    "progressbar.js": "^0.9.0"
   },
   "devDependencies": {
     "babel-core": "^6.3.17",
