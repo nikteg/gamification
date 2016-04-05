@@ -4,7 +4,7 @@ import HomeContainer from '../containers/HomeContainer'
 import NotFound from '../components/NotFound'
 import Chart from '../components/Chart'
 import Navbar from '../components/Navbar'
-import Avatar from '../components/Avatar'
+import Avatar from '../containers/AvatarContainer'
 
 import classes from '../styles/Home.scss'
 
