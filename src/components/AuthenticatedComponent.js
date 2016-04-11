@@ -20,6 +20,8 @@ export default function requireAuth(Comp) {
 
     checkAuth() {
       if (!this.props.isAuthenticated) {
+        alert('Authenticated users only!')
+
         const redirect = this.props.location.pathname
         this.props.dispatch(routeActions.push(`/404?next=${redirect}`))
       }

@@ -14,6 +14,7 @@ import multipart from './middleware/multipart'
 
 // Routes
 import auth from './routes/auth'
+import users from './routes/users'
 
 const debug = _debug('app:server')
 const paths = config.utils_paths
@@ -26,6 +27,8 @@ const api = new Router({ prefix: '/api' })
 
 api.use('/auth', auth.routes())
 api.use('/auth', auth.allowedMethods())
+api.use('/users', users.routes())
+api.use('/users', users.allowedMethods())
 api.use(convert(koajwt({ secret: config.secret })))
 
 api.get('/hello', (ctx, next) => {

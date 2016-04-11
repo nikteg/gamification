@@ -61,3 +61,21 @@ export const register = function(username, password) {
     return json
   })
 }
+
+export const getUser = function(username) {
+  return fetch(`/api/users/${username}`, {
+    headers: {
+      'Accept': 'application/json',
+    },
+  })
+  .then(handleErrors)
+}
+
+export const getUsers = function(username) {
+  return fetch(`/api/users`, {
+    headers: {
+      'Accept': 'application/json',
+    },
+  })
+  .then(handleErrors)
+}

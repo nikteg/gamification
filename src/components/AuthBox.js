@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
 import Modal from 'react-modal'
 
 import classes from '../styles/Home.scss'
@@ -64,7 +65,7 @@ export default class AuthBox extends Component {
     if (auth.isAuthenticated) {
       return (
         <div className={classes['profile']}>
-          {`Logged in as ${auth.username}`}
+          <Link to={`/users/${auth.username}`}>{auth.username}</Link>
           <div className={classes['profile-image']} />
           <input type="button" value="Logout" onClick={logoutUser} />
         </div>
