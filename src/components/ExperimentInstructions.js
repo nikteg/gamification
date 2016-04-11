@@ -2,13 +2,12 @@ import React, { PropTypes } from 'react'
 import { Motion, spring } from 'react-motion'
 import classes from '../styles/Experiment.scss'
 
-const springConfig = { stiffness: 300, damping: 50 }
 const ExperimentInstructions = ({ instructions, title, width }) => (
-  <Motion style={{ width: spring(width, springConfig) }}>
+  <Motion style={{ width: spring(width) }}>
     {({ width }) =>
       <div className={classes['sidebar']} style={{ width }}>
-        <h1>{title}</h1>
-        <p>{instructions}</p>
+        <h1 className={classes['title']}>{title}</h1>
+        <p className={classes['content']}>{instructions}</p>
       </div>
     }
   </Motion>

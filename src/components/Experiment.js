@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import ExperimentInstructions from './ExperimentInstructions'
+import ExperimentTask from './ExperimentTask'
 import SizeController from './SizeController'
 import classes from '../styles/Experiment.scss'
 
@@ -19,7 +20,7 @@ class Experiment extends Component {
   }
 
   render() {
-    const { instructions, screenHeight, title } = this.props
+    const { instructions, screenHeight, screenWidth, title } = this.props
     const dividerPosition = this.dividerPosition
 
     return (
@@ -33,9 +34,7 @@ class Experiment extends Component {
 
         <SizeController translate={this.handleResize} position={dividerPosition} />
 
-        <div className={classes['main']}>
-          <h1>Hej</h1>
-        </div>
+        <ExperimentTask width={screenWidth - dividerPosition} />
 
       </div>
     )
