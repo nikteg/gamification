@@ -3,8 +3,8 @@ import { Route, IndexRoute, Redirect, Link } from 'react-router'
 import HomeContainer from '../containers/HomeContainer'
 import NotFound from '../components/NotFound'
 import Chart from '../components/Chart'
-import Navbar from '../components/Navbar'
 import Avatar from '../containers/AvatarContainer'
+import ExperimentContainer from '../containers/ExperimentContainer'
 
 import classes from '../styles/Home.scss'
 
@@ -41,6 +41,7 @@ export default (
     <IndexRoute component={ HomeContainer } />
     <Route path="/404" component={ NotFound } />
     <Route path="/stats" component={ Chart } />
+    <Route path="/experiment" component={ExperimentContainer} />
     <Redirect from="*" to="/404" />
   </Route>
 )

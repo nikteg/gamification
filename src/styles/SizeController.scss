@@ -1,0 +1,32 @@
+$size: 45px;
+
+.container {
+  background: #ccc;
+  position: relative;
+  width: 8px;
+}
+
+.controls {
+  height: $size * 3;
+  left: -20px;
+  position: absolute;
+  margin-top: -($size * 3) / 2;
+  top: 50%;
+  width: $size;
+}
+
+.control {
+  background: #bbb;
+  border: 3px solid #222;
+  border-radius: 100%;
+  height: $size;
+  width: $size;
+}
+
+.icon {
+  color: #222;
+  font-size: 18px;
+  left: 10px;
+  top: 10px;
+  position: relative;
+}

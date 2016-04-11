@@ -1,0 +1,14 @@
+.container {
+  align-items: stretch;
+  display: flex;
+  position: relative;
+}
+
+.sidebar {
+  background: #ddd;
+  overflow: hidden;
+}
+
+.main {
+  overflow: hidden;
+}
