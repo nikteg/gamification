@@ -5,9 +5,8 @@ import { routeActions } from 'redux-simple-router'
 export default function requireAuth(Comp) {
   class AuthenticatedComponent extends Component {
     static propTypes = {
-      router: PropTypes.object.isRequired,
-      location: PropTypes.object.isRequired,
       isAuthenticated: PropTypes.bool.isRequired,
+      location: PropTypes.object.isRequired,
       dispatch: PropTypes.func.isRequired,
     };
 
