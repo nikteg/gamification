@@ -3,16 +3,12 @@ import classes from '../styles/Home.scss'
 
 export default class Home extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired,
     counter: PropTypes.number.isRequired,
     increment: PropTypes.func.isRequired,
-    loginUser: PropTypes.func.isRequired,
   };
 
   render() {
-    const { counter, increment, loginUser } = this.props
-
-    console.log(this.props)
+    const { counter, increment } = this.props
 
     return (
       <div className="container text-center">
@@ -23,9 +19,6 @@ export default class Home extends Component {
         </h2>
         <button onClick={() => increment(1)}>
           Increment
-        </button>
-        <button onClick={() => loginUser('username', 'password')}>
-          Login
         </button>
       </div>
     )

@@ -60,6 +60,10 @@ webpackConfig.plugins = [
   })
 ]
 
+webpackConfig.plugins.push(new webpack.ProvidePlugin({
+  'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+}))
+
 if (__DEV__) {
   debug('Enable plugins for live development (HMR, NoErrors).')
   webpackConfig.plugins.push(

@@ -1,26 +1,33 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { pushState } from 'react-router'
+import { routeActions } from 'redux-simple-router'
 
 export function requireAuth(Comp) {
   class AuthenticatedComponent extends Component {
-    componentWillMount () {
-      this.checkAuth();
+    static propTypes = {
+      router: PropTypes.object.isRequired,
+      location: PropTypes.object.isRequired,
+      isAuthenticated: PropTypes.bool.isRequired,
+      dispatch: PropTypes.func.isRequired,
+    };
+
+    componentWillMount() {
+      this.checkAuth()
     }
 
-    componentWillReceiveProps (nextProps) {
-      this.checkAuth();
+    componentWillReceiveProps(nextProps) {
+      this.checkAuth()
     }
 
-    checkAuth () {
-      if (!this.props.isAuth) {
-        let redirect = this.props.location.pathname;
-        this.props.dispatch(pushState(null, `/login?next=${redirect}`))
+    checkAuth() {
+      if (!this.props.isAuthenticated) {
+        const redirect = this.props.location.pathname
+        this.props.dispatch(routeActions.push(`/404?next=${redirect}`))
       }
     }
 
-    render () {
-      if (this.props.isAuth) {
+    render() {
+      if (this.props.isAuthenticated) {
         return <Comp {...this.props} />
       }
 
@@ -31,7 +38,9 @@ export function requireAuth(Comp) {
   const mapStateToProps = (state) => ({
     token: state.auth.token,
     username: state.auth.username,
-    isAuth: state.auth.isAuth,
+    isAuthenticated: state.auth.isAuthenticated,
+    location: state.router.location,
+    dispatch: state.router.dispatch,
   })
 
   return connect(mapStateToProps)(AuthenticatedComponent)

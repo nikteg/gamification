@@ -1,9 +1,9 @@
+import decode from 'jwt-decode'
 import { handleActions } from 'redux-actions'
 import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER } from '../constants/ActionTypes'
 
 export default handleActions({
   [LOGIN_USER_REQUEST]: (state, { payload }) => {
-    console.log("WAT")
     return Object.assign({}, state, {
       isAuthenticating: true,
       statusText: null,
@@ -14,7 +14,7 @@ export default handleActions({
       isAuthenticating: false,
       isAuthenticated: true,
       token: payload.token,
-      username: 'testname',
+      username: decode(payload.token).username,
       statusText: 'Logged in!',
     })
   },
@@ -25,8 +25,19 @@ export default handleActions({
       statusText: 'Failed to login...',
     })
   },
+  [LOGOUT_USER]: (state, { payload }) => {
+    return Object.assign({}, state, {
+      isAuthenticating: false,
+      isAuthenticated: false,
+      token: null,
+      username: null,
+      statusText: 'Logged out!',
+    })
+  },
 }, {
   isAuthenticating: false,
   isAuthenticated: false,
+  token: null,
+  username: null,
   statusText: null,
 })
