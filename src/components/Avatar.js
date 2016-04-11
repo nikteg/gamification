@@ -4,7 +4,7 @@ import { Circle } from './ProgressBar'
 import classes from '../styles/Home.scss'
 
 export default class Avatar extends Component {
-  static PropTypes = {
+  static propTypes = {
     counter: PropTypes.number.isRequired,
   };
 

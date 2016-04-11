@@ -6,7 +6,7 @@ import Chart from '../components/Chart'
 // import Navbar from '../components/Navbar'
 import Avatar from '../containers/AvatarContainer'
 import AuthBox from '../containers/AuthBoxContainer'
-import { requireAuth } from '../components/AuthenticatedComponent'
+import requireAuth from '../components/AuthenticatedComponent'
 
 import classes from '../styles/Home.scss'
 

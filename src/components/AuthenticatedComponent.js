@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { routeActions } from 'redux-simple-router'
 
-export function requireAuth(Comp) {
+export default function requireAuth(Comp) {
   class AuthenticatedComponent extends Component {
     static propTypes = {
       router: PropTypes.object.isRequired,
