@@ -12,36 +12,51 @@
 		 <script>
 			//Initialization
 			var exp = 10,
-			variance = 6;
+			variance = 5;
 			var distribution = gaussian(exp,variance);
 
+			//Visuals
 			var height = 300,
 				heightOffset = 30;
-				width = 700,
-				widthOffset = 40,
-				n = 100000,
-				realxrange = exp+variance*3,
-				usedxrange = exp+variance*2,
+				width = 500,
+				widthOffset = 40;
+				
+			//Data values	
+			var	n = 1000,
 				xstep = 1,
 				leastValueX = 0;
-					
-				;
-		
-		
+				
+			//TODO: Still buggy with small exp values.__
+			var	realxrange = exp*3,
+				usedxrange = exp*2;
+			//__________________________________________
+			
+			//Colors, graph specific elements
+			var	graphBGColor = "#eee",
+				graphLineColor = "#ff7f0e",
+				axisColor = "steelblue",
+				markerColor = "steelblue";
+				
+			//Colors, other elements
+			var circleColor = "crimson",
+				coordinateTextColor = "crimson",
+				cumulativeTextColor = "crimson",
+				cursorColor = "white";
+				graphAreaColor = "#ffbb78";
 
-			var svg = d3.select("#line").append("svg:svg")
-				.style("background", "#eee")
+			//Append svg element to body
+			var svg = d3.select("body").append("svg:svg")
+				.style("background", graphBGColor)
 				.attr("height", height+heightOffset)
 				.attr("width", width+widthOffset*2);
-
+			
+			//Initialize data
 			var data = d3.range(realxrange-1).map(function(){return 0});
 			
 			for(var i = 0; i < n; i++){
 				var sample = Math.round(distribution.ppf(Math.random()));
 				data[sample] += 1;
 			}
-			
-							console.log(data[realxrange-2]);
 			
 			//Scale 
 			scalex = d3.scale.linear().domain([leastValueX,usedxrange]).range([widthOffset,width+widthOffset]);
@@ -55,6 +70,33 @@
 			scaleAxisX = d3.scale.linear().domain([0,width]).range([leastValueX,usedxrange]);
 			scaleAxisY = d3.scale.linear().domain([heightOffset,height]).range([0,d3.max(data)]);
 
+			//Add area gradient
+			 var areaGradient = svg.append("linearGradient");	
+				areaGradient
+					.attr("id", "area-gradient")			
+					.attr("gradientUnits", "userSpaceOnUse")	
+					.attr("x1", 0).attr("y1", 0)			
+					.attr("x2", 1).attr("y2", 0)		
+				.selectAll("stop")						
+					.data([								
+						{offset: "99.9%", color: graphAreaColor},		
+						{offset: "100%", color: "#eee"},	
+												])						
+				.enter().append("stop")			
+					.attr("offset", function(d) { return d.offset; })	
+					.attr("stop-color", function(d) { return d.color; });			 
+	
+			//Area
+			var areaSVG = d3.svg.area()
+				.interpolate("cardinal")
+				.x(function(d,i) {return scalex(i); })
+				.y0(height)
+				.y1(function(d){return scaley(d); });
+				
+			var area = svg.append("path").attr("d", areaSVG(data))
+				.attr("fill", "url(#area-gradient)");
+
+			
 			//Axis
 			//X
 			var xAxis = d3.svg.axis().scale(xRange).orient("bottom").ticks(10);
@@ -65,11 +107,11 @@
 
 			xax.select("path")
 				.attr("fill", "none")
-				.attr("stroke", "lightsteelblue")
+				.attr("stroke", axisColor)
 				.attr("shape-rendering", "crispEdges");
 
 			xax.selectAll("text")
-				.attr("fill","lightsteelblue")
+				.attr("fill",axisColor)
 				.attr("font-size", "10px");
 
 			//Y
@@ -81,83 +123,85 @@
 
 			yax.select("path")
 				.attr("fill", "none")
-				.attr("stroke", "lightsteelblue")
+				.attr("stroke", axisColor)
 				.attr("shape-rendering", "crispEdges");
 
 			yax.selectAll("text")
-				.attr("fill","lightsteelblue")
+				.attr("fill",axisColor)
 				.attr("font-size", "10px");
-
-
-
-
 
 			//Line
 			var line = d3.svg.line()
 				.interpolate("cardinal")
 				.x(function(d,i) {return scalex(i)})
 				.y(function(d){return scaley(d)});
-
+			
+			var straightLine = d3.svg.line()
+				.interpolate("cardinal")
+				.x(function(d,i){return scalex(i)})
+				.y(function(){return height-20});
+				
+				
 			//Path
-			var path = svg.append("svg:path").attr("d", line(data))
+			var path = svg.append("svg:path")
+				.attr("d", straightLine(data))
 				.attr("fill", "none")
-				.attr("stroke", "steelblue");
-
-
-			//Vertical Line
-			var vertLine = svg.append("svg:line")
-				.attr("stroke", "white")
-				.attr("stroke-width", 1)
-				.attr("x1", width+50)
-				.attr("x2", width+50)
-				.attr("y1", 0)
-				.attr("y2", height)
-				.attr("opacity", 1);
+				.attr("stroke", graphLineColor)
+				.transition()
+				.attr("d", line(data))
+				.duration(700)
+				.delay(500);
+				
 				
 			//Cumulative marker
 			var cumulativeMarker = svg.append("svg:line")
-				.attr("stroke", "lightsteelblue")
+				.attr("stroke", markerColor)
 				.attr("stroke-width", 1)
 				.attr("x1", width+50)
 				.attr("x2", width+50)
 				.attr("y1", 0)
 				.attr("y2", height)
 				.attr("opacity", 0);
-				
 
-			//Big tick line
+			//Big tick line, shows mean
 			var tickline = svg.append("svg:line")
-				.attr("stroke", "lightsteelblue")
+				.attr("stroke", axisColor)
 				.attr("stroke-width", 3)
 				.attr("x1", xRange(distribution.mean))
 				.attr("x2", xRange(distribution.mean))
 				.attr("y1", height+5)
 				.attr("y2", height-5);
-				
-				console.log(distribution.mean);
-
 
 			//Horizontal Line
 			var horLine = svg.append("svg:line")
-				.attr("stroke", "white")
+				.attr("stroke", cursorColor)
 				.attr("stroke-width", 1)
 				.attr("x1", 0)
 				.attr("x2", width)
 				.attr("y1", height)
 				.attr("y2", height)
-				.attr("opacity", 1);
-					
+				.attr("opacity", 0);	
+			
+			//Vertical Line
+			var vertLine = svg.append("svg:line")
+				.attr("stroke", cursorColor)
+				.attr("stroke-width", 1)
+				.attr("x1", width+50)
+				.attr("x2", width+50)
+				.attr("y1", 0)
+				.attr("y2", height)
+				.attr("opacity", 0);
 
 			//Coordinate text
 			var coordinateText =
 				svg.append("text")
-				.attr("fill", "crimson")
+				.attr("fill", coordinateTextColor)
 				.attr("font-size", "8px");
 			
 			//Cumulative distribution
 			var cumulativeText =
 				svg.append("text")
-				.attr("fill", "crimson")
+				.attr("fill", cumulativeTextColor)
 				.attr("font-size", "10px")
 				.attr("opacity", 0);
 
@@ -167,7 +211,7 @@
 				.attr("cx", 100)
 				.attr("cy", 350)
 				.attr("r", 3)
-				.attr("fill", "red");
+				.attr("fill", circleColor);
 
 			//Path
 			var pathEl = path.node();
@@ -177,6 +221,8 @@
 			var scale = pathLength/BBox.width;
 
 			var offsetLeft = document.getElementById("line").offsetLeft;
+					
+			
 			//Button
 				//Skip
 
@@ -202,6 +248,7 @@
 					else if(pos.x < x) 	beginning = target;
 					else				break;
 				}
+				//Actions during mousemove
 				circle
 					.attr("opacity", 1)
 					.attr("cx", x)
@@ -216,14 +263,13 @@
 					.attr("y2", Math.round(pos.y));
 
 				coordinateText
-					.attr("x", x)
+					.attr("x", x-23)
 					.attr("y", pos.y - 7)
-					.text((scaleAxisX(x-widthOffset)).toFixed(2) + ", " + (d3.max(data)-(scaleAxisY((pos.y)))).toFixed(2));
+					.text("("+(scaleAxisX(x-widthOffset)).toFixed(2) + ", " + (d3.max(data)-(scaleAxisY((pos.y)))).toFixed(2)+")");
 
 			});
 
 			//Mouseclick
-			
 			svg.on("click", function(){
 				var x = vertLine.attr("x2"); 
 				var target = scaleAxisX(x-widthOffset);
@@ -231,7 +277,7 @@
 				
 				cumulativeText
 					.attr("x", ((vertLine.attr("x2") - widthOffset)/2)-10)
-					.attr("y", 285)
+					.attr("y", height - 15)
 					.attr("opacity", 1)
 					.text("P(X < "+ target.toFixed(2) +") = "+(cumulativeValue*100).toFixed(2) + "%");
 				
@@ -240,7 +286,24 @@
 					.attr("x2", x)
 					.attr("y1", horLine.attr("y1"))
 					.attr("y2", height)
-					.attr("opacity", 1);
+					.attr("opacity", 1)	
+					.attr("stroke", "white");
+					
+				cumulativeMarker
+					.transition()
+					.delay(350)
+					.attr("stroke", graphLineColor)
+					.duration(100)
+					;
+				
+				areaGradient
+					.transition()	
+					.attr("x1", 0 ).attr("y1", 0)			
+					.attr("x2", vertLine.attr("x1")).attr("y2", 0)
+					.duration(450);
+					;
+
+					
 			});
 			
 		</script>
