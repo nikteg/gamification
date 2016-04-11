@@ -1,4 +1,3 @@
-import decode from 'jwt-decode'
 import { handleActions } from 'redux-actions'
 import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER } from '../constants/ActionTypes'
 
@@ -10,11 +9,12 @@ export default handleActions({
     })
   },
   [LOGIN_USER_SUCCESS]: (state, { payload }) => {
+    const { username } = payload // id, iat, exp is also in the payload
+
     return Object.assign({}, state, {
       isAuthenticating: false,
       isAuthenticated: true,
-      token: payload.token,
-      username: decode(payload.token).username,
+      username: username,
       statusText: 'Logged in!',
     })
   },
@@ -29,7 +29,6 @@ export default handleActions({
     return Object.assign({}, state, {
       isAuthenticating: false,
       isAuthenticated: false,
-      token: null,
       username: null,
       statusText: 'Logged out!',
     })
@@ -37,7 +36,6 @@ export default handleActions({
 }, {
   isAuthenticating: false,
   isAuthenticated: false,
-  token: null,
   username: null,
   statusText: null,
 })

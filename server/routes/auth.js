@@ -31,7 +31,7 @@ const createUser = async (username, password, email) => {
   return conn('user').insert({ username, hash })
 }
 
-const tokenize = (id, username) => koajwt.sign({ id: id, username: username }, config.secret)
+const tokenize = (id, username) => koajwt.sign({ id: id, username: username }, config.secret, { expiresIn: '1d' })
 
 const auth = new Router()
 
