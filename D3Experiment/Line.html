@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="d3.min.js" charset="utf-8"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js" charset="utf-8"></script>
 	<meta charset="utf-8">
 	<title>Graph experiment</title>
 </head>
@@ -9,37 +9,37 @@
 		<div id="line"></div>
 		 <script>
 			//Initialization
-			
+
 			var height = 300,
 				heightOffset = 30;
 				width = 700,
 				widthOffset = 40,
 				xrange = 2;
-			
+
 			var svg = d3.select("#line").append("svg:svg")
 				.style("background", "#eee")
 				.attr("height", height+heightOffset)
 				.attr("width", width+widthOffset*2);
 
-			var data = d3.range(0,1,0.01).map(function(){return Math.random())});
+			var data = d3.range(0,1,0.01).map(function(){return Math.random()});
 			console.log(data);
-			
-			
-			
+
+
+
 			var xAxisData = d3.range(xrange);
 			var yAxisData = d3.range((xrange*2)-1);
-			
+
 			//Scale
 			scalex = d3.scale.linear().domain([0,xrange-1]).range([widthOffset,width+widthOffset]);
 			scaley = d3.scale.linear().domain([0,xrange-1]).range([heightOffset,height-heightOffset]);
-			
+
 			xRange = d3.scale.linear().domain([-5,5]).range([widthOffset,width+widthOffset]);
 			yRange = d3.scale.linear().domain([9,0]).range([0,height-heightOffset]);
-			
-			
+
+
 			scaleAxisX = d3.scale.linear().domain([0,width]).range([-5,5]);
 			scaleAxisY = d3.scale.linear().domain([0,height]).range([0,10]);
-			
+
 			//Axis
 			//X
 			var xAxis = d3.svg.axis().scale(xRange).orient("bottom").ticks(10);
@@ -47,48 +47,48 @@
 				.attr("class", "axis")
 				.attr("transform", "translate(0, "+ (height)+")")
 				.call(xAxis);
-			
+
 			xax.select("path")
 				.attr("fill", "none")
 				.attr("stroke", "lightsteelblue")
 				.attr("shape-rendering", "crispEdges");
-				
+
 			xax.selectAll("text")
 				.attr("fill","lightsteelblue")
 				.attr("font-size", "10px");
-			
+
 			//Y
 			var yAxis = d3.svg.axis().scale(yRange).orient("left").ticks(10);
 			var yax = svg.append("g")
 				.attr("class", "axis")
 				.attr("transform", "translate("+ widthOffset+", "+heightOffset+")")
 				.call(yAxis);
-			
+
 			yax.select("path")
 				.attr("fill", "none")
 				.attr("stroke", "lightsteelblue")
 				.attr("shape-rendering", "crispEdges");
-				
+
 			yax.selectAll("text")
 				.attr("fill","lightsteelblue")
 				.attr("font-size", "10px");
-			
-			
-			
-			
-			
-			//Line 
+
+
+
+
+
+			//Line
 			var line = d3.svg.line()
 				//.interpolate("cardinal")
 				.x(function(d,i) {return scalex(i)})
-				.y(function(d){return scaley(d)});		
-			
-			//Path	
+				.y(function(d){return scaley(d)});
+
+			//Path
 			var path = svg.append("svg:path").attr("d", line(data))
 				.attr("fill", "none")
 				.attr("stroke", "steelblue");
-				
-				
+
+
 			//Vertical Line
 			var vertLine = svg.append("svg:line")
 				.attr("stroke", "white")
@@ -98,7 +98,7 @@
 				.attr("y1", 0)
 				.attr("y2", height)
 				.attr("opacity", 0);
-			
+
 			//Big tick line
 			var tickline = svg.append("svg:line")
 				.attr("stroke", "lightsteelblue")
@@ -107,8 +107,8 @@
 				.attr("x2", width/2 + widthOffset)
 				.attr("y1", height+5)
 				.attr("y2", height-5);
-			
-			
+
+
 			//Horizontal Line
 			var horLine = svg.append("svg:line")
 				.attr("stroke", "white")
@@ -118,14 +118,14 @@
 				.attr("y1", height)
 				.attr("y2", height)
 				.attr("opacity", 0);
-			
+
 			//Coordinate text
-			var coordinateText = 
+			var coordinateText =
 				svg.append("text")
 				.attr("fill", "crimson")
 				.attr("font-size", "8px");
-			
-				
+
+
 			//Circle
 			var circle =
 				svg.append("circle")
@@ -133,29 +133,29 @@
 				.attr("cy", 350)
 				.attr("r", 3)
 				.attr("fill", "red");
-			
+
 			//Path
 			var pathEl = path.node();
 			var pathLength = pathEl.getTotalLength();
 			//---What is BBox?
 			var BBox = pathEl.getBBox();
 			var scale = pathLength/BBox.width;
-			
+
 			var offsetLeft = document.getElementById("line").offsetLeft;
 			//Button
 				//Skip
-				
+
 			//Mousemove
 			svg.on("mousemove", function(){
 				//var x = d3.event.pageX - offsetLeft;
 				var coordinates = [0,0];
 				coordinates = d3.mouse(this);
 				var x = coordinates[0];
-				
+
 				var beginning = x,
 					end = pathLength,
 					target;
-				
+
 				//Calculate position of circle
 				while(true){
 					target = Math.floor((beginning+end)/2);
@@ -171,22 +171,22 @@
 					.attr("opacity", 1)
 					.attr("cx", x)
 					.attr("cy", pos.y);
-				
+
 				vertLine
 					.attr("x1", x)
 					.attr("x2", x)
-					
+
 				horLine
 					.attr("y1", Math.round(pos.y))
 					.attr("y2", Math.round(pos.y));
-					
+
 				coordinateText
 					.attr("x", x)
 					.attr("y", pos.y - 7)
 					.text((scaleAxisX(x-widthOffset)).toFixed(2) + ", " + (10 - (scaleAxisY((pos.y)))).toFixed(2));
-				
+
 			});
-			
+
 		</script>
 	</body>
 </html>
