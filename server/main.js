@@ -32,7 +32,11 @@ api.get('/hello', (ctx, next) => {
   ctx.body = ctx.state || 'No state'
 })
 
-api.get('/two', async ctx => ctx.body = await conn.one('SELECT 1+1 as answer'))
+api.get('/two', async ctx => {
+  const answers = await conn.raw('SELECT 1+1 as answer')
+
+  ctx.body = answers[0]
+})
 
 // Error handling
 app.use(async (ctx, next) => {

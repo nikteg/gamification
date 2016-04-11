@@ -6,20 +6,29 @@ import conn from '../conn'
 import { hash } from 'crypto-promise'
 import throwDebug from '../util/throwDebug'
 
-const hashPassword = (password) => hash('md5')(password).toString('hex')
+const hashPassword = async (password) => {
+  const h = await hash('md5')(password)
+
+  return h.toString('hex')
+}
 
 const getUser = async (username, password) => {
-  return conn.one('SELECT id, username FROM "user" WHERE username = ${username} AND password = ${hash}', {
-    username: username,
-    hash: await hashPassword(password)
-  })
+  const hash = await hashPassword(password)
+
+  return conn.first('id', 'username').from('user').where({ username, hash })
+    .then(user => {
+      if (!user) {
+        throw new Error('User not found')
+      }
+
+      return user
+    })
 }
 
 const createUser = async (username, password, email) => {
-  return conn.one('INSERT INTO "user" (username, password) VALUES (${username}, ${hash}) RETURNING id, username', {
-    username: username,
-    hash: await hashPassword(password)
-  })
+  const hash = await hashPassword(password)
+
+  return conn('user').insert({ username, hash })
 }
 
 const tokenize = (id, username) => koajwt.sign({ id: id, username: username }, config.secret)
@@ -30,22 +39,15 @@ auth.post('/login', async (ctx, next) => {
   const params = required('username', 'password')(ctx.request.body)
 
   await getUser(params.username, params.password)
-    .then(res => ctx.body = { token: tokenize(res.id, res.username) }, err => {
-      if (err.message.includes('No data')) {
-        throw new Error('Invalid username and/or password')
-      }
-
-      throwDebug(err)
-    })
+    .then(res => ctx.body = { token: tokenize(res.id, res.username) }, err => throwDebug(err))
 })
 
 auth.post('/create', async (ctx, next) => {
-  console.log(ctx.request.body)
   const params = required('username', 'password')(ctx.request.body)
 
   await createUser(params.username, params.password)
     .then(res => ctx.body = { token: tokenize(res.id, res.username) }, err => {
-      if (err.message.includes('duplicate key')) {
+      if (err.message.includes('UNIQUE')) {
         if (err.message.includes('username')) {
           throw new Error('Username already taken')
         }
