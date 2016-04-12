@@ -40,11 +40,8 @@ class App extends Component {
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={ HomeContainer } />
-    <Route path="/404" component={ NotFound } />
-    <Route path="/stats" component={ Chart } />
-    <Route path="/experiment" component={ExperimentContainer} />
     <IndexRoute component={HomeContainer} />
+    <Route path="/experiment" component={ExperimentContainer} />
     <Route path="/404" component={NotFound} />
     <Route path="/users">
       <IndexRoute component={Users} />
