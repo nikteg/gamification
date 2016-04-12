@@ -112,3 +112,12 @@ body {
   }
 }
 
+svg.award {
+  width: 80px;
+  height: 80px;
+  margin: 8px;
+
+  path {
+    fill: white;
+  }
+}

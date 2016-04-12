@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Award, { AWARD_TYPES } from './Award'
 
 import classes from '../styles/Home.scss'
 
@@ -33,6 +34,8 @@ export default class User extends Component {
         <ul>
           <li>ID: {user.id}</li>
           <li>Username: {user.username}</li>
+          <Award type={AWARD_TYPES.PACMAN} />
+          <Award type={AWARD_TYPES.TIME} />
         </ul>
       </div>
     )
