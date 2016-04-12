@@ -14,6 +14,7 @@ import multipart from './middleware/multipart'
 
 // Routes
 import auth from './routes/auth'
+import users from './routes/users'
 
 const debug = _debug('app:server')
 const paths = config.utils_paths
@@ -26,13 +27,19 @@ const api = new Router({ prefix: '/api' })
 
 api.use('/auth', auth.routes())
 api.use('/auth', auth.allowedMethods())
+api.use('/users', users.routes())
+api.use('/users', users.allowedMethods())
 api.use(convert(koajwt({ secret: config.secret })))
 
 api.get('/hello', (ctx, next) => {
   ctx.body = ctx.state || 'No state'
 })
 
-api.get('/two', async ctx => ctx.body = await conn.one('SELECT 1+1 as answer'))
+api.get('/two', async ctx => {
+  const answers = await conn.raw('SELECT 1+1 as answer')
+
+  ctx.body = answers[0]
+})
 
 // Error handling
 app.use(async (ctx, next) => {

@@ -1,0 +1,75 @@
+$purple: #BC7DB3;
+$blue: #5677FC;
+
+$color: $blue;
+$control-size: 42px;
+$control-margin: 4px;
+$divider-width: 4px;
+
+.container {
+  background: $color;
+  position: absolute;
+  width: $divider-width;
+}
+
+$total-height: ($control-size * 3) + ($control-margin * 2);
+
+.controls {
+  height: $total-height;
+  left: -($control-size / 2) + ($divider-width / 2);
+  margin-top: -($total-height / 2);
+  position: absolute;
+  top: 50%;
+  width: $control-size;
+}
+
+.control {
+  background: white;
+  border: 3px solid $color;
+  border-radius: 100%;
+  height: $control-size;
+  width: $control-size;
+
+  & + & {
+    margin-top: $control-margin;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.icon {
+  color: $color;
+  font-size: 17px;
+  position: relative;
+  top: 8px;
+
+}
+
+.arrow-left {
+  @extend .icon;
+  left: 9px;
+}
+
+.half-icon {
+  background: white;
+  position: relative;
+
+  &:before {
+    background: $color;
+    border-radius: $control-size 0 0 $control-size;
+    content: "";
+    display: block;
+    height: $control-size;
+    left: -2px;
+    position: absolute;
+    top: -3px;
+    width: $control-size / 2;
+  }
+}
+
+.arrow-right {
+  @extend .icon;
+  left: 12px;
+}

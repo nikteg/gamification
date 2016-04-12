@@ -4,12 +4,11 @@ import { Circle } from './ProgressBar'
 import classes from '../styles/Home.scss'
 
 export default class Avatar extends Component {
-  static PropTypes = {
+  static propTypes = {
     counter: PropTypes.number.isRequired,
   };
 
   render() {
-    console.log(this.props)
     return (
       <div className={classes['avatar']}>
         <Circle

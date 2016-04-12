@@ -2,21 +2,15 @@ import d3 from 'd3'
 import { Component, PropTypes } from 'react'
 import ReactFauxDOM from 'react-faux-dom'
 
-import chartData from '../chart.json'
-
 import classes from '../styles/Home.scss' // WHAT TO DO HERE YO
 
 export default class Chart extends Component {
   static propTypes = {
-    data: PropTypes.array,
-  };
-
-  static defaultProps = {
-    data: chartData,
+    chartData: PropTypes.array,
   };
 
   render() {
-    const data = this.props.data
+    const data = this.props.chartData
     const margin = { top: 20, right: 20, bottom: 30, left: 50 }
     const width = 960 - margin.left - margin.right
     const height = 500 - margin.top - margin.bottom
@@ -49,8 +43,10 @@ export default class Chart extends Component {
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
     data.forEach(function(d) {
-      d.date = parseDate(d.date)
-      d.close = +d.close
+      if (typeof d.date === 'string') {
+        d.date = parseDate(d.date)
+        d.close = +d.close
+      }
     })
 
     x.domain(d3.extent(data, function(d) { return d.date }))

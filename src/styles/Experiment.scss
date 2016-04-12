@@ -1,0 +1,28 @@
+.container {
+  align-items: stretch;
+  color: #333;
+  display: flex;
+  position: relative;
+}
+
+.sidebar {
+  background: #dedede;
+  overflow: hidden;
+}
+
+.title {
+  margin: 0;
+  padding: 30px;
+}
+
+.content {
+  margin: 0;
+  min-width: 300px;
+  max-width: 760px;
+  padding: 0 30px 30px 30px;
+}
+
+.main {
+  overflow: hidden;
+}
+

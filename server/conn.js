@@ -1,6 +1,8 @@
-import connect from 'pg-promise'
+import knex from 'knex'
 
-const pgp = connect()
-const conString = process.env.DATABASE_URL
-
-export default pgp(`${conString}?ssl=true`)
+export default knex({
+  client: 'sqlite3',
+  connection: {
+    filename: './dev.sqlite',
+  },
+})
