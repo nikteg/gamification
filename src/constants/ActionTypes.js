@@ -13,3 +13,6 @@ export const USER_INFO = 'USER_INFO'
 
 export const USERS_FETCH = 'USERS_FETCH'
 export const USERS_INFO = 'USERS_INFO'
+
+export const AVATAR_MENU = 'AVATAR_MENU'
+export const AVATAR_MENU_IS_SHOWING = 'AVATAR_MENU_IS_SHOWING'
