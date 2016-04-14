@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { actions as avatarActions } from '../actions/avatar'
-import { Circle } from './ProgressBar'
+import { actions as avatarActions } from '../../actions/avatar'
+import ProgressCircle, { ProgressTypes } from './ProgressCircle'
 
 import Modal from 'react-modal'
 
-import classes from '../styles/Home.scss'
+import classes from '../../styles/Avatar.scss'
 
 const customStyles = {
   overlay: {
@@ -28,6 +28,15 @@ class Avatar extends Component {
     toggleAvatarMenu: PropTypes.func.isRequired,
   };
 
+  createMenu = (totalProgress) => {
+    return totalProgress.map((item, i) => {
+      const type = Object.keys(ProgressTypes)[i % (Object.keys(ProgressTypes).length)]
+      return (
+        <ProgressCircle progress={item.progress} type={type} active={type === ProgressTypes.DICE} />
+      )
+    })
+  };
+
   render() {
     const { avatarMenu, toggleAvatarMenu } = this.props
 
@@ -37,25 +46,11 @@ class Avatar extends Component {
       <div className={classes['avatar']}>
         <Modal isOpen={avatarMenu} onRequestClose={toggleAvatarMenu} style={customStyles}>
           <div className={classes['avatarMenu']}>
-            <Circle
-              progress={this.props.counter / 10}
-              options={{
-                strokeWidth: 12,
-                color: '#5677fc',
-                duration: 500,
-              }}
-            initialAnimate />
+            {this.createMenu([ { progress: this.props.counter / 10 }, { progress: 0.3 }, { progress: 0.5 } ])}
           </div>
         </Modal>
         <a onClick={toggleAvatarMenu}>
-          <Circle
-            progress={this.props.counter / 10}
-            options={{
-              strokeWidth: 12,
-              color: '#5677fc',
-              duration: 500,
-            }}
-          initialAnimate />
+          <ProgressCircle progress={this.props.counter / 10} type={ProgressTypes.DICE} />
         </a>
       </div>
     )

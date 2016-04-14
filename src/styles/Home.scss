@@ -45,16 +45,6 @@ body {
   padding: 0.5em;
   border-bottom: 1px solid #dedede;
 
-  .avatar {
-    background: #ddd;
-    border-radius: 50%;
-    width: $avatar-size;
-    height: $avatar-size;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-  }
-
   nav {
     margin-left: 0.5em;
     flex: 1;

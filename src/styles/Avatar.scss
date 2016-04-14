@@ -1,0 +1,51 @@
+$avatar-size: 64px;
+
+.avatar {
+  cursor: pointer;
+}
+
+.avatarMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .progressCircle {
+    margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    :local &.active {
+      width: $avatar-size * 2;
+      height: $avatar-size * 2;
+
+      .icon {
+        width: $avatar-size;
+        height: $avatar-size;
+        left: $avatar-size / 2;
+        top: $avatar-size / 2;
+      }
+    }
+  }
+}
+
+.progressCircle {
+  background: #ddd;
+  width: $avatar-size;
+  height: $avatar-size;
+  border-radius: 50%;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  width: $avatar-size / 2;
+  height: $avatar-size / 2;
+  left: $avatar-size / 4;
+  top: $avatar-size / 4;
+
+  svg {
+    fill: #999;
+  }
+}
