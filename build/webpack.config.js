@@ -72,15 +72,14 @@ if (__DEV__) {
   )
 } else if (__PROD__) {
   debug('Apply UglifyJS plugin.')
-  // Heroku takes to long to build when the code is uglified
-  // webpackConfig.plugins.push(
-  //   new webpack.optimize.UglifyJsPlugin({
-  //     compress: {
-  //       unused: true,
-  //       dead_code: true
-  //     }
-  //   })
-  // )
+  webpackConfig.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        unused: true,
+        dead_code: true
+      }
+    })
+  )
 }
 
 // Don't split bundles during testing, since we only want import one bundle
