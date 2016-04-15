@@ -31,25 +31,29 @@ const Icons = {
 
 const ProgressCircle = function(props) {
   return (
-    <div className={classnames(classes['progressCircle'], { [classes['active']]: props.active }) }>
-      <div className={classes['icon']}>{Icons[props.type]}</div>
-      <Circle
-        progress={props.progress}
-        options={{
-          strokeWidth: 12,
-          color: '#5677fc',
-          duration: 500,
-          trailColor: '#ccc',
-        }}
-      initialAnimate />
+    <div className={classnames(classes['progressCircle'], { [classes['active']]: props.active }) } onClick={props.onClick}>
+      <div className={classes['circle']}>
+        <div className={classes['icon']}>{Icons[props.type]}</div>
+        <Circle
+          progress={props.progress}
+          options={{
+            strokeWidth: 12,
+            color: '#5677fc',
+            duration: 500,
+            trailColor: '#ccc',
+          }} />
+      </div>
+      {props.label && <div className={classes['label']}>{props.label}</div>}
     </div>
   )
 }
 
 ProgressCircle.propTypes = {
   type: PropTypes.string.isRequired,
+  label: PropTypes.string,
   progress: PropTypes.number.isRequired,
-  active: PropTypes.bool.isRequired,
+  active: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
 export default ProgressCircle

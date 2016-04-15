@@ -26,31 +26,53 @@ class Avatar extends Component {
     counter: PropTypes.number.isRequired,
     avatarMenu: PropTypes.bool.isRequired,
     toggleAvatarMenu: PropTypes.func.isRequired,
+    course: PropTypes.object.isRequired,
+    changeChapter: PropTypes.func.isRequired,
   };
 
-  createMenu = (totalProgress) => {
-    return totalProgress.map((item, i) => {
-      const type = Object.keys(ProgressTypes)[i % (Object.keys(ProgressTypes).length)]
+  chapterProgress = (tasks) => tasks.reduce((tot, task) => tot + task.progress, 0) / tasks.length / 100
+
+  menu = () => {
+    return this.props.course.chapters.map((chapter, i) => {
       return (
-        <ProgressCircle progress={item.progress} type={type} active={type === ProgressTypes.DICE} />
+        <div className={classes['menuItem']}>
+          <ProgressCircle
+            key={i}
+            progress={this.chapterProgress(chapter.tasks)}
+            type={chapter.icon}
+            active={i === this.props.course.currentChapter}
+            label={chapter.name}
+            onClick={() => this.changeChapter(i)} />
+          <div className={classes['separator']} />
+        </div>
       )
     })
   };
 
-  render() {
-    const { avatarMenu, toggleAvatarMenu } = this.props
+  changeChapter = (index) => {
+    this.props.changeChapter(index)
+    this.props.toggleAvatarMenu()
+  };
 
-    console.log(this.props)
+  render() {
+    const { avatarMenu, toggleAvatarMenu, course } = this.props
+
+    const currentChapter = course.chapters[course.currentChapter]
 
     return (
       <div className={classes['avatar']}>
         <Modal isOpen={avatarMenu} onRequestClose={toggleAvatarMenu} style={customStyles}>
+          <h1>{course.name}</h1>
           <div className={classes['avatarMenu']}>
-            {this.createMenu([ { progress: this.props.counter / 10 }, { progress: 0.3 }, { progress: 0.5 } ])}
+            {this.menu()}
           </div>
         </Modal>
         <a onClick={toggleAvatarMenu}>
-          <ProgressCircle progress={this.props.counter / 10} type={ProgressTypes.DICE} />
+          <ProgressCircle
+            progress={this.chapterProgress(currentChapter.tasks)}
+            type={currentChapter.icon}
+            label={currentChapter.name}
+            active />
         </a>
       </div>
     )
@@ -60,6 +82,7 @@ class Avatar extends Component {
 const mapStateToProps = (state) => ({
   counter: state.counter,
   avatarMenu: state.avatar,
+  course: state.course,
 })
 
 export default connect(mapStateToProps, avatarActions)(Avatar)
