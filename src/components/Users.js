@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
-import classes from '../styles/Home.scss'
-
 export default class Users extends Component {
   static propTypes = {
     fetching: PropTypes.bool.isRequired,

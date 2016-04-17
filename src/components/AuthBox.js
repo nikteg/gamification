@@ -2,8 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import Modal from 'react-modal'
 
-import classes from '../styles/Home.scss'
-
 const customStyles = {
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.75)',
@@ -64,17 +62,17 @@ export default class AuthBox extends Component {
 
     if (auth.isAuthenticated) {
       return (
-        <div className={classes['profile']}>
+        <div className="profile">
           <Link to={`/users/${auth.username}`}>{auth.username}</Link>
-          <div className={classes['profile-image']} />
+          <div className="image" />
           <input type="button" value="Logout" onClick={logoutUser} />
         </div>
       )
     } else {
       return (
-        <div className={classes['profile']}>
+        <div className="profile">
           <Modal isOpen={auth.registerModal} onRequestClose={hideRegisterModal} style={customStyles}>
-            <div className={classes['register']}>
+            <div className="register-modal">
               {auth.registerFail && <p>Something went wrong, username already in use perhaps?</p>}
               <p><input type="text" ref={this.registerPasswordRef} placeholder="Username" /></p>
               <p><input type="password" ref={node => this.registerPasswordInput = node} placeholder="Password" /></p>

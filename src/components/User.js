@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Award, { AWARD_TYPES } from './Award'
 
-import classes from '../styles/Home.scss'
-
 export default class User extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,

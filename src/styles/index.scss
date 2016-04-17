@@ -1,23 +1,19 @@
 $avatar-size: 64px;
 $profile-image-size: 48px;
+$footer-height: 96px;
 
 * {
   box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
 }
 
 body {
   font: 16px/1.5em "proxima-nova", sans-serif;
   margin: 0;
   padding: 0;
-}
-
-.counter {
-  font-weight: bold;
-}
-
-.counter--green {
-  composes: counter;
-  color: rgb(25,200,25);
 }
 
 .axis path,
@@ -37,7 +33,17 @@ body {
   stroke-width: 1.5px;
 }
 
-.header {
+.main-outer-wrapper {
+  height: 100%;
+}
+
+.main-inner-wrapper {
+  min-height: 100%;
+  margin-bottom: -$footer-height;
+  padding-bottom: $footer-height;
+}
+
+.main-header {
   width: 100%;
   display: flex;
   align-items: center;
@@ -74,7 +80,7 @@ body {
     display: flex;
     align-items: center;
 
-    .profile-image {
+    .image {
       background: url(https://df0179xsabjj8.cloudfront.net/small/216592_O3DSzwCDG6WPpm6q_308492.jpg);
       background-size: cover;
       border-radius: 50%;
@@ -83,6 +89,20 @@ body {
       margin-left: 1em;
     }
   }
+}
+
+.main-content {
+  overflow: hidden;
+}
+
+.main-footer {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: $footer-height;
+  background: #1D1F21;
+  padding: 1em;
+  color: #c2c2c2;
 }
 
 .register {
@@ -112,3 +132,7 @@ svg.award {
     fill: white;
   }
 }
+
+@import 'components/Avatar';
+@import 'components/Experiment';
+@import 'components/SizeController';

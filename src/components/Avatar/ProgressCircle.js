@@ -2,8 +2,6 @@ import React, { PropTypes } from 'react'
 import { Circle } from '../ProgressBar'
 import classnames from 'classnames'
 
-import classes from '../../styles/Avatar.scss'
-
 export const ProgressTypes = {
   DICE: 'DICE',
   LIBRARY: 'LIBRARY',
@@ -31,9 +29,9 @@ const Icons = {
 
 const ProgressCircle = function(props) {
   return (
-    <div className={classnames(classes['progressCircle'], { [classes['active']]: props.active }) } onClick={props.onClick}>
-      <div className={classes['circle']}>
-        <div className={classes['icon']}>{Icons[props.type]}</div>
+    <div className={classnames('progress-circle', { 'active': props.active }) } onClick={props.onClick}>
+      <div className="circle">
+        <div className="icon">{Icons[props.type]}</div>
         <Circle
           progress={props.progress}
           options={{
@@ -43,7 +41,7 @@ const ProgressCircle = function(props) {
             trailColor: '#ccc',
           }} />
       </div>
-      {props.label && <div className={classes['label']}>{props.label}</div>}
+      {props.label && <div className="label">{props.label}</div>}
     </div>
   )
 }

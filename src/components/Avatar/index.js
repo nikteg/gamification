@@ -1,11 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { actions as avatarActions } from '../../actions/avatar'
-import ProgressCircle, { ProgressTypes } from './ProgressCircle'
+import ProgressCircle from './ProgressCircle'
 
 import Modal from 'react-modal'
-
-import classes from '../../styles/Avatar.scss'
 
 const customStyles = {
   overlay: {
@@ -33,20 +31,24 @@ class Avatar extends Component {
   chapterProgress = (tasks) => tasks.reduce((tot, task) => tot + task.progress, 0) / tasks.length / 100
 
   menu = () => {
-    return this.props.course.chapters.map((chapter, i) => {
-      return (
-        <div className={classes['menuItem']}>
-          <ProgressCircle
-            key={i}
-            progress={this.chapterProgress(chapter.tasks)}
-            type={chapter.icon}
-            active={i === this.props.course.currentChapter}
-            label={chapter.name}
-            onClick={() => this.changeChapter(i)} />
-          <div className={classes['separator']} />
-        </div>
-      )
-    })
+    return (
+      <div className="items">
+        {this.props.course.chapters.map((chapter, i) => {
+          return (
+            <div className="item">
+              <ProgressCircle
+                key={i}
+                progress={this.chapterProgress(chapter.tasks)}
+                type={chapter.icon}
+                active={i === this.props.course.currentChapter}
+                label={chapter.name}
+                onClick={() => this.changeChapter(i)} />
+              <div className="sep" />
+            </div>
+          )
+        })}
+      </div>
+    )
   };
 
   changeChapter = (index) => {
@@ -60,10 +62,10 @@ class Avatar extends Component {
     const currentChapter = course.chapters[course.currentChapter]
 
     return (
-      <div className={classes['avatar']}>
+      <div className="avatar">
         <Modal isOpen={avatarMenu} onRequestClose={toggleAvatarMenu} style={customStyles}>
-          <h1>{course.name}</h1>
-          <div className={classes['avatarMenu']}>
+          <div className="avatar-modal">
+            <h1>{course.name}</h1>
             {this.menu()}
           </div>
         </Modal>

@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import classes from '../styles/Home.scss'
 
 export default class Home extends Component {
   static propTypes = {
@@ -15,7 +14,7 @@ export default class Home extends Component {
         <h1>Welcome to the React Redux Starter Kit</h1>
         <h2>
           Sample Counter:
-          <span className={classes['counter--green']}> {counter}</span>
+          <span> {counter}</span>
         </h2>
         <button onClick={() => increment(1)}>
           Increment
