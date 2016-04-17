@@ -7,6 +7,7 @@ import Chart from '../containers/ChartContainer'
 import User from '../containers/UserContainer'
 import Users from '../containers/UsersContainer'
 import requireAuth from '../components/AuthenticatedComponent'
+import Task from '../components/Task'
 
 import { Wrapper } from '../layout'
 
@@ -15,6 +16,7 @@ export default (
     <IndexRoute component={HomeContainer} />
     <Route path="/experiment" component={ExperimentContainer} />
     <Route path="/404" component={NotFound} />
+    <Route path="/task" component={Task} />
     <Route path="/users">
       <IndexRoute component={Users} />
       <Route path=":username" component={User} />

@@ -12,6 +12,7 @@ export const Header = (props) => (
       <Link to="/" onlyActiveOnIndex activeClassName="active">Startsida</Link>
       <Link to="/stats" activeClassName="active">Statistik</Link>
       <Link to="/404" activeClassName="active">404 not found</Link>
+      <Link to="/task" activeClassName="active">Sample task</Link>
       <Link to="/users" activeClassName="active">Users</Link>
     </nav>
     <AuthBox />
