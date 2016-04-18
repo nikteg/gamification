@@ -2,8 +2,6 @@ import d3 from 'd3'
 import { Component, PropTypes } from 'react'
 import ReactFauxDOM from 'react-faux-dom'
 
-import classes from '../styles/Home.scss' // WHAT TO DO HERE YO
-
 export default class Chart extends Component {
   static propTypes = {
     chartData: PropTypes.array,
@@ -53,12 +51,12 @@ export default class Chart extends Component {
     y.domain(d3.extent(data, function(d) { return d.close }))
 
     svg.append('g')
-    .attr('class', [ classes['x'], classes['axis'] ].join(' '))
+    .attr('class', 'x axis')
     .attr('transform', 'translate(0,' + height + ')')
     .call(xAxis)
 
     svg.append('g')
-    .attr('class', classes['axis'])
+    .attr('class', 'axis')
     .call(yAxis)
     .append('text')
     .attr('transform', 'rotate(-90)')
@@ -69,7 +67,7 @@ export default class Chart extends Component {
 
     svg.append('path')
     .datum(data)
-    .attr('class', classes['line'])
+    .attr('class', 'line')
     .attr('d', line)
 
     return node.toReact()

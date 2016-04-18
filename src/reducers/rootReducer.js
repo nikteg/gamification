@@ -4,6 +4,8 @@ import screenSize from './screen-size'
 import counter from './counter'
 import auth from './auth'
 import user from './user'
+import avatar from './avatar'
+import course from './course'
 
 export default combineReducers({
   auth,
@@ -11,4 +13,6 @@ export default combineReducers({
   counter,
   screenSize,
   router,
+  avatar,
+  course,
 })

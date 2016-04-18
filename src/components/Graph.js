@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
 import { LineChart } from 'rd3'
 
 const lineData = [

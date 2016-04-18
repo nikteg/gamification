@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import ExperimentInstructions from './ExperimentInstructions'
 import ExperimentTask from './ExperimentTask'
 import SizeController from './SizeController'
-import classes from '../styles/Experiment.scss'
 
 class Experiment extends Component {
   constructor(props) {
@@ -24,7 +23,7 @@ class Experiment extends Component {
     const dividerPosition = this.dividerPosition
 
     return (
-      <div className={classes['container']} style={{ minHeight: screenHeight - 80 }}>
+      <div className="experiment" style={{ minHeight: screenHeight - 80 }}>
 
         <ExperimentInstructions
           instructions={instructions}

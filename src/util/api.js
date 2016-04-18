@@ -1,4 +1,4 @@
-const token = localStorage.getItem('token')
+// const token = localStorage.getItem('token')
 
 const jsonify = function(resp) {
   return resp.json()
