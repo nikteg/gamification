@@ -23,10 +23,9 @@ class App extends Component {
         <div className={classes['header']}>
           <Avatar />
           <nav>
-            <Link to="/" onlyActiveOnIndex activeClassName={classes['active']}>Startsida</Link>
-            <Link to="/stats" activeClassName={classes['active']}>Statistik</Link>
-            <Link to="/404" activeClassName={classes['active']}>404 not found</Link>
-            <Link to="/users" activeClassName={classes['active']}>Users</Link>
+            <Link to="/" onlyActiveOnIndex activeClassName={classes['active']}>Dashboard</Link>
+            <Link to="/stats" activeClassName={classes['active']}>Tasks</Link>
+            <Link to="/stats" activeClassName={classes['active']}>Achievements</Link>
           </nav>
           <AuthBox />
         </div>
