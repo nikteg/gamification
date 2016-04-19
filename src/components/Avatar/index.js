@@ -28,7 +28,7 @@ class Avatar extends Component {
     changeChapter: PropTypes.func.isRequired,
   };
 
-  chapterProgress = (tasks) => tasks.reduce((tot, task) => tot + task.progress, 0) / tasks.length / 100
+  chapterProgress = (tasks) => tasks.reduce((tot, task) => tot + task.progress, 0) / tasks.length / 100;
 
   menu = () => {
     return (
