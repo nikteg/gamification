@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<style>
+	
+	.task{
+	position: absolute;
+	top:0px;
+	left:0px;
+	}
+	
+	body{
+		background-color: ;
+	}
+	.structure {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.notes {
+		
+	}
+	.newPart {
+	  border-top: 1px solid #aaa;
+	  display: flex;
+	
+	}
+	
+	.prereq {
+		list-style: none
+	}
+	
+	.part {
+		display: flex;
+	}
+	.breadCrumbsBar {
+		display: flex;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		background: #eee;
+		font-size: 15px;
+		box-shadow: 100px 10px 20px #F0F0F0;
+		font-family: "Palatino Linotype","Book Antiqua", Palatino serif;
+	}
+	
+	.left {
+		background: #fff;
+		width: 25%;
+		padding: 1em;
+		text-align: right;
+		color: #844B46;
+		border-right: 1px solid #ccc;
+		font-weight: ;
+		text-decoration: ;
+		font-family: "Palatino Linotype","Book Antiqua", Palatino serif;
+	  }
+	
+	.navBox{
+		border: 1px solid #ccc;
+		position: fixed;
+		top: 99px;
+		left: 80%;
+		background-color: #eee;
+		height: 100%;
+		width: 17.5%;
+		padding-top: 20px;
+	}
+	
+	.navBoxList{
+		list-style: none;
+		padding-left: 25px;
+		padding-right: 25px;
+		
+	}
+	
+	.navBoxTitle{
+		padding:0;
+		margin:0;
+		padding-top: 10px;
+		font-family: "Palatino Linotype","Book Antiqua", Palatino serif;
+		font-size: 15px;
+		color: #617EAD;
+	}
+	
+	.navBoxSub{
+	padding-left: 15px;
+	padding-top: 5px;
+			font-family: "Palatino Linotype","Book Antiqua", Palatino serif;
+	font-size: 13px;
+	color: #617EAD;
+	font-weight:bold;
+	}
+	
+	
+	.title{
+		margin: 0px;
+		font-family: "Palatino Linotype","Book Antiqua", Palatino serif;
+		font-weight: normal;
+	}
+	
+	p {
+		margin: 0;
+	}
+	
+	.fixed{
+		position: fixed;
+		border-bottom: 1px solid #ccc;
+		
+	}
+	
+	.right {
+	border-top: 1px solid #ddd;
+		width: 70%;
+		padding: 1em;
+		margin-right: 25%;
+	}
+		
+	.border{
+	border: 1px solid #ccc;
+	
+	}
+	
+	.emtpyDiv{
+		height: 100px;
+	}
+	
+	.breadCrumbs li{
+		list-style: none;
+		display:inline;
+	}
+	
+	.list li{
+		margin-top:10px;
+	}
+	
+	.varDivContainer{
+		display:flex;
+		margin-top:10px;
+		margin-bottom:10px;
+	}
+	.varDiv{
+		width: 50%;
+		border: 1px solid #ccc;
+		height: 200px;
+		margin-left:5px;
+		margin-right:5px;
+		color: #617EAD;
+		background: #EDEDED;
+	}
+	
+	.varDiv p{
+		margin-left: 15px;
+		
+		margin-right:15px;
+		
+	}
+	.varDiv h3{
+		margin:0;
+		padding:0;
+		margin-top:10px;
+		margin-left: 15px;
+		margin-right:15px;
+		margin-bottom: 10px;
+		font-family: "Palatino Linotype","Book Antiqua", Palatino serif;
+		font-weight: normal;
+	}
+	 
+	</style>
+</head>
+<body>
+	<div class="task" id="lastPart">
+		
+		<ul class ="structure">
+		
+			<div class="navBox">
+				<ul class="navBoxList">
+					<li>
+						<h4 class="navBoxTitle">1. Introduction to the concept</h4>
+					</li>
+					<li>
+						<p class="navBoxSub">1.1 What is it?</p>
+					</li>
+					<li>
+						<p class="navBoxSub">1.2 Why is it important?</p>
+					</li>
+					<li>
+						<p class="navBoxSub">1.3 Examples of uses</p>
+					</li>
+					<li>
+						<p class="navBoxSub">1.4 Other examples of continuous distributions</p>
+					</li>
+					<li>
+						<h4 class="navBoxTitle">2. Properties and functions</h4>
+					</li>
+					<li>
+						<p class="navBoxSub">2.1 Definition</p>
+					</li>
+					<li>
+						<p class="navBoxSub">2.2 How is it commonly used?</p>
+					</li>
+					<li>
+						<p class="navBoxSub">2.3 Rule of thumb</p>
+					</li>
+					<li>
+						<p class="navBoxSub">2.4 Explanation of variables</p>
+					</li>
+					<li>
+						<h4 class="navBoxTitle">3. Mathematical proofs</h4>
+					</li>
+					<li>
+						<p class="navBoxSub">3.1 Prerequisites</p>
+					</li>
+					
+				</ul>
+			
+			</div>
+		
+			<li class="part">
+				<img class="fixed" src="Header.png" style="width: 100%; height: 100px">
+			</li>	
+			 
+			  
+			<li class="part">
+				<img src="Header.png" style="width: 100%; height: 100px">
+			</li>
+			 
+			<li>
+				<div class="breadCrumbsBar">
+					<ul class="breadCrumbs">
+						<li>Home |</li>
+						<li>Statistics and probability |</li>
+						<li><b>Normal distribution</b></li>
+					</ul>
+				</div>
+			</li>
+		 
+		  <li class="newPart">
+			<div class="left">Interactive graph<br><a href="./ExperimentHtml.html" style="color:white">hellodasdasdasdasdasdsad</a></div>
+			<div class="right">
+			
+			<img class="border" src="Standard_dev.png" alt="Normal distribution" style="width: 520px; height 200px;"><br>
+			</div>
+		  </li>
+
+		  <li class="part">
+			<div class="left"><br></div>
+			<div class="right">
+			<h1 class="title">Normal distribution</h1><br>
+			
+			<h2 class="title"> 1. Introduction to the concept</h2>
+			</div>
+		  </li>
+		  
+		  <li class="part">
+			<div class="left">1.1 What is it?</div>
+			<div class="right" id="imagePart">
+					
+					
+					<img align="right" src="bellcurve.gif" alt="figure 1" style="width: 50%; margin-left: 30px">
+					A normal distribution is a continuous probability distribution whose pattern is commonly found in the real world, often in the form of random errors. A few examples of real world phenomena that act like a normal distribution are the size of living tissue in different individuals of the same species, and errors in machine produced objects. 
+					<br><br>
+					When graphing the distribution of some gathered data or statistic, the graph sometimes form a bell-shape (figure 1). Any distribution with a graph resembling this bell-shape is said to have a normal distribution. Alternatively, the normal distribution is also called a gaussian distribution or less formally a bell curve because of its shape.								
+			 </div>
+		  </li>
+		  <li class="part">
+			<div class="left">1.2 Why is it important?</div>
+			<div class="right">
+			The main reason the normal distribution is useful is because of the Central Limit Theorem, which in short, says that even if we do not know the real distribution for a random variable X, given a large enough sample size, the sample distribution will in many cases act like a normal distribution. It is because of this property that the normal distribution is commonly used in many statistical experiments of various sciences, such as biology, physics, astronomy and finance.
+			<br><br>
+			The normal distribution is also very easy to use. Here are a few points explaining why:
+			<br>
+				<ol class="list">
+					<li>
+					Its probability density function depends only on the expectancy and standard deviation of the distribution. Since the expectancy and standard deviation is rather easy to calculate, so is the probability density.
+					</li>
+					
+					<li>
+					It is symmetrical. This often means that when calculating various probability densities sometimes it is enough to only calculate one half of the distribution.
+					</li>
+					
+					<li>
+					It has a standard which it can be translated into. This is called the standard normal distribution. The standard normal distribution has a table where the probability density function is calculated for a large range of values. This means that it is not always necessary to calculate the probability density by hand. Instead, it can be looked up in the table, speeding up the process considerably.
+					</li>
+				</ol>
+			</div>
+			</li>
+		  <li class="part">
+			<div class="left">1.3 Examples of uses</div>
+			<div class="right">
+				<ul class="list">
+					<li>
+					Measure of living tissue
+					</li>
+					
+					<li>
+					Financial sciences
+					</li>
+					
+					<li>
+					For evaluating scores
+					</li>
+					
+					<li>
+					Astronomy
+					</li>
+				</ul>
+			</div>
+			</li>
+		
+		  <li class="part">
+			<div class="left">1.4 Other examples of continuous distributions</div>
+			<div class="right">
+				<ul class="list">
+					<li>
+					Exponential distribution
+					</li>
+					
+					<li>
+					Poisson distribution
+					</li>
+					
+					<li>
+					Gamma distribution
+					</li>
+					
+					<li>
+					Chi-squared distribution
+					</li>
+				</ul>
+			</div>
+			</li>
+		
+		
+		  <li class="newPart">
+			<div class="left">
+			</div>
+			<div class="right">
+				<h2 class = "title">2. Properties and functions</h2>
+				
+			</div>
+			</li>
+
+		<li class="part">
+			<div class="left">
+			2.1 Definition	
+			</div>
+			<div class="right">
+			
+				<!--<img src="Definition.png" alt="definition" style="width:90%;height:;"><br>-->
+				
+				Since the area under the probability density function should always be equal to 1, it implicates that -12e-(1/2)[(x-)/]2= 1. The link to the proof for this is given here: [link to proof]. 
+				<br><br>
+				As you can see, the probability density function of the normal distribution requires only that mu is a real number and sigma is positive. And as you may already suspect, mu and sigma corresponds to the mean and standard deviation of the normal random variable.
+			    The graph of the density function of the normal random variable is symmetric, with the mean mu in its center. At mu+-sigma, one can find the points of inflection.
+			</div>
+			</li>
+		
+		<li class="part">
+			<div class="left">
+			2.2 How is it commonly used?
+			</div>
+			<div class="right">
+				In many cases, the normal distribution can be discovered directly by conducting an experiment of a chosen random variable and observing the frequency of the outcomes. By graphing it and looking at the shape of the graph, one can determine whether it resembles a normal distribution or not. In such a case, it is easy to use the normal distribution directly to approximate the distribution of the samples. 
+				<br><br>
+				However, sometimes the sample distribution of a random variable, say X, does not resemble a normal distribution. In these cases, it is possible to observe the distribution of a statistic (such as the mean or standard deviation) of X to see if it resembles a normal distribution. This is called point estimation.
+				<br><br>
+				Once a normal distribution is discovered, it may be of interest to find out the cumulative probability distribution of the normal random variable. However, to find this, an integration over the probability density function is required. This process is rather complex. Thus the normal random variable is often translated into a standard normal random variable, with a standard normal distribution. The reason for this is simply because the standard normal distribution has a single table that describes the cumulative probability distribution for different standard deviations. [Link]. 
+
+			</div>
+			</li>
+			
+		<li class="part">
+			<div class="left">
+			2.3 Rule of thumb	
+			</div>
+			<div class="right">
+				Because of its symmetricality and frequency of use, a shorthand for the distribution has been developed. As you can see in the figure below there is:
+					<ol class="list">
+						<li>
+						a 68% chance that a random sample with a normal distribution to fall within 1 standard deviation from the expected value
+						</li>
+						
+						<li>
+						a 95% chance that it falls within 2 standard deviations from the expected value
+						</li>
+						
+						<li>
+						a 99% chance it falls between 3 standard deviations of the expected value
+						</li>
+					</ol>
+					<br>
+					
+					
+					<img class="border" src="Empirical_Rule.png"  alt="Rule of thumb" style="width:70%; margin-left: 4%">
+					<br><i><p style="font-size:12px; margin-left:4%">Source: Dan Kernler</p></i>			
+			
+			</div>
+			</li>
+			
+			
+		<li class="part">
+			<div class="left">
+			2.4 Explanation of variables	
+			</div>
+			<div class="right">
+				<div class="varDivContainer">
+					<div class="varDiv">
+						<h3>Sigma - Standard deviation</h3>
+						<p>
+						The standard deviation is a measure of how spread out from the expected values the numbers are. A distribution with a larger standard deviation means that the values are spread out more than a distribution with a small standard deviation.
+						</p>
+					</div>
+					<div class="varDiv">
+						<h3>X - Random variable</h3>
+						<p>
+						A random variable is a variable that can assume many different values, x.
+						</p>
+					</div>
+				</div>
+				
+				<div class="varDivContainer">
+					<div class="varDiv">
+						<h3>My - Expected value</h3>
+						<p>
+						This describes the expected value from the random variable X. The expected value is the value of X that is most probable.
+						</p>
+					</div>
+					<div class="varDiv">
+						<h3>x - specific value of X</h3>
+						<p>
+						This is a specific value of the random variable X. There is a probability p is that is connected to this variable which describes the probability the random variable X assumes the value x.   
+						</p>
+					</div>
+				</div>
+			</div>
+			</li>
+			
+		  <li class="newPart">
+			<div class="left">
+			</div>
+			<div class="right">
+				<h2 class = "title">3. Mathematical proofs</h2>
+				
+			</div>
+			</li>
+
+			
+			
+		<li class="part">
+			<div class="left">
+			3.1 Mathematical proofs	
+			</div>
+			<div class="right">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur maximus, ipsum eu consectetur laoreet, felis nisi lobortis odio, efficitur efficitur sapien nisl ut magna. Maecenas gravida, dui quis maximus interdum, lacus mauris tempus sem, vel dictum metus tortor eu turpis. Aenean vitae risus auctor orci tincidunt molestie non ac lacus. Maecenas sagittis ullamcorper pellentesque. Duis vitae est at neque mollis pellentesque sed nec turpis. Sed accumsan ex id nisl rutrum malesuada. Proin id ligula urna. Donec cursus quis nibh in commodo. Donec ac euismod ex, eu vulputate quam. Suspendisse euismod quam ac lacus tristique blandit. Cras nec metus enim.
+<br><br>
+Nunc neque dolor, tincidunt at orci non, lobortis vulputate orci. Maecenas tincidunt aliquam turpis et tristique. Mauris maximus, sem sed luctus bibendum, est eros accumsan justo, quis facilisis ligula dui eget eros. Sed sem orci, euismod ac convallis at, pharetra id ante. Aenean egestas libero orci, vel rhoncus erat mollis quis. In quis diam nisi. Ut dignissim risus eu sem maximus vulputate. Nullam elementum, quam eu dictum dapibus, diam magna iaculis nunc, vitae ultricies sem ante in massa. Sed non dolor interdum elit pharetra lacinia.
+<br><br>
+Suspendisse congue est vel tortor finibus congue. Suspendisse eget finibus tellus. Pellentesque aliquam eros elit, non placerat tortor pharetra a. Quisque hendrerit, quam ut gravida dignissim, tellus odio congue est, in tempus urna elit id augue. Nulla fermentum iaculis risus, quis tempor sem egestas a. Ut nec neque dignissim tellus vestibulum vestibulum vitae non elit. Aenean sollicitudin tellus vel viverra dignissim. Vestibulum aliquam hendrerit pellentesque. Nam lectus lorem, sodales eu mi volutpat, tempor ultrices orci. Aliquam vitae eros euismod, faucibus elit in, sagittis mauris. Nunc maximus ultricies ipsum quis tincidunt. Donec et arcu cursus, viverra lorem in, bibendum odio. Sed nec nibh ultricies, rutrum orci ut, commodo quam.
+<br><br>
+Proin placerat libero luctus aliquet egestas. Maecenas quis auctor arcu, vitae tincidunt tellus. Integer neque libero, aliquam nec lobortis pellentesque, luctus finibus justo. Curabitur vitae nulla eu libero efficitur molestie quis nec leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi id est in velit ultricies elementum. Fusce et posuere velit, ut tincidunt justo. In hac habitasse platea dictumst. Phasellus porta, erat nec suscipit lacinia, eros velit dapibus metus, et sagittis mauris velit vel lectus. Nunc eget lorem mollis, aliquet quam eu, vestibulum massa. Pellentesque dui tellus, vulputate in urna vitae, ultrices dictum mauris. Aliquam mauris lacus, porttitor a pharetra eget, hendrerit quis ante. Fusce viverra nibh nec ante dictum, vel suscipit augue facilisis. Suspendisse ut mauris a tellus mattis ornare. Integer dapibus massa nec libero aliquam, et semper quam iaculis.
+
+			</div>
+			</li>
+			
+		<li class="part">
+			<div class="left">
+			3.2 Prerequisites	
+			</div>
+			<div class="right">
+					<ul class ="prereq">
+						<li>
+						Expectation
+						</li>
+						<li>
+						Stochastic variable
+						</li>
+						<li>
+						Distribution
+						</li>
+						<li>
+						Standard deviation
+						</li>
+						<li>
+						Variance
+						</li>
+						<li>
+						Continuous probability distribution
+						</li>
+						<li>
+						Density functions
+						</li>
+						<li>
+						Cumulative distribution
+						</li>
+					</ul>
+			</div>
+		</li>
+		</ul>
+	</div>
+	  		
+	<div class="footer">
+		<h2>Footer</h2>
+	</div>
+</body>
