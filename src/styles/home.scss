@@ -1,0 +1,16 @@
+.Dashboard {
+  margin: 50px auto;
+  width: 90%;
+}
+
+.Dashboard-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.Dashboard-sectionTitle {
+  font-size: 30px;
+  width: 100%;
+}
+
