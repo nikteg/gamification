@@ -131,8 +131,9 @@
 					<li>Statistics and probability |</li>
 					<li><a href="./SketchHtml.html">Normal distribution</a>  |</li>
 					<li><a href="./ExperimentHtml.html">Experiment 1</a>  |</li>
-					<li><b>Experiment 2</b></li>
-					<li><span style="padding-left:42%">Step 2 of 4</span></li>
+					<li><b>Experiment 2</b>  |</li>
+					<li><a href="./Experiment3.html">Experiment 3</a></li>
+					<li><span style="padding-left:32%">Step 2 of 4</span></li>
 				</ul>
 			</div>
 
@@ -708,7 +709,7 @@
 				}
 			
 			resetButton.onclick = function(){
-					var emptyData = []
+					data = [];
 					updateRects(rects, initData(data, decimals), decimals);
 					maxY = updateYAxis(data, yAxis);
 					deselectAllRects();
