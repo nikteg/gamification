@@ -21,6 +21,7 @@
 		
 		.partContainer{
 		display: flex;
+		background: #eee;
 		}
 		
 		.right{
@@ -40,6 +41,7 @@
 		border-right: 1px solid gray;
 		//padding-left: 10px;
 		padding-top: 10px;
+		background: white;
 		}
 		
 		.fixed{
@@ -107,6 +109,10 @@
 		color:#617EAD;
 	}
 	
+	.question{
+		color:#844B46;
+	}
+	
 	</style>
 </head>
 <body>
@@ -125,8 +131,9 @@
 					<li>Home |</li>
 					<li>Statistics and probability |</li>
 					<li><a href="./SketchHtml.html">Normal distribution</a>  |</li>
-					<li><b>Experiment 1</b></li>
-					<li><span style="padding-left:52%">Step 1 of 4</span></li>
+					<li><b>Experiment 1  |</b></li>
+					<li><b><a href="./Experiment2Html.html">Experiment 2</a></b></li>
+					<li><span style="padding-left:42%">Step 1 of 4</span></li>
 				</ul>
 			</div>
 
@@ -176,12 +183,13 @@
 					</ol>
 				</div>
 				<div class="part">
-					Once we have concluded that the subject is fit for conducting a statistical experiment, we can start finding out what questions we want to answer. In this case we may be curious about:
+					<p class="question">Once we have concluded that the subject is fit for conducting a statistical experiment, we can start finding out what questions we want to answer. In this case we may be curious about:
+					</p>
 					<ul class="listMargin">
-						<li>What is the most common height?</li>
-						<li>How does the height vary from person to person? Are there large variations or do many people have the same height?</li>
-						<li>What is the probability that a person is less than 180 cm tall?</li>
-						<li>What is the probability for a person to be between 170 cm and 190 cm tall?</li>
+						<li class="question">What is the most common height?</li>
+						<li class="question">How does the height vary from person to person? Are there large variations or do many people have the same height?</li>
+						<li class="question">What is the probability that a person is less than 180 cm tall?</li>
+						<li class="question">What is the probability for a person to be between 170 cm and 190 cm tall?</li>
 					</ul>
 			
 				
@@ -198,11 +206,11 @@
 			var distribution = gaussian(exp,variance);
 			
 			//Visuals
-			var height = 400;
-				heightOffsetTop = 50;
+			var height = 360;
+				heightOffsetTop = 10;
 				heightOffset = 20;
-				width = 400,
-				widthOffset = 60,
+				width = 520,
+				widthOffset = 35,
 				maxY = 0;
 				
 			//Data values	

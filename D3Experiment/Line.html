@@ -2,9 +2,7 @@
 <html>
 <head>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js" charset="utf-8"></script>
-	<script src="gaussian/lib/gaussian.js"></script>
-	<script src="react-15.0.1/build/react.min.js"></script>
-	<script src="react-15.0.1/build/react-dom.min.js"></script>
+	<script src="gaussian/lib/gaussian.js"></script>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
   </head>
 	<meta charset="utf-8">
@@ -47,7 +45,6 @@
 				cumulativeTextColor = "steelblue",
 				cursorColor = "white";
 				graphAreaColor = "#ffbb78";
-
 			//Append svg element to body
 			var svg = d3.select("body").append("svg:svg")
 				.style("background", graphBGColor)
@@ -56,7 +53,6 @@
 			
 			//Initialize data
 			var data = new Array(maxValueX-leastValueX+1);
-
 			
 			var testData = new Array(maxValueX-leastValueX+1*Math.pow(10, decimals));
 			testData.fill([0,0]);
@@ -132,6 +128,7 @@
 			}
 			
 			//Generate the data
+
 			data = generateNewData(testData, distribution, n, decimals);
 			data.sort(function(a,b){
 				if(a[0] > b[0]){
@@ -204,7 +201,6 @@
 				.attr("id", "graphArea")
 				.attr("d", areaSVG(data))
 				.attr("fill", "url(#area-gradient)");
-
 			
 			//Axis
 			//X
@@ -213,32 +209,26 @@
 				.attr("class", "axis")
 				.attr("transform", "translate(0, "+ (height-heightOffset)+")")
 				.call(xAxis);
-
 			xax.select("path")
 				.attr("fill", "none")
 				.attr("stroke", axisColor)
 				.attr("shape-rendering", "crispEdges");
-
 			xax.selectAll("text")
 				.attr("fill",axisColor)
 				.attr("font-size", "10px");
-
 			//Y
 			var yAxis = d3.svg.axis().scale(scaley).orient("left").ticks(10);
 			var yax = svg.append("g")
 				.attr("class", "axis")
 				.attr("transform", "translate("+ widthOffset+", 0)")
 				.call(yAxis);
-
 			yax.select("path")
 				.attr("fill", "none")
 				.attr("stroke", axisColor)
 				.attr("shape-rendering", "crispEdges");
-
 			yax.selectAll("text")
 				.attr("fill",axisColor)
 				.attr("font-size", "10px");
-
 			//Line
 			var line = d3.svg.line()
 				.interpolate("cardinal")
@@ -293,7 +283,6 @@
 				.attr("y1", 0)
 				.attr("y2", height)
 				.attr("opacity", 0);
-
 			//Big tick line, shows mean
 			var sampleEx = sampleMean(data, 0, 1);
 			var tickline = svg.append("svg:line")
@@ -339,7 +328,6 @@
 				.delay(1700)
 				.attr("y1", height-heightOffset+5)
 				.attr("y2", height-heightOffset-5);	
-
 			//Horizontal Line
 			var horLine = svg.append("svg:line")
 				.attr("stroke", cursorColor)
@@ -359,7 +347,6 @@
 				.attr("y1", 0)
 				.attr("y2", height)
 				.attr("opacity", 0);
-
 			//Coordinate text
 			var coordinateText =
 				svg.append("text")
@@ -385,7 +372,6 @@
 				.attr("fill", cumulativeTextColor)
 				.attr("font-size", "10px")
 				.attr("opacity", 0);
-
 			//Circle
 			var circle =
 				svg.append("circle")
@@ -393,31 +379,26 @@
 				.attr("cy", 350)
 				.attr("r", 3)
 				.attr("fill", circleColor);
-
 			//Path
 			var pathEl = area.node();
 			var pathLength = pathEl.getTotalLength();
 			//---What is BBox?
 			var BBox = pathEl.getBBox();
 			var scale = pathLength/BBox.width;
-
 			//var offsetLeft = document.getElementById("line").offsetLeft;
 					
 			
 			//Button
 				//Skip
-
 			//Mousemove
 			svg.on("mousemove", function(){
 				//var x = d3.event.pageX - offsetLeft;
 				var coordinates = [0,0];
 				coordinates = d3.mouse(this);
 				var x = coordinates[0];
-
 				var beginning = x-widthOffset,
 					end = pathLength,
 					target;
-
 				//Calculate position of circle
 				while(true){
 					target = Math.floor((beginning+end)/2);
@@ -436,20 +417,16 @@
 					.attr("opacity", 1)
 					.attr("cx", x)
 					.attr("cy", pos.y);
-
 				vertLine
 					.attr("x1", x)
 					.attr("x2", x)
-
 				horLine
 					.attr("y1", Math.round(pos.y))
 					.attr("y2", Math.round(pos.y));
-
 				coordinateText
 					.attr("x", x-23)
 					.attr("y", pos.y - 7)
 					.text("("+(scaleAxisX(x-widthOffset)).toFixed(2) + ", " + (maxY-(scaleAxisY((pos.y)))).toFixed(2)+")");
-
 			});
 			
 			//Mouseclick
@@ -489,7 +466,6 @@
 					.attr("x2", vertLine.attr("x1")).attr("y2", 0)
 					.duration(450);
 					;
-
 					
 			});
 			

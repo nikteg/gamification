@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js" charset="utf-8"></script>
+	<script src="gaussian/lib/gaussian.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  </head>
+	<meta charset="utf-8">
+	<title>Graph experiment</title>
+</head>
+	<body>
+ 
+		 <script>
+			var mean = 180,
+			variance = 50;
+
+			var distribution = gaussian(mean, variance);
+			
+			var dataSize = (mean+variance/2),
+			data = new Array(dataSize);
+			
+			var height = 300,
+			width = 500;
+			
+			//DATA
+			for(i = 0; i < dataSize; i++){
+				var x = i;
+				data[i] = [x,distribution.pdf(x)];
+			}
+			
+			console.log(data)		
+			
+			//SVG
+			var svg = d3.select("body").append("svg:svg")
+			.attr("height", height)
+			.attr("width", width)
+			.style("background", "#ccc");
+			
+			//Scales
+			scalex = d3.scale.linear().domain([mean-variance/2,dataSize]).range([0,width]);
+			scaley = d3.scale.linear().domain([0.07,0]).range([0,height-30]);
+			
+			var line = d3.svg.line()
+			.interpolate("cardinal")
+			.x(function(d){return scalex(d[0])})
+			.y(function(d){return scaley(d[1])});
+
+			var path = svg.append("path")
+			
+			.attr("fill", "none")
+			.attr("stroke", "black")
+			.attr("d", line(data));
+			
+		</script>
+	</body>
+</html>
