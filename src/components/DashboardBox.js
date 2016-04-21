@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import ChapterProgressBar from './ChapterProgressBar'
 import '../styles/dashboard-box.scss'
 

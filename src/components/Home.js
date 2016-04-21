@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import DashboardBox from './DashboardBox'
 import StudyStreak from './StudyStreak'
+import RecentActivity from './RecentActivity'
 import '../styles/home.scss'
 
 export default class Home extends Component {
@@ -15,10 +16,22 @@ export default class Home extends Component {
         </div>
 
         <div className="Dashboard-section">
+
           <div className="Dashboard-subSection">
             <h2 className="Dashboard-sectionTitle">Study Streak</h2>
-            <StudyStreak />
+            <StudyStreak monthsToDisplay={5} studyDays={[]} />
           </div>
+
+          <div className="Dashboard-subSection">
+            <h2 className="Dashboard-sectionTitle">Recent Activity</h2>
+            <RecentActivity activities={[
+              'Completed task in chapter 3',
+              'Received the "Geek" achievemet',
+              'Received the "Experiment" achievemet',
+              'Completed chapther 2',
+            ]} />
+          </div>
+
         </div>
 
       </div>

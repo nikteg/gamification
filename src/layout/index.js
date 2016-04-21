@@ -9,9 +9,9 @@ export const Header = (props) => (
   <div className="main-header">
     <Avatar />
     <nav>
-      <Link to="/" onlyActiveOnIndex activeClassName="active">Startsida</Link>
+      <Link to="/" onlyActiveOnIndex activeClassName="active">Dashboard</Link>
+      <Link to="/chapters" activeClassName="active">Chapters</Link>
       <Link to="/stats" activeClassName="active">Statistik</Link>
-      <Link to="/404" activeClassName="active">404 not found</Link>
       <Link to="/task" activeClassName="active">Sample task</Link>
       <Link to="/users" activeClassName="active">Users</Link>
     </nav>

@@ -1,0 +1,34 @@
+.StudyStreak {
+  display: flex;
+}
+
+.StudyStreak-month {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+$square-size: 23px;
+
+.StudyStreak-monthName {
+  color: #444;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 10px 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: $square-size * 4;
+}
+
+.StudyStreak-days {
+  display: flex;
+  flex-wrap: wrap;
+  width: $square-size * 4;
+}
+
+.StudyStreak-day {
+  border: 2px solid white;
+  background: #ddd;
+  height: $square-size;
+  width: $square-size;
+}

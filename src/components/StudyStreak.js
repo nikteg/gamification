@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+import '../styles/study-streak.scss'
 
-const months = [ 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ]
-const weeks = [ 1, 2, 3, 4 ]
-const days = [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ]
+const monthNames = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+]
+
+function isSameDate(date1, date2) {
+  return (
+    date1.getMonth() === date2.getMonth() && date1.getDate() === date2.getDate()
+  )
+}
 
 function getDaysInMonth(month, year) {
   const date = new Date(year, month, 1)
@@ -16,30 +24,51 @@ function getDaysInMonth(month, year) {
   return days
 }
 
-const StudyStreak = () => (
-  <div>
-    {months.map(month => {
-      weeks.map(week => (
-        <div className="StudyStreak-week" key={week}>
-          {days.map(day => (
-            <div className="StudyStreak-day" key={day}></div>
-          ))}
-        </div>
-      ))
+const StudyStreak = ({ monthsToDisplay = 4, studyDays = [] }) => {
+  const today = new Date()
+  const currentYear = today.getYear()
+  const currentMonth = today.getMonth()
+  const months = []
 
-      return (
+  for (let i = monthsToDisplay; i >= 0; i--) {
+    const monthNumber = (currentMonth - i >= 0)
+      ? currentMonth - i
+      : monthNames.length + (currentMonth - i)
+
+    months.push(monthNumber)
+  }
+
+  return (
+    <div className="StudyStreak">
+      {months.map(month => (
         <div className="StudyStreak-month" key={month}>
 
-          <p>{month}</p>
+          <p className="StudyStreak-monthName">{monthNames[month]}</p>
 
-          <div className="StudyStreak-weeks">
-            {weeks}
+          <div className="StudyStreak-days">
+
+            {getDaysInMonth(month, currentYear).map(day => (
+              <div
+                className="StudyStreak-day"
+                key={day}
+                style={{
+                  background: (isSameDate(day, today)) ? '#BBFFCD' : '#ddd',
+                  borderColor: (isSameDate(day, today)) ? '#2BC253' : 'white',
+                }}
+              />
+            ))}
+
           </div>
 
         </div>
-      )
-    })}
-  </div>
-)
+      ))}
+    </div>
+  )
+}
+
+StudyStreak.propTypes = {
+  monthsToDisplay: PropTypes.number.isRequired,
+  studyDays: PropTypes.array.isRequired,
+}
 
 export default StudyStreak
