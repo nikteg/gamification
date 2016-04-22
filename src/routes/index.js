@@ -16,7 +16,7 @@ export default (
     <IndexRoute component={HomeContainer} />
     <Route path="/experiment" component={ExperimentContainer} />
     <Route path="/404" component={NotFound} />
-    <Route path="/task" component={Task} />
+    <Route path="/work" component={Task} />
     <Route path="/users">
       <IndexRoute component={Users} />
       <Route path=":username" component={User} />

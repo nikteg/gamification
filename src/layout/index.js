@@ -1,35 +1,25 @@
 import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
-import AuthBox from '../containers/AuthBoxContainer'
-import Avatar from '../components/Avatar'
+import NavBar from '../components/NavBar'
 
 import '../styles/index.scss'
 
 export const Header = (props) => (
-  <div className="main-header">
-    <Avatar />
-    <nav>
-      <Link to="/" onlyActiveOnIndex activeClassName="active">Startsida</Link>
-      <Link to="/stats" activeClassName="active">Statistik</Link>
-      <Link to="/404" activeClassName="active">404 not found</Link>
-      <Link to="/task" activeClassName="active">Sample task</Link>
-      <Link to="/users" activeClassName="active">Users</Link>
-    </nav>
-    <AuthBox />
+  <div className="Header">
+    <NavBar />
   </div>
 )
 
 export const Footer = (props) => (
-  <div className="main-footer">
+  <div className="Footer">
     Footer #yolo
   </div>
 )
 
 export const Wrapper = (props) => (
-  <div className="main-outer-wrapper">
-    <div className="main-inner-wrapper">
+  <div className="Wrapper">
+    <div className="Wrapper-inner">
       <Header />
-      <div className="main-content">
+      <div className="Wrapper-inner-content">
         {props.children}
       </div>
     </div>

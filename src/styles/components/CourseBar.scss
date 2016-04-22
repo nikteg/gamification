@@ -1,0 +1,66 @@
+.CourseBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #5677fc;
+  color: white;
+
+  &-course-title, &-didyouknow {
+    flex-basis: 360px;
+    padding: 0.5em;
+  }
+
+  &-course-title {
+    font: 20px/1em 'Comic Sans MS';
+  }
+
+  &-nav {
+    display: flex;
+    flex-wrap: wrap;
+
+    &-button {
+      background: #455A64;
+      border: none;
+      font-size: 2em;
+      color: white;
+      cursor: pointer;
+      width: 64px;
+      padding-bottom: 0.25em;
+
+      &:hover {
+        background: #37474F;
+      }
+
+      &-disabled {
+        pointer-events: none;
+        color: #607D8B;
+      }
+    }
+
+    &-box {
+      display: flex;
+      align-items: center;
+      background: #607D8B;
+      padding: 0.5em;
+      width: 360px;
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0.5em;
+
+        &-course-title {
+          font-size: 1.5em;
+        }
+
+        &-task-title {
+
+        }
+      }
+    }
+  }
+
+  &-didyouknow {
+    font-style: italic;
+  }
+}
