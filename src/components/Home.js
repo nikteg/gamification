@@ -1,25 +1,57 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
+import DashboardBox from './DashboardBox'
+import StudyStreak from './StudyStreak'
+import RecentActivity from './RecentActivity'
+import { calcProgress } from '../selectors/chapter-progress.js'
+import '../styles/home.scss'
 
-export default class Home extends Component {
-  static propTypes = {
-    counter: PropTypes.number.isRequired,
-    increment: PropTypes.func.isRequired,
-  };
+const Home = ({ chapters, currentChapter }) => (
+  <div className="Dashboard">
 
-  render() {
-    const { counter, increment } = this.props
+    <div className="Dashboard-section">
+      <h2 className="Dashboard-sectionTitle">Resume Learning</h2>
+      {chapters
+        .filter((chapter, i) => {
+          if (currentChapter === i || i === 2) {
+            chapter.number = i
+            return chapter
+          }
+        })
+        .map(chapter => (
+          <DashboardBox
+            key={chapter.number}
+            chapter={chapter.number}
+            title={chapter.name}
+            styles={{}}
+            completed={calcProgress(chapter)}
+          />
+      ))}
+    </div>
 
-    return (
-      <div className="container text-center">
-        <h1>Welcome to the React Redux Starter Kit</h1>
-        <h2>
-          Sample Counter:
-          <span> {counter}</span>
-        </h2>
-        <button onClick={() => increment(1)}>
-          Increment
-        </button>
+    <div className="Dashboard-section">
+
+      <div className="Dashboard-subSection">
+        <h2 className="Dashboard-sectionTitle">Study Streak</h2>
+        <StudyStreak monthsToDisplay={5} studyDays={[]} />
       </div>
-    )
-  }
+
+      <div className="Dashboard-subSection">
+        <h2 className="Dashboard-sectionTitle">Recent Activity</h2>
+        <RecentActivity activities={[
+          'Completed task in chapter 3',
+          'Received the "Geek" achievemet',
+          'Received the "Experiment" achievemet',
+          'Completed chapther 2',
+        ]} />
+      </div>
+
+    </div>
+
+  </div>
+)
+
+Home.propTypes = {
+  chapters: PropTypes.array.isRequired,
 }
+
+export default Home
