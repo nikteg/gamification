@@ -1,11 +1,16 @@
 import React, { PropTypes } from 'react'
-import '../styles/chapters.scss'
+import DashboardBox from './DashboardBox'
 
 const ChapterBox = ({ title, number, finished }) => (
-  <div className="Chapter">
-    <div className="Chapter-progress" style={{ width: finished + '%' }}/>
-    <h2 className="Chapter-title">{number} {title}</h2>
-  </div>
+  <DashboardBox
+    chapter={number}
+    title={title}
+    completed={finished}
+    styles={{
+      margin: '20px 0',
+      width: '48%',
+    }}
+  />
 )
 
 ChapterBox.propTypes = {

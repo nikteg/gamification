@@ -1,4 +1,32 @@
-.Chapters {
+.Chapters-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.Chapters-header {
+  background: url('../static/mathematics-bg.jpg');
+  background-size: cover;
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+  padding: 80px 0;
+  width: 100%;
+
+  h2 {
+    font-size: 36px;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  p {
+    font-size: 18px;
+    margin: 0;
+    width: 700px;
+  }
+
+}
+
+.Chapters-container {
+  @extend .Chapters-wrap;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
