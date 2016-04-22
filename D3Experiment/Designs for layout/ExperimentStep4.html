@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js" charset="utf-8"></script>
+	<script src="../gaussian/lib/gaussian.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+
+	<style>
+		body{
+		background-color: #fff;
+		}
+		.structure{
+		position: absolute;
+		top:0px;
+		left: 0px;
+		padding: 0;
+		margin: 0;
+		}
+		
+		.partContainer{
+		display: flex;
+		background: #eee;
+		}
+		
+		
+		.right{
+		width: 50%;
+		padding-left: 10px;
+		padding-top: 10px;
+		background: #fff;
+		}
+		
+		.left{
+		padding-left: 7%;
+		height: ;
+		width:47%;
+		border-right: 1px solid gray;
+		//padding-left: 10px;
+		padding-top: 10px;
+		background:white;
+		}
+		
+		.fixed{
+			position:fixed;
+			border-bottom: 1px solid #ccc;
+		}
+		
+		.title{
+			font-family: "Palatino Linotype","Book Antiqua", Palatino serif;
+			padding:0;
+			margin:0;
+			font-weight: normal;
+			padding-bottom: 10px;
+		}
+		.text{
+		
+		}
+		
+		.part{
+			width: 90%;
+			margin-left: 0;
+			border-bottom: 1px solid #ccc;
+			margin-top: 15px;
+			padding-bottom: 30px;
+		}
+		
+	.breadCrumbsBar {
+		display: flex;
+		padding: 0;
+		margin: 0;
+		background: #eee;
+		font-size: 15px;
+		box-shadow: 0px 0px 100px #ddd;
+		font-family: "Palatino Linotype","Book Antiqua", Palatino serif;
+		border-bottom: 1px solid #ccc;
+	}
+	
+	.breadCrumbs li{
+		list-style: none;
+		display:inline;
+	}
+	
+	.breadCrumbsDiv{
+		width: 100%;
+		height: 50px;
+	}
+	
+	.progress{
+		background: #eee;
+		height: 0px;
+		width: 100%;
+		border-bottom: 1px solid #ccc;
+	}
+		
+	.listMargin li{
+		margin-top: 10px;
+	}	
+	
+	.answer{
+		width: 90%;
+		margin-left: 0;
+		border-bottom: 1px solid #ccc;
+		margin-top: 15px;
+		padding-bottom: 30px;
+		color:#844B46;
+	}
+	
+	</style>
+</head>
+<body>
+	<div class="structure">
+		<div class="partContainer">
+			<img class="fixed" src="Header.png" style="width: 100%; height: 100px">
+		</div>	
+				
+		<div class="partContainer">
+			<img src="Header.png" style="width: 100%; height: 100px">
+		</div>
+			
+		<div class="breadCrumbsBar">
+			<div class="breadCrumbsDiv">
+				<ul class="breadCrumbs">
+					<li>Home |</li>
+					<li>Statistics and probability |</li>
+					<li><a href="./SketchHtml.html">Normal distribution</a>  |</li>
+					<li><a href="./ExperimentStep1.html">Step 1</a>  |</li>
+					<li><a href="./ExperimentStep2.html">Step 2</a>  |</li>
+					<li><a href="./ExperimentStep3.html">Step 3</a>  |</li>
+					<li><b>Step 4</b></li>
+					<li><span style="padding-left:42%">Step 4 of 4</span></li>
+				</ul>
+			</div>
+
+			
+		</div>
+		
+		<div class="progress">
+			<svg width="100%" height="40">
+
+			</svg>
+		</div>
+
+		<div class="partContainer">
+			<div class="left">
+				<div class="part">
+						<h2 class="title">Step 4 - Standard Normal</h2>
+						<h3 class="title">General information</h3>
+							
+							In order to calculate a cumulative probability distribution of the normal distribution one must integrate over the density function. Calculating the this is both time consuming and complex. To overcome this problem, a simple algebraic transformation is used. By transforming the normal distribution into a standard normal (called standardizing), the cumulative probability distribution of can be looked up in a predefined table.
+							<br><br>
+							To standardize the normal distribution:
+							
+							<p>Z = (X-mu)/sigma</p>
+
+							<p>Heres an example on how to use it:</p>
+							<p>Normal:</p>
+							<p>P[X < x] = Y</p>
+							<p>Standard normal:</p>
+							<p>P[ Z < z] = P[Z < (x-mu)/sigma]</p>
+
+							<p>If you read the formula carefully, you can picture what it does, it is actually not that complicated. </p>
+							<ul>
+								<li>Let us begin with looking at X - mu. This shifts the graph in the x axis so it is centered around 0 instead of mu. 
+								</li>
+								<li>Secondly we divide with sigma, this scales the x values. Now all x values in the graph is in the unit sigma instead. This means whatever value that is 1 sigma away from the expectation is now valued 1 in the graph, and 2 sigma - 2, 3 sigma - 3 and so on. 
+								</li>
+							</ul>
+							<p>Our distribution is now standardized. It does not matter anymore what our expectation or standard deviation is, to find the cumulative distribution from -∞ to z, we just have to look up z in the table to the right.  
+							</p>
+				</div>
+				<div class="part">
+					<h3 class="title">This experiment</h3>
+					
+					<p>This experiment</p>
+					<p>In order to calculate cumulative probability distributions, we must standardize our normal distribution. Use the formula above to do that.
+					</p>
+					<p>[Input]</p>
+
+				</div>
+				<div class="answer">
+					Experiments and observations
+					<ol class="listMargin">
+						
+				
+						
+					
+					<li>What is P[Z < 180.23]? </li>
+					<li>What is P[130 < Z < 150]? </li>
+					<li>What is P[Z > 165.54]? </li>
+
+
+
+						
+					</ol>
+				</div>
+				
+			</div>
+			
+			<div class="right" id="right">
+				
+				<img src="Z-table.png"></a>
+
+			
+			
+			</div>
+		</div>
+	</div>
+</body>
