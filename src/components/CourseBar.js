@@ -82,7 +82,7 @@ class CourseBar extends Component {
           <button
             className={classnames('CourseBar-nav-button', { 'CourseBar-nav-button-disabled': prevDisabled })}
             title="Go back"
-            onClick={this.previousTask}>&lt;</button>
+            onClick={this.previousTask}>◀</button>
           <div className="CourseBar-nav-box">
             <Avatar task={task} />
             <div className="CourseBar-nav-box-info">
@@ -96,7 +96,7 @@ class CourseBar extends Component {
               'CourseBar-nav-button-bright': task.progress === 100,
             })}
             title="Go forward"
-            onClick={this.nextTask}>&gt;</button>
+            onClick={this.nextTask}>▶</button>
         </div>
         <div className="CourseBar-didyouknow">{'Did you know?'}</div>
       </div>
