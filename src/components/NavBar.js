@@ -20,6 +20,7 @@ class NavBar extends Component {
           <Link to="/" onlyActiveOnIndex className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Översikt</Link>
           <Link to="/study" className="NavBar-nav-link NavBar-nav-link-study" activeClassName="NavBar-nav-link-study-active">Plugga</Link>
           <Link to="/users" className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Medlemmar</Link>
+          <Link to="/tex" className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">TeX Test</Link>
         </div>
       </div>
     )

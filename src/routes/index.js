@@ -9,8 +9,15 @@ import ChaptersContainer from '../containers/ChaptersContainer'
 import Users from '../containers/UsersContainer'
 import requireAuth from '../components/AuthenticatedComponent'
 import Chapters from '../containers/ChaptersContainer'
+import TeX from '../components/TeX'
 
 import { Wrapper } from '../layout'
+
+const TeXTest = (props) => (
+  <div className="TeXTest">
+    Component with formulas: <TeX data={'c = \\pm\\sqrt{a^2 + b^2}'} />. Cool.
+  </div>
+)
 
 export default (
   <Route path="/" component={Wrapper}>
@@ -19,6 +26,7 @@ export default (
     <Route path="/chapters" component={ChaptersContainer} />
     <Route path="/404" component={NotFound} />
     <Route path="/study" component={Chapters} />
+    <Route path="/tex" component={TeXTest} />
     <Route path="/users">
       <IndexRoute component={Users} />
       <Route path=":username" component={User} />
