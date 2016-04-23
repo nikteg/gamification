@@ -21,8 +21,10 @@ export default handleActions({
     {
       name: 'Introduction',
       tasks: [
-        { name: 'Task 1', type: 'exercise', progress: 100 },
-        { name: 'Task 2', type: 'experiment', progress: 50 },
+        { name: 'Information', type: 'info', progress: 100 },
+        { name: 'Exercise 1', type: 'exercise', progress: 25 },
+        { name: 'Exercise 2', type: 'exercise', progress: 25 },
+        { name: 'Experiment 1', type: 'experiment', progress: 50 },
       ],
     },
     {
