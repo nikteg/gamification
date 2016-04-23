@@ -1,12 +1,13 @@
 .NavBar {
   display: flex;
   align-items: center;
-  background: #e2e2e2;
+  background: #263238;
   padding-top: 1em;
 
   &-logo {
     font: 24px/1em 'Comic Sans MS';
     padding: 0.5em;
+    color: white;
   }
 
   &-nav {
@@ -18,14 +19,15 @@
     &-link {
       margin: 0 0.25em;
       padding: 0.5em 1em;
+      color: white;
       text-decoration: none;
-      color: black;
       border-top-left-radius: 0.5em;
       border-top-right-radius: 0.5em;
-      background: darken(#e2e2e2, 10%);
+      background: #455A64;
 
       &-active {
         background: white;
+        color: #263238;
       }
 
       &-work-active {
@@ -35,7 +37,7 @@
 
       &:hover {
         background: white;
-        color: black;
+        color: #263238;
       }
     }
   }
