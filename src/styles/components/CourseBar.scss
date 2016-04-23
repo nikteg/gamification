@@ -16,34 +16,35 @@
 
   &-nav {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    padding: 0.5em;
+    width: 480px;
 
     &-button {
-      background: #455A64;
       border: none;
       font-size: 2em;
-      color: rgba(255, 255, 255, 0.75);
+      background: transparent;
+      color: rgba(255, 255, 255, 0.3);
       cursor: pointer;
       width: 64px;
+      flex: none;
 
       user-select: none;
 
       &:hover {
-        background: #37474F;
-        color: rgba(255, 255, 255, 1);
+        color: rgba(255, 255, 255, 0.85);
       }
 
       &-disabled {
         pointer-events: none;
-        color: rgba(255, 255, 255, 0.25);
+        color: rgba(255, 255, 255, 0.1);
       }
 
       &-bright {
-        background: #8BC34A;
-        color: rgba(255, 255, 255, 1);
+        color: #8BC34A;
 
         &:hover {
-          background: #AEEA00;
+          color: #AED581;
         }
       }
 
@@ -52,12 +53,25 @@
       }
     }
 
-    &-box {
+    &-avatarbox {
       display: flex;
       align-items: center;
-      background: #607D8B;
-      padding: 0.5em;
-      width: 360px;
+      margin: 0 0.5em;
+      flex-grow: 1;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.85);
+
+      svg {
+        fill: rgba(255, 255, 255, 0.85);
+      }
+
+      &:hover {
+        color: rgba(255, 255, 255, 1);
+
+        svg {
+          fill: rgba(255, 255, 255, 1);
+        }
+      }
 
       &-info {
         display: flex;

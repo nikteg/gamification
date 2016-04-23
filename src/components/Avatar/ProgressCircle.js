@@ -34,7 +34,7 @@ const ProgressCircle = function(props) {
           progress={props.progress}
           options={{
             strokeWidth: 12,
-            color: '#E91E63',
+            color: '#8BC34A',
             duration: 500,
             trailColor: '#263238',
           }} />

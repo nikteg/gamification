@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 
-import { changeTask, changeChapter } from '../actions/avatar'
+import { changeTask, changeChapter, toggleAvatarMenu } from '../actions/avatar'
 
 import Avatar from './Avatar'
 
@@ -12,6 +12,7 @@ class CourseBar extends Component {
     course: PropTypes.object.isRequired,
     changeTask: PropTypes.func.isRequired,
     changeChapter: PropTypes.func.isRequired,
+    toggleAvatarMenu: PropTypes.func.isRequired,
   };
 
   navigate = (relativeIndex) => {
@@ -55,7 +56,7 @@ class CourseBar extends Component {
   };
 
   render() {
-    const { course } = this.props
+    const { course, toggleAvatarMenu } = this.props
     const { name, currentChapter, currentTask, chapters } = course
 
     const chapter = chapters[currentChapter]
@@ -64,13 +65,17 @@ class CourseBar extends Component {
     const numChapters = chapters.length
     const numTasks = chapter.tasks.length
 
-    const taskPrefix = {
-      'exercise': 'Exercise',
-      'experiment': 'Experiment',
-      'start': 'Information',
-    }[task.type]
+    let taskTitle = task.name
 
-    const taskTitle = `${taskPrefix}: ${task.name}`
+    if (task.type != null) {
+      const taskPrefix = {
+        'exercise': 'Exercise',
+        'experiment': 'Experiment',
+        'info': 'Information',
+      }[task.type]
+
+      taskTitle = `${taskPrefix}: ${task.name}`
+    }
 
     const prevDisabled = currentChapter === 0 && currentTask === 0
     const nextDisabled = currentChapter === numChapters - 1 && currentTask === numTasks - 1
@@ -83,11 +88,11 @@ class CourseBar extends Component {
             className={classnames('CourseBar-nav-button', { 'CourseBar-nav-button-disabled': prevDisabled })}
             title="Go back"
             onClick={this.previousTask}>◀</button>
-          <div className="CourseBar-nav-box">
+          <div className="CourseBar-nav-avatarbox" onClick={toggleAvatarMenu}>
             <Avatar task={task} />
-            <div className="CourseBar-nav-box-info">
-              <span className="CourseBar-nav-box-info-course-title">{chapter.name}</span>
-              <span className="CourseBar-nav-box-info-task-title">{taskTitle}</span>
+            <div className="CourseBar-nav-avatarbox-info">
+              <span className="CourseBar-nav-avatarbox-info-course-title">{chapter.name}</span>
+              <span className="CourseBar-nav-avatarbox-info-task-title">{taskTitle}</span>
             </div>
           </div>
           <button
@@ -109,4 +114,4 @@ const mapStateToProps = (state) => ({
   course: state.course,
 })
 
-export default connect(mapStateToProps, { changeTask, changeChapter })(CourseBar)
+export default connect(mapStateToProps, { changeTask, changeChapter, toggleAvatarMenu })(CourseBar)

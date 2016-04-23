@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { actions as avatarActions } from '../../actions/avatar'
 import ProgressCircle from './ProgressCircle'
 
 // import Modal from 'react-modal'
@@ -29,17 +28,14 @@ import ProgressCircle from './ProgressCircle'
 class Avatar extends Component {
   static propTypes = {
     task: PropTypes.object.isRequired,
-    toggleAvatarMenu: PropTypes.func.isRequired,
   };
 
   render() {
-    const { task, toggleAvatarMenu } = this.props
+    const { task } = this.props
 
     return (
       <div className="Avatar">
-        <a onClick={toggleAvatarMenu}>
-          <ProgressCircle progress={task.progress / 100} type={task.type} />
-        </a>
+        <ProgressCircle progress={task.progress / 100} type={task.type} />
       </div>
     )
   }
@@ -49,4 +45,4 @@ const mapStateToProps = (state) => ({
   avatarMenu: state.avatar,
 })
 
-export default connect(mapStateToProps, avatarActions)(Avatar)
+export default connect(mapStateToProps)(Avatar)
