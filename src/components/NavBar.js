@@ -31,4 +31,4 @@ const mapStateToProps = (state) => ({
   course: state.course,
 })
 
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps, null, null, { pure: false })(NavBar)
