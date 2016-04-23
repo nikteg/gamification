@@ -1,17 +1,14 @@
 import React, { PropTypes } from 'react'
 import { calcProgress } from '../selectors/chapter-progress.js'
 import ChapterBox from './ChapterBox'
+import CourseBar from './CourseBar'
+
 import '../styles/chapters.scss'
 
 const Chapters = ({ name, description, chapters }) => (
   <div className="Chapters">
 
-    <div className="Chapters-header">
-      <div className="Chapters-wrap">
-        <h2>{name}</h2>
-        <p>{description}</p>
-      </div>
-    </div>
+    <CourseBar />
 
     <div className="Chapters-container">
       {chapters.map((chapter, i) => (

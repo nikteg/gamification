@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react'
 import ChapterProgressBar from './ChapterProgressBar'
 import '../styles/dashboard-box.scss'
 
-const DashboardBox = ({ chapter, title, completed, styles = {} }) => (
+const DashboardBox = ({ chapter, title, completed, styles = {}, onClick }) => (
 
-  <div className="DashboardBox" style={styles}>
+  <div className="DashboardBox" style={styles} onClick={onClick}>
     <p className="DashboardBox-chapter">chapter {chapter}</p>
     <h3 className="DashboardBox-title">{title}</h3>
     <ChapterProgressBar completed={completed} />

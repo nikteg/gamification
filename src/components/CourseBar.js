@@ -57,7 +57,7 @@ class CourseBar extends Component {
 
   render() {
     const { course, toggleAvatarMenu } = this.props
-    const { name, currentChapter, currentTask, chapters } = course
+    const { name, currentChapter, currentTask, started, chapters } = course
 
     const chapter = chapters[currentChapter]
     const task = chapter.tasks[currentTask]
@@ -83,7 +83,7 @@ class CourseBar extends Component {
     return (
       <div className="CourseBar">
         <div className="CourseBar-course-title">{name}</div>
-        <div className="CourseBar-nav">
+        {started && <div className="CourseBar-nav">
           <button
             className={classnames('CourseBar-nav-button', { 'CourseBar-nav-button-disabled': prevDisabled })}
             title="Go back"
@@ -102,7 +102,7 @@ class CourseBar extends Component {
             })}
             title="Go forward"
             onClick={this.nextTask}>▶</button>
-        </div>
+        </div>}
         <div className="CourseBar-didyouknow">{'Did you know?'}</div>
       </div>
     )

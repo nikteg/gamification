@@ -5,16 +5,19 @@ export default handleActions({
   [COURSE_CHANGE_CHAPTER]: (state, { payload }) => {
     return Object.assign({}, state, {
       currentChapter: payload,
+      started: true,
     })
   },
   [COURSE_CHANGE_TASK]: (state, { payload }) => {
     return Object.assign({}, state, {
       currentTask: payload,
+      started: true,
     })
   },
 }, {
   name: 'Mathematical Statistics',
   description: 'Probability and statistics are two related but separate academic disciplines. Statistical analysis often uses probability distributions, and the two topics are often studied together.',
+  started: false,
   currentChapter: 0,
   currentTask: 0,
   chapters: [

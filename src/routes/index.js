@@ -8,7 +8,7 @@ import User from '../containers/UserContainer'
 import ChaptersContainer from '../containers/ChaptersContainer'
 import Users from '../containers/UsersContainer'
 import requireAuth from '../components/AuthenticatedComponent'
-import Task from '../components/Task'
+import Chapters from '../containers/ChaptersContainer'
 
 import { Wrapper } from '../layout'
 
@@ -18,7 +18,7 @@ export default (
     <Route path="/experiment" component={ExperimentContainer} />
     <Route path="/chapters" component={ChaptersContainer} />
     <Route path="/404" component={NotFound} />
-    <Route path="/work" component={Task} />
+    <Route path="/study" component={Chapters} />
     <Route path="/users">
       <IndexRoute component={Users} />
       <Route path=":username" component={User} />
