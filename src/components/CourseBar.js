@@ -91,7 +91,10 @@ class CourseBar extends Component {
             </div>
           </div>
           <button
-            className={classnames('CourseBar-nav-button', { 'CourseBar-nav-button-disabled': nextDisabled })}
+            className={classnames('CourseBar-nav-button', {
+              'CourseBar-nav-button-disabled': nextDisabled,
+              'CourseBar-nav-button-bright': task.progress === 100,
+            })}
             title="Go forward"
             onClick={this.nextTask}>&gt;</button>
         </div>

@@ -35,6 +35,18 @@
         pointer-events: none;
         color: #607D8B;
       }
+
+      &-bright {
+        background: #E91E63;
+
+        &:hover {
+          background: #EC407A;
+        }
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
 
     &-box {
@@ -50,7 +62,8 @@
         margin-left: 0.5em;
 
         &-course-title {
-          font-size: 1.5em;
+          font-size: 1.25em;
+          line-height: 1em;
         }
 
         &-task-title {
