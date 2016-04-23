@@ -1,0 +1,36 @@
+.Dashboard {
+  margin: 0 auto 90px auto;
+  max-width: 1000px;
+  width: 90%;
+}
+
+.Dashboard-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+
+  &:not(:last-of-type) {
+    border-bottom: 4px solid #ddd;
+    padding-bottom: 60px;
+  }
+}
+
+.Dashboard-sectionTitle {
+  font-size: 30px;
+  margin: 50px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.Dashboard-subSection {
+  float: left;
+  width: 50;
+}
+
+.Dashboard-subSection .Dashboard-sectionTitle {
+  font-size: 24px;
+  margin: 35px 0 25px 0;
+  text-align: left;
+  width: 100%;
+}
