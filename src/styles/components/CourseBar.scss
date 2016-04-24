@@ -6,12 +6,25 @@
   color: white;
 
   &-course-title, &-didyouknow {
-    flex-basis: 360px;
+    flex-basis: 512px;
     padding: 0.5em;
   }
 
   &-course-title {
     font-size: 2em;
+  }
+
+  &-didyouknow {
+    font-size: 0.75em;
+
+    a {
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   &-nav {

@@ -6,6 +6,43 @@ import { changeTask, changeChapter, toggleAvatarMenu } from '../actions/avatar'
 
 import Avatar from './Avatar'
 
+const DID_YOU_KNOW = [
+  {
+    text: 'Did you know that the poisson distribution can often used to broadly predict the outcome of a professional soccer game?',
+    url: 'http://www.pinnaclesports.com/en/betting-articles/soccer/how-to-calculate-poisson-distribution',
+  },
+  {
+    text: 'The first application of the normal distribution was applied by Galileo Galilei during an analysis of errors of astronomical observations due to errors in measurement of instrument and observer.',
+    url: 'http://onlinestatbook.com/2/normal_distribution/history_normal.html',
+  },
+  {
+    text: 'Did you know that human characteristics such as length, weight and strength is often said to be normal distributed?',
+    url: 'http://onlinestatbook.com/2/normal_distribution/history_normal.html',
+  },
+  {
+    text: 'The Central Limit Theorem states that sampling distribution of the mean of any independent random variable behaves like a normal distribution given the sample size is large enough.',
+    url: 'http://stattrek.com/statistics/dictionary.aspx?definition=Central%20limit%20theorem',
+  },
+]
+
+class DidYouKnow extends Component {
+
+  state = {
+    element: null,
+  };
+
+  componentWillMount() {
+    this.setState({ element: DID_YOU_KNOW[Math.floor(Math.random() * DID_YOU_KNOW.length)] })
+  }
+
+  render() {
+    return (
+      <a href={this.state.element.url}>{this.state.element.text}</a>
+    )
+  }
+
+}
+
 class CourseBar extends Component {
 
   static propTypes = {
@@ -103,7 +140,7 @@ class CourseBar extends Component {
             title="Go forward"
             onClick={this.nextTask}>▶</button>
         </div>}
-        <div className="CourseBar-didyouknow">{'Did you know?'}</div>
+        <div className="CourseBar-didyouknow"><DidYouKnow /></div>
       </div>
     )
   }
