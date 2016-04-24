@@ -17,9 +17,9 @@ class NavBar extends Component {
         <AvatarModal course={course} />
         <div className="NavBar-logo">Gamif</div>
         <div className="NavBar-nav">
-          <Link to="/" onlyActiveOnIndex className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Översikt</Link>
-          <Link to="/study" className="NavBar-nav-link NavBar-nav-link-study" activeClassName="NavBar-nav-link-study-active">Plugga</Link>
-          <Link to="/users" className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Medlemmar</Link>
+          <Link to="/" onlyActiveOnIndex className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Dashboard</Link>
+          <Link to="/study" className="NavBar-nav-link NavBar-nav-link-study" activeClassName="NavBar-nav-link-study-active">Study</Link>
+          <Link to="/users" className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Members</Link>
           <Link to="/tex" className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">TeX Test</Link>
         </div>
       </div>
