@@ -17,7 +17,7 @@ export default class Award extends Component {
 
   render() {
     return (
-      <svg className="award" viewBox="0 0 160 160">
+      <svg className="Award" viewBox="0 0 160 160">
         <defs>
             <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
               <stop offset="0%" stopColor="#726ca0" />

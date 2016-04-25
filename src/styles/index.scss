@@ -100,16 +100,6 @@ body {
   }
 }
 
-svg.award {
-  width: 80px;
-  height: 80px;
-  margin: 8px;
-
-  path {
-    fill: white;
-  }
-}
-
 .TeXTest {
   padding: 1em;
 }
@@ -117,6 +107,7 @@ svg.award {
 @import 'components/Avatar';
 @import 'components/NavBar';
 @import 'components/CourseBar';
+@import 'components/Award';
 @import 'components/Experiment';
 @import 'components/SizeController';
 @import 'components/Task';
