@@ -3,7 +3,16 @@
   height: 80px;
   margin: 8px;
 
-  path {
-    fill: white;
+  &-seal {
+    fill: #E91E63;
+
+    &-inner {
+      fill: #EEEEEE;
+    }
   }
+
+  &-icon {
+    fill: #263238;
+  }
+
 }
