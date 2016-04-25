@@ -1,0 +1,38 @@
+.AwardPopup {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #ECEFF1;
+  position: relative;
+
+  &-close {
+    position: absolute;
+    right: -16px;
+    top: -16px;
+    width: 24px;
+    height: 24px;
+    fill: #9E9E9E;
+    cursor: pointer;
+  }
+
+  &-title {
+    font-size: 3em;
+    margin: 0.25em 0;
+  }
+
+  &-subtitle {
+    font-size: 1.25em;
+    margin-top: 0.5em;
+  }
+
+  &-name {
+    font-size: 1.5em;
+    margin-top: 0.5em;
+  }
+
+  .Award {
+    width: 128px;
+    height: 128px;
+    margin-top: 1em;
+  }
+}

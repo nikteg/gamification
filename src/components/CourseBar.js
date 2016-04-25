@@ -5,6 +5,7 @@ import classnames from 'classnames'
 import { changeTask, changeChapter, toggleAvatarMenu } from '../actions/avatar'
 
 import Avatar from './Avatar'
+import AwardPopup from './AwardPopup'
 
 class CourseBar extends Component {
 
@@ -13,6 +14,18 @@ class CourseBar extends Component {
     changeTask: PropTypes.func.isRequired,
     changeChapter: PropTypes.func.isRequired,
     toggleAvatarMenu: PropTypes.func.isRequired,
+  };
+
+  componentDidMount() {
+    window.addEventListener('keydown', (e) => {
+      if (e.keyCode === 65) { // A
+        this.setState({ awardPopup: true })
+      }
+    })
+  }
+
+  state = {
+    awardPopup: false,
   };
 
   navigate = (relativeIndex) => {
@@ -55,6 +68,8 @@ class CourseBar extends Component {
     this.navigate(1)
   };
 
+  closeAwardPopup = (e) => this.setState({ awardPopup: false });
+
   render() {
     const { course, toggleAvatarMenu } = this.props
     const { name, currentChapter, currentTask, started, chapters } = course
@@ -82,6 +97,7 @@ class CourseBar extends Component {
 
     return (
       <div className="CourseBar">
+        {this.state.awardPopup && <AwardPopup onRequestClose={this.closeAwardPopup} />}
         <div className="CourseBar-course-title">{name}</div>
         {started && <div className="CourseBar-nav">
           <button
