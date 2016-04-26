@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import Award, { AWARD_TYPES } from './Award'
+import Award from './Award'
+
+import * as AwardTypes from '../constants/AwardTypes'
 
 export default class User extends Component {
   static propTypes = {
@@ -27,13 +29,17 @@ export default class User extends Component {
       )
     }
 
+    const awards = [
+      { name: '', type: AwardTypes.PACMAN, date: new Date() },
+      { name: '', type: AwardTypes.TIME, date: new Date() },
+    ]
+
     return (
       <div>
         <ul>
           <li>ID: {user.id}</li>
           <li>Username: {user.username}</li>
-          <Award type={AWARD_TYPES.PACMAN} />
-          <Award type={AWARD_TYPES.TIME} />
+          {awards.map(award => <Award award={award} />)}
         </ul>
       </div>
     )
