@@ -10,7 +10,6 @@ import { hideAwardPopup } from '../actions/awards'
 const modalStyle = (y, opacity) => ({
   overlay: {
     backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    filter: 'blur(16px)',
     opacity: opacity,
   },
   content: {
