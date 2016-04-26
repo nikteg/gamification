@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import { Motion, spring } from 'react-motion'
 import Modal from 'react-modal'
 
 import Award from './Award'
+
+import { hideAwardPopup } from '../actions/awards'
 
 const modalStyle = (y, opacity) => ({
   overlay: {
@@ -26,25 +29,31 @@ const modalStyle = (y, opacity) => ({
 class AwardPopup extends Component {
 
   static propTypes = {
-    award: PropTypes.object.isRequired,
-    onRequestClose: PropTypes.func.isRequired,
+    award: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }),
+    hideAwardPopup: PropTypes.func.isRequired,
   };
 
   render() {
-    const { award, onRequestClose } = this.props
+    const { award, hideAwardPopup } = this.props
+
+    if (!award) {
+      return null
+    }
 
     return (
       <Motion defaultStyle={{ y: -200, opacity: 0 }} style={{ y: spring(0, { stiffness: 200, damping: 15 }), opacity: spring(1) }}>
         {({ y, opacity }) =>
-          <Modal isOpen onRequestClose={onRequestClose} style={modalStyle(y, opacity)}>
+          <Modal isOpen onRequestClose={hideAwardPopup} style={modalStyle(y, opacity)}>
             <div className="AwardPopup">
-              <svg viewBox="0 0 24 24" className="AwardPopup-close" onClick={onRequestClose}>
+              <svg viewBox="0 0 24 24" className="AwardPopup-close" onClick={hideAwardPopup}>
                 <path d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
               </svg>
               <div className="AwardPopup-title">Congrats!</div>
               <div className="AwardPopup-subtitle">New achievement</div>
-              <Award type={'PACMAN'} />
-              <div className="AwardPopup-name">Gamed the system</div>
+              <Award award={award} />
+              <div className="AwardPopup-name">{award.name}</div>
             </div>
           </Modal>
         }
@@ -54,4 +63,8 @@ class AwardPopup extends Component {
 
 }
 
-export default AwardPopup
+const mapStateToProps = (state) => ({
+  award: state.awardPopup,
+})
+
+export default connect(mapStateToProps, { hideAwardPopup })(AwardPopup)

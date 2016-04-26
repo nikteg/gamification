@@ -3,9 +3,12 @@ import { connect } from 'react-redux'
 import classnames from 'classnames'
 
 import { changeTask, changeChapter, toggleAvatarMenu } from '../actions/avatar'
+import { showAwardPopup } from '../actions/awards'
 
 import Avatar from './Avatar'
 import AwardPopup from './AwardPopup'
+
+import * as AwardTypes from '../constants/AwardTypes'
 
 class CourseBar extends Component {
 
@@ -14,19 +17,21 @@ class CourseBar extends Component {
     changeTask: PropTypes.func.isRequired,
     changeChapter: PropTypes.func.isRequired,
     toggleAvatarMenu: PropTypes.func.isRequired,
+    showAwardPopup: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
+    // TODO: This is all temporary
     window.addEventListener('keydown', (e) => {
       if (e.keyCode === 65) { // A
-        this.setState({ awardPopup: true })
+        this.props.showAwardPopup({
+          name: 'Gamed the system',
+          type: Math.random() > 0.5 ? AwardTypes.PACMAN : AwardTypes.TIME,
+          date: new Date(),
+        })
       }
     })
   }
-
-  state = {
-    awardPopup: false,
-  };
 
   navigate = (relativeIndex) => {
     const { currentTask, currentChapter, chapters } = this.props.course
@@ -68,8 +73,6 @@ class CourseBar extends Component {
     this.navigate(1)
   };
 
-  closeAwardPopup = (e) => this.setState({ awardPopup: false });
-
   render() {
     const { course, toggleAvatarMenu } = this.props
     const { name, currentChapter, currentTask, started, chapters } = course
@@ -97,7 +100,7 @@ class CourseBar extends Component {
 
     return (
       <div className="CourseBar">
-        {this.state.awardPopup && <AwardPopup onRequestClose={this.closeAwardPopup} />}
+        <AwardPopup />
         <div className="CourseBar-course-title">{name}</div>
         {started && <div className="CourseBar-nav">
           <button
@@ -130,4 +133,4 @@ const mapStateToProps = (state) => ({
   course: state.course,
 })
 
-export default connect(mapStateToProps, { changeTask, changeChapter, toggleAvatarMenu })(CourseBar)
+export default connect(mapStateToProps, { changeTask, changeChapter, toggleAvatarMenu, showAwardPopup })(CourseBar)

@@ -6,6 +6,7 @@ import auth from './auth'
 import user from './user'
 import avatar from './avatar'
 import course from './course'
+import awardPopup from './awardPopup'
 
 export default combineReducers({
   auth,
@@ -15,4 +16,5 @@ export default combineReducers({
   router,
   avatar,
   course,
+  awardPopup,
 })
