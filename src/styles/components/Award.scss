@@ -1,0 +1,18 @@
+.Award {
+  width: 80px;
+  height: 80px;
+  margin: 8px;
+
+  &-seal {
+    fill: #E91E63;
+
+    &-inner {
+      fill: #EEEEEE;
+    }
+  }
+
+  &-icon {
+    fill: #263238;
+  }
+
+}

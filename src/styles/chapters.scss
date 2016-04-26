@@ -1,0 +1,60 @@
+.Chapters-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.Chapters-header {
+  background: url('../static/mathematics-bg.jpg');
+  background-size: cover;
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+  padding: 80px 0;
+  width: 100%;
+
+  h2 {
+    font-size: 36px;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  p {
+    font-size: 18px;
+    margin: 0;
+    width: 700px;
+  }
+
+}
+
+.Chapters-container {
+  @extend .Chapters-wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px auto;
+  width: 95%;
+}
+
+.Chapter {
+  background: #fafafa;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  margin: 20px 0;
+  padding: 20px 25px;
+  position: relative;
+  width: 48%;
+}
+
+.Chapter-progress {
+  background: #5677FC; 
+  height: 100%;
+  left: 0;
+  position: absolute;
+  opacity: .7;
+  top: 0;
+  z-index: 1;
+}
+
+.Chapter-title {
+  position: relative;
+  z-index: 2;
+}

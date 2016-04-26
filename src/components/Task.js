@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
 
+import CourseBar from './CourseBar'
+
 const Graph = (props) => <div className="graph" />
 
 const Navigation = (props) => (
@@ -69,7 +71,8 @@ PartBox.propTypes = {
 }
 
 const Task = (props) => (
-  <div className="task">
+  <div className="Task">
+    <CourseBar />
     <h1>Normal distribution</h1>
     <Graph />
     <TaskCreator>

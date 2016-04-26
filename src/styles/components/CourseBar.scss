@@ -1,0 +1,96 @@
+.CourseBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #5677fc;
+  color: white;
+
+  &-course-title, &-didyouknow {
+    flex-basis: 360px;
+    padding: 0.5em;
+  }
+
+  &-course-title {
+    font-size: 2em;
+  }
+
+  &-nav {
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    width: 480px;
+
+    &-button {
+      border: none;
+      font-size: 2em;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      width: 64px;
+      flex: none;
+
+      user-select: none;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      &-disabled {
+        pointer-events: none;
+        color: rgba(255, 255, 255, 0.1);
+      }
+
+      &-bright {
+        color: #8BC34A;
+
+        &:hover {
+          color: #AED581;
+        }
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &-avatarbox {
+      display: flex;
+      align-items: center;
+      margin: 0 0.5em;
+      flex-grow: 1;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.85);
+
+      svg {
+        fill: rgba(255, 255, 255, 0.85);
+      }
+
+      &:hover {
+        color: rgba(255, 255, 255, 1);
+
+        svg {
+          fill: rgba(255, 255, 255, 1);
+        }
+      }
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0.5em;
+
+        &-course-title {
+          font-size: 1.25em;
+          line-height: 1em;
+        }
+
+        &-task-title {
+
+        }
+      }
+    }
+  }
+
+  &-didyouknow {
+    font-style: italic;
+  }
+}

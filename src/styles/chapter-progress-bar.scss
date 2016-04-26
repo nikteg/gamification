@@ -1,0 +1,21 @@
+.ChapterProgressBar {
+  background: #555;
+  border-radius: 14px;
+  padding: 4px;
+  position: relative;
+  margin-right: 50px;
+  width: 360px;
+}
+
+.ChapterProgressBar-bar {
+  background: #2BC253;
+  border-radius: 10px;
+  height: 24px;
+}
+
+.ChapterProgressBar-text {
+  color: #333;
+  font-size: 18px;
+  position: absolute;
+  right: -50px;
+}

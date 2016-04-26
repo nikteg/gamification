@@ -1,0 +1,25 @@
+.DashboardBox {
+  background: #fafafa;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 20px 25px;
+  cursor: pointer;
+}
+
+.DashboardBox-chapter {
+  color: #444;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.DashboardBox-title {
+  font-size: 26px;
+  margin: 15px 0;
+}
+
+.DashboardBox-continue {
+  margin: 20px 0 0 0;
+}
