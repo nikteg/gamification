@@ -19,7 +19,7 @@ export default class Award extends Component {
   static propTypes = {
     award: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
+      type: PropTypes.oneOf(Object.keys(AwardTypes)).isRequired,
       date: PropTypes.instanceOf(Date).isRequired,
     }),
   };
