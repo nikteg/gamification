@@ -40,10 +40,10 @@
       }
 
       &-bright {
-        color: #8BC34A;
+        color: rgba(255, 255, 255, 0.85);
 
         &:hover {
-          color: #AED581;
+          color: rgba(255, 255, 255, 1);
         }
       }
 
