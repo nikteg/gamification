@@ -9,6 +9,10 @@ $active-scale: 1.25;
   flex-direction: column;
   cursor: pointer;
 
+  &-progress {
+    transition: stroke-dashoffset 400ms ease-in-out, stroke-width 400ms ease-in-out;
+  }
+
   &:hover {
     &-circle {
       background: #e2e2e2;
@@ -48,59 +52,6 @@ $active-scale: 1.25;
     margin-top: 8px;
     font-size: 0.8em;
     line-height: 1.25em;
-    text-align: center;
-  }
-}
-
-.avatar-modal {
-  .items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .item {
-      margin-right: 8px;
-      display: flex;
-      align-items: center;
-
-      &:last-child {
-        margin-right: 0;
-      }
-
-      .progress-circle.active {
-        width: $avatar-size * $active-scale;
-
-        .circle {
-          width: $avatar-size * $active-scale;
-          height: $avatar-size * $active-scale;
-        }
-
-        .icon {
-          width: $avatar-size / 2 * $active-scale;
-          height: $avatar-size / 2 * $active-scale;
-          left: $avatar-size / 4 * $active-scale;
-          top: $avatar-size / 4 * $active-scale;
-
-        }
-      }
-
-      &:last-child {
-        .sep {
-          display: none;
-        }
-      }
-
-      .sep {
-        background: #ccc;
-        width: $avatar-size;
-        height: 8px;
-        margin-top: -20px;
-        margin-left: 8px;
-      }
-    }
-  }
-
-  h1 {
     text-align: center;
   }
 }

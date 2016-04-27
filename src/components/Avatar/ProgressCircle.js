@@ -1,6 +1,4 @@
-import React, { PropTypes } from 'react'
-import { Circle } from '../ProgressBar'
-import classnames from 'classnames'
+import React, { Component, PropTypes } from 'react'
 
 const Icons = {
   'exercise': (
@@ -14,7 +12,7 @@ const Icons = {
     </svg>
   ),
   'info': (
-    <svg id="icon-extension" viewBox="0 0 24 24">
+    <svg id="icon-extension" viewBox="0 0 24 24" width="100" height="100" x="72" y="72">
       <path d="M20.016 12v-8.016h-5.016v8.016l2.484-1.5zM20.016 2.016c1.078 0 1.969 0.891 1.969 1.969v12c0 1.078-0.891 2.016-1.969 2.016h-12c-1.078 0-2.016-0.938-2.016-2.016v-12c0-1.078 0.938-1.969 2.016-1.969h12zM3.984 6v14.016h14.016v1.969h-14.016c-1.078 0-1.969-0.891-1.969-1.969v-14.016h1.969z"></path>
     </svg>
   ),
@@ -25,29 +23,46 @@ const Icons = {
   ),
 }
 
-const ProgressCircle = function(props) {
-  return (
-    <div className={classnames('ProgressCircle', { 'ProgressCircle-active': props.active }) }>
-      <div className="ProgressCircle-circle">
-        <div className="ProgressCircle-circle-icon">{Icons[props.type] || Icons['info']}</div>
-        <Circle
-          progress={props.progress}
-          options={{
-            strokeWidth: 12,
-            color: '#8BC34A',
-            duration: 500,
-            trailColor: '#263238',
-          }} />
-      </div>
-    </div>
-  )
-}
+class ProgressCircle extends Component {
 
-ProgressCircle.propTypes = {
-  type: PropTypes.string.isRequired,
-  progress: PropTypes.number.isRequired,
-  active: PropTypes.bool,
-  onClick: PropTypes.func,
+  static propTypes = {
+    type: PropTypes.string.isRequired,
+    progress: PropTypes.number.isRequired,
+  };
+
+  render() {
+    const { progress } = this.props
+
+    const radius = 90
+    const circumference = (Math.PI * (2 * radius))
+    const strokePercentage = circumference - ((progress) * circumference)
+
+    return (
+      <svg width="240" height="240" xmlns="http://www.w3.org/2000/svg" className="ProgressCircle" viewBox="0 0 240 240" style={{ transform: 'rotate(-90deg)' }}>
+        {Icons[this.props.type] || Icons['info']}
+        <circle
+          className="ProgressCircle-background"
+          r="90"
+          cy="120"
+          cx="120"
+          strokeWidth="24"
+          stroke="#263238"
+          fill="none" />
+        <circle
+          ref={c => this.circle = c}
+          className="ProgressCircle-progress"
+          r="90"
+          cy="120"
+          cx="120"
+          stroke="#fff"
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          fill="none"
+          style={{ strokeWidth: 6 + 12 * progress, strokeDashoffset: strokePercentage }} />
+      </svg>
+    )
+  }
+
 }
 
 export default ProgressCircle

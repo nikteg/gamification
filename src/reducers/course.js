@@ -27,7 +27,7 @@ export default handleActions({
     {
       name: 'Introduction',
       tasks: [
-        { name: 'Information', type: 'info', done: true },
+        { name: 'Information', type: 'info', done: false },
         { name: 'Exercise 1', type: 'exercise', done: false },
         { name: 'Exercise 2', type: 'exercise', done: false },
         { name: 'Experiment 1', type: 'experiment', done: false },
@@ -36,22 +36,23 @@ export default handleActions({
     {
       name: 'Describing, Exploring, and Comparing Data',
       tasks: [
-        { name: 'Task 1', type: 'exercise', progress: 0 },
-        { name: 'Task 2', type: 'experiment', progress: 0 },
+        { name: 'Task 1', type: 'exercise', done: true },
+        { name: 'Task 2', type: 'experiment', done: false },
       ],
     },
     {
       name: 'Probability',
       tasks: [
-        { name: 'Task 1', progress: 20 },
-        { name: 'Task 2', progress: 0 },
+      { name: 'Task 1', type: 'exercise', done: true },
+      { name: 'Task 2', type: 'experiment', done: true },
       ],
     },
     {
       name: 'Distributions',
       tasks: [
-        { name: 'Task 1', progress: 0 },
-        { name: 'Task 2', progress: 0 },
+      { name: 'Task 1', type: 'exercise', done: true },
+      { name: 'Task 2', type: 'exercise', done: false },
+      { name: 'Task 3', type: 'experiment', done: true },
       ],
     },
     {
