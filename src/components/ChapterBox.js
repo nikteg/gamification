@@ -1,8 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
 import DashboardBox from './DashboardBox'
-
-import { changeTask, changeChapter } from '../actions/avatar'
 
 class ChapterBox extends Component {
 
@@ -10,17 +7,11 @@ class ChapterBox extends Component {
     title: PropTypes.string.isRequired,
     number: PropTypes.number.isRequired,
     finished: PropTypes.number.isRequired,
-    changeChapter: PropTypes.func.isRequired,
-    changeTask: PropTypes.func.isRequired,
-  };
-
-  startChapter = (e) => {
-    this.props.changeChapter(this.props.number - 1)
-    this.props.changeTask(0)
+    url: PropTypes.string.isRequired,
   };
 
   render() {
-    const { title, number, finished } = this.props
+    const { title, number, finished, url } = this.props
 
     return (
       <DashboardBox
@@ -31,10 +22,10 @@ class ChapterBox extends Component {
           margin: '20px 0',
           width: '48%',
         }}
-        onClick={this.startChapter}
+        url={url}
       />
     )
   }
 }
 
-export default connect(null, { changeTask, changeChapter })(ChapterBox)
+export default ChapterBox

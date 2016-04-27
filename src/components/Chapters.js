@@ -5,7 +5,7 @@ import CourseBar from './CourseBar'
 
 import '../styles/chapters.scss'
 
-const Chapters = ({ name, description, chapters }) => (
+const Chapters = ({ name, description, chapters, location }) => (
   <div className="Chapters">
 
     <CourseBar />
@@ -17,6 +17,7 @@ const Chapters = ({ name, description, chapters }) => (
           number={i + 1}
           title={chapter.name}
           finished={calcProgress(chapter)}
+          url={`${location.pathname}/chapter/${i + 1}`}
         />
       ))}
     </div>

@@ -89,7 +89,6 @@ class CourseBar extends Component {
       const taskPrefix = {
         'exercise': 'Exercise',
         'experiment': 'Experiment',
-        'info': 'Information',
       }[task.type]
 
       taskTitle = `${taskPrefix}: ${task.name}`
@@ -98,8 +97,10 @@ class CourseBar extends Component {
     const prevDisabled = currentChapter === 0 && currentTask === 0
     const nextDisabled = currentChapter === numChapters - 1 && currentTask === numTasks - 1
 
+    const courseColor = course.started && '#5677fc' || '#37474F'
+
     return (
-      <div className="CourseBar">
+      <div className="CourseBar" style={{ backgroundColor: courseColor }}>
         <AwardPopup />
         <div className="CourseBar-course-title">{name}</div>
         {started && <div className="CourseBar-nav">
@@ -108,7 +109,7 @@ class CourseBar extends Component {
             title="Go back"
             onClick={this.previousTask}>◀</button>
           <div className="CourseBar-nav-avatarbox" onClick={toggleAvatarMenu}>
-            <Avatar task={task} />
+            <Avatar chapter={chapter} />
             <div className="CourseBar-nav-avatarbox-info">
               <span className="CourseBar-nav-avatarbox-info-course-title">{chapter.name}</span>
               <span className="CourseBar-nav-avatarbox-info-task-title">{taskTitle}</span>
@@ -117,7 +118,7 @@ class CourseBar extends Component {
           <button
             className={classnames('CourseBar-nav-button', {
               'CourseBar-nav-button-disabled': nextDisabled,
-              'CourseBar-nav-button-bright': task.progress === 100,
+              'CourseBar-nav-button-bright': task.done,
             })}
             title="Go forward"
             onClick={this.nextTask}>▶</button>

@@ -1,6 +1,8 @@
 import { handleActions } from 'redux-actions'
 import { COURSE_CHANGE_CHAPTER, COURSE_CHANGE_TASK } from '../constants/ActionTypes'
 
+import * as mathematicalStatistics from '../courses/1'
+
 export default handleActions({
   [COURSE_CHANGE_CHAPTER]: (state, { payload }) => {
     return Object.assign({}, state, {
@@ -15,19 +17,20 @@ export default handleActions({
     })
   },
 }, {
-  name: 'Mathematical Statistics',
-  description: 'Probability and statistics are two related but separate academic disciplines. Statistical analysis often uses probability distributions, and the two topics are often studied together.',
-  started: false,
+  name: mathematicalStatistics.NAME,
+  description: mathematicalStatistics.DESCRIPTION,
+  // chapters: mathematicalStatistics.CHAPTERS,
   currentChapter: 0,
   currentTask: 0,
+  started: true,
   chapters: [
     {
       name: 'Introduction',
       tasks: [
-        { name: 'Information', type: 'info', progress: 100 },
-        { name: 'Exercise 1', type: 'exercise', progress: 25 },
-        { name: 'Exercise 2', type: 'exercise', progress: 25 },
-        { name: 'Experiment 1', type: 'experiment', progress: 50 },
+        { name: 'Information', type: 'info', done: true },
+        { name: 'Exercise 1', type: 'exercise', done: false },
+        { name: 'Exercise 2', type: 'exercise', done: false },
+        { name: 'Experiment 1', type: 'experiment', done: false },
       ],
     },
     {

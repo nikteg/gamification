@@ -1,0 +1,31 @@
+.AvatarModal {
+  text-align: center;
+
+  &-chapters {
+    display: flex;
+    justify-content: space-around;
+
+    &-avatar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1 1 0;
+
+      svg {
+        fill: black;
+      }
+
+      &-title {
+        margin-top: 0.5em;
+        font-size: 0.75em;
+        line-height: 1.5em;
+      }
+
+      &-active {
+        .AvatarModal-chapters-avatar-title {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

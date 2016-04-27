@@ -27,9 +27,9 @@ const Icons = {
 
 const ProgressCircle = function(props) {
   return (
-    <div className={classnames('ProgressCircle', { 'ProgressCircle-active': props.active }) } onClick={props.onClick}>
+    <div className={classnames('ProgressCircle', { 'ProgressCircle-active': props.active }) }>
       <div className="ProgressCircle-circle">
-        <div className="ProgressCircle-circle-icon">{Icons[props.type] || Icons['challenge']}</div>
+        <div className="ProgressCircle-circle-icon">{Icons[props.type] || Icons['info']}</div>
         <Circle
           progress={props.progress}
           options={{
@@ -39,14 +39,12 @@ const ProgressCircle = function(props) {
             trailColor: '#263238',
           }} />
       </div>
-      {props.label && <div className="ProgressCircle-label">{props.label}</div>}
     </div>
   )
 }
 
 ProgressCircle.propTypes = {
   type: PropTypes.string.isRequired,
-  label: PropTypes.string,
   progress: PropTypes.number.isRequired,
   active: PropTypes.bool,
   onClick: PropTypes.func,

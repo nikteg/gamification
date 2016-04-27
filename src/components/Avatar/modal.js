@@ -1,8 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import Modal from 'react-modal'
+import classnames from 'classnames'
 
-import { toggleAvatarMenu } from '../../actions/avatar'
+import { toggleAvatarMenu, changeChapter } from '../../actions/avatar'
+
+import Avatar from './index'
 
 const modalStyle = {
   overlay: {
@@ -24,6 +28,12 @@ class AvatarModal extends Component {
     course: PropTypes.object.isRequired,
     isOpen: PropTypes.bool.isRequired,
     toggleAvatarMenu: PropTypes.func.isRequired,
+    changeChapter: PropTypes.func.isRequired,
+  };
+
+  onAvatarClick = (chapterID) => (e) => {
+    this.props.changeChapter(chapterID)
+    this.props.toggleAvatarMenu()
   };
 
   render() {
@@ -33,6 +43,16 @@ class AvatarModal extends Component {
       <Modal isOpen={isOpen} onRequestClose={toggleAvatarMenu} style={modalStyle}>
         <div className="AvatarModal">
           <h1>{course.name}</h1>
+          <div className="AvatarModal-chapters">
+            {course.chapters.map((chapter, i) => (
+              <Link
+                to={`/study/mathematical-statistics/chapter/${i + 1}`}
+                className={classnames('AvatarModal-chapters-avatar', { 'AvatarModal-chapters-avatar-active': course.currentChapter === i })}>
+                <Avatar chapter={chapter} onClick={this.onAvatarClick(i)} />
+                <div className="AvatarModal-chapters-avatar-title">{chapter.name}</div>
+              </Link>
+            ))}
+          </div>
         </div>
       </Modal>
     )
@@ -45,4 +65,4 @@ const mapStateToProps = (state) => ({
   isOpen: state.avatar,
 })
 
-export default connect(mapStateToProps, { toggleAvatarMenu })(AvatarModal)
+export default connect(mapStateToProps, { toggleAvatarMenu, changeChapter })(AvatarModal)

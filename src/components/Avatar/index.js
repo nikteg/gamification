@@ -27,15 +27,17 @@ import ProgressCircle from './ProgressCircle'
 
 class Avatar extends Component {
   static propTypes = {
-    task: PropTypes.object.isRequired,
+    chapter: PropTypes.object.isRequired,
   };
 
   render() {
-    const { task } = this.props
+    const { chapter } = this.props
+
+    const progress = chapter.tasks.reduce((progress, task) => progress + (task.done ? 1 : 0), 0) / chapter.tasks.length
 
     return (
       <div className="Avatar">
-        <ProgressCircle progress={task.progress / 100} type={task.type} />
+        <ProgressCircle progress={progress} type={'info'} />
       </div>
     )
   }
