@@ -105,9 +105,9 @@ class CourseBar extends Component {
         <div className="CourseBar-course-title">{name}</div>
         {started && <div className="CourseBar-nav">
           <button
-            className={classnames('CourseBar-nav-button', { 'CourseBar-nav-button-disabled': prevDisabled })}
+            className={classnames('CourseBar-nav-button CourseBar-nav-button-left', { 'CourseBar-nav-button-disabled': prevDisabled })}
             title="Go back"
-            onClick={this.previousTask}>◀</button>
+            onClick={this.previousTask}>⬅</button>
           <div className="CourseBar-nav-avatarbox" onClick={toggleAvatarMenu}>
             <Avatar chapter={chapter} />
             <div className="CourseBar-nav-avatarbox-info">
@@ -116,12 +116,12 @@ class CourseBar extends Component {
             </div>
           </div>
           <button
-            className={classnames('CourseBar-nav-button', {
+            className={classnames('CourseBar-nav-button CourseBar-nav-button-right', {
               'CourseBar-nav-button-disabled': nextDisabled,
               'CourseBar-nav-button-bright': task.done,
             })}
             title="Go forward"
-            onClick={this.nextTask}>▶</button>
+            onClick={this.nextTask}>⬅</button>
         </div>}
         <div className="CourseBar-didyouknow">{'Did you know?'}</div>
       </div>

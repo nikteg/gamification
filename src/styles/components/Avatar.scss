@@ -8,6 +8,7 @@ $active-scale: 1.25;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
+  transform: rotate(-90deg);
 
   &-progress {
     transition: stroke-dashoffset 400ms ease-in-out, stroke-width 400ms ease-in-out;

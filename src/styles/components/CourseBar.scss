@@ -18,12 +18,13 @@
     align-items: center;
     padding: 0.5em;
     width: 480px;
+    background: rgba(255, 255, 255, 0.1);
 
     &-button {
       border: none;
       font-size: 2em;
       background: transparent;
-      color: rgba(255, 255, 255, 0.3);
+      color: rgba(38, 50, 56, 1);
       cursor: pointer;
       width: 64px;
       flex: none;
@@ -31,19 +32,24 @@
       user-select: none;
 
       &:hover {
-        color: rgba(255, 255, 255, 0.85);
+        color: rgba(69, 90, 100, 1);
       }
 
       &-disabled {
         pointer-events: none;
-        color: rgba(255, 255, 255, 0.1);
+        color: rgba(38, 50, 56, 0.25);
       }
 
       &-bright {
-        color: rgba(255, 255, 255, 0.85);
+        transform: scale(1.5, 1.5);
+      }
 
-        &:hover {
-          color: rgba(255, 255, 255, 1);
+      &-right {
+        transform: scale(-1, 1);
+
+        &.CourseBar-nav-button-bright {
+          animation: pulsate 1s ease-in-out;
+          animation-iteration-count: infinite;
         }
       }
 
@@ -92,4 +98,10 @@
   &-didyouknow {
     font-style: italic;
   }
+}
+
+@keyframes pulsate {
+  0% { transform: scale(-1, 1); }
+  50% { transform: scale(-1.25, 1.25); }
+  100% { transform: scale(-1, 1); }
 }
