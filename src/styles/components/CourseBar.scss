@@ -1,5 +1,5 @@
 $navBarHeight: 64px;
-$courseBarHeight: 64px;
+$courseBarHeight: 80px;
 
 .CourseBar {
   display: flex;
@@ -78,7 +78,7 @@ $courseBarHeight: 64px;
       flex-grow: 1;
       cursor: pointer;
       color: rgba(255, 255, 255, 0.85);
-      height: 64px;
+      height: $courseBarHeight;
 
       svg {
         fill: rgba(255, 255, 255, 0.85);
@@ -108,8 +108,8 @@ $courseBarHeight: 64px;
       }
 
       .ProgressCircle {
-        width: 56px;
-        height: 56px;
+        width: 64px;
+        height: 64px;
       }
     }
   }
