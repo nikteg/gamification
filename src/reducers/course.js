@@ -1,7 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { COURSE_CHANGE_CHAPTER, COURSE_CHANGE_TASK } from '../constants/ActionTypes'
-
-import * as mathematicalStatistics from '../courses/1'
+import { COURSE_CHANGE_CHAPTER, COURSE_CHANGE_TASK, COURSE_COMPLETE_CURRENT_TASK } from '../constants/ActionTypes'
 
 export default handleActions({
   [COURSE_CHANGE_CHAPTER]: (state, { payload }) => {
@@ -16,100 +14,19 @@ export default handleActions({
       started: true,
     })
   },
+  [COURSE_COMPLETE_CURRENT_TASK]: (state, { payload }) => {
+    let chapterProgress = state.chapterProgress.slice()
+
+    chapterProgress[state.currentChapter][state.currentTask] = true
+
+    state.chapterProgress = chapterProgress
+
+    return state
+  },
 }, {
-  name: mathematicalStatistics.NAME,
-  description: mathematicalStatistics.DESCRIPTION,
-  // chapters: mathematicalStatistics.CHAPTERS,
+  courseID: 0,
   currentChapter: 0,
   currentTask: 0,
   started: true,
-  chapters: [
-    {
-      name: 'Introduction',
-      tasks: [
-        { name: 'Information', type: 'info', done: false },
-        { name: 'Exercise 1', type: 'exercise', done: false },
-        { name: 'Exercise 2', type: 'exercise', done: false },
-        { name: 'Experiment 1', type: 'experiment', done: false },
-      ],
-    },
-    {
-      name: 'Describing, Exploring, and Comparing Data',
-      tasks: [
-        { name: 'Task 1', type: 'exercise', done: true },
-        { name: 'Task 2', type: 'experiment', done: false },
-      ],
-    },
-    {
-      name: 'Probability',
-      tasks: [
-      { name: 'Task 1', type: 'exercise', done: true },
-      { name: 'Task 2', type: 'experiment', done: true },
-      ],
-    },
-    {
-      name: 'Distributions',
-      tasks: [
-      { name: 'Task 1', type: 'exercise', done: true },
-      { name: 'Task 2', type: 'exercise', done: false },
-      { name: 'Task 3', type: 'experiment', done: true },
-      ],
-    },
-    {
-      name: 'Normal Probability Distribution',
-      tasks: [
-        { name: 'Task 1', progress: 0 },
-        { name: 'Task 2', progress: 0 },
-      ],
-    },
-    {
-      name: 'Relations Between Distributions',
-      tasks: [
-        { name: 'Task 1', progress: 0 },
-        { name: 'Task 2', progress: 0 },
-      ],
-    },
-    {
-      name: 'Point and Interval Estimates',
-      tasks: [
-        { name: 'Task 1', progress: 0 },
-        { name: 'Task 2', progress: 0 },
-      ],
-    },
-    {
-      name: 'Hypothesis Testing',
-      tasks: [
-        { name: 'Task 1', progress: 0 },
-        { name: 'Task 2', progress: 0 },
-      ],
-    },
-    {
-      name: 'Inferences From Two Samples',
-      tasks: [
-        { name: 'Task 1', progress: 0 },
-        { name: 'Task 2', progress: 0 },
-      ],
-    },
-    {
-      name: 'Correlation and Regression',
-      tasks: [
-        { name: 'Task 1', progress: 0 },
-        { name: 'Task 2', progress: 0 },
-      ],
-    },
-    {
-      name: 'Analysis of Variance (ANOVA)',
-      tasks: [
-        { name: 'Task 1', progress: 0 },
-        { name: 'Task 2', progress: 0 },
-      ],
-    },
-    {
-      name: 'Complexity regularization',
-      tasks: [
-        { name: 'Task 1', type: 'exercise', progress: 0 },
-        { name: 'Task 2', type: 'experiment', progress: 50 },
-      ],
-    },
-  ],
+  progress: [ [ false, false, true, false ], [ true, true, true, true, true ] ],
 })

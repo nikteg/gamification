@@ -12,6 +12,7 @@ import Chapters from '../containers/ChaptersContainer'
 import TeX from '../components/TeX'
 import CourseBar from '../components/CourseBar'
 import Chapter from '../components/Chapter'
+import Task from '../components/Task'
 
 import { Wrapper } from '../layout'
 
@@ -28,18 +29,6 @@ const Study = (props) => (
   </div>
 )
 
-const Exercise = (props) => (
-  <div className="Exercise">
-    Exercise goes here
-  </div>
-)
-
-const Experiment = (props) => (
-  <div className="Experiment">
-    Experiment goes here
-  </div>
-)
-
 export default (
   <Route path="/" component={Wrapper}>
     <IndexRoute component={HomeContainer} />
@@ -52,8 +41,9 @@ export default (
         <IndexRoute component={Chapters} />
         <Route path="chapter/:chapterID">
           <IndexRoute component={Chapter} />
-          <Route path="exercise/:taskID" component={Exercise} />
-          <Route path="experiment/:taskID" component={Experiment} />
+          <Route path="overview/:taskID" component={Task} />
+          <Route path="exercise/:taskID" component={Task} />
+          <Route path="experiment/:taskID" component={Task} />
         </Route>
       </Route>
     </Route>

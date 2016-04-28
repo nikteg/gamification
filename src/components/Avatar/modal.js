@@ -6,11 +6,15 @@ import classnames from 'classnames'
 
 import { toggleAvatarMenu, changeChapter } from '../../actions/avatar'
 
+import COURSES_DATA from '../../courses'
+
 import Avatar from './index'
+import ModalCloseButton from '../ModalCloseButton'
 
 const modalStyle = {
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    zIndex: 11,
   },
   content: {
     top: '50%',
@@ -25,33 +29,32 @@ const modalStyle = {
 class AvatarModal extends Component {
 
   static propTypes = {
-    course: PropTypes.object.isRequired,
     isOpen: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
+    chapters: PropTypes.array.isRequired,
+    progress: PropTypes.array.isRequired,
+    currentChapter: PropTypes.number.isRequired,
+    currentTask: PropTypes.number.isRequired,
+
     toggleAvatarMenu: PropTypes.func.isRequired,
     changeChapter: PropTypes.func.isRequired,
   };
 
-  onAvatarClick = (chapterID) => (e) => {
-    this.props.changeChapter(chapterID)
-    this.props.toggleAvatarMenu()
-  };
-
   render() {
-    const { course, isOpen, toggleAvatarMenu } = this.props
+    const { isOpen, name, chapters, progress, currentChapter, currentTask, toggleAvatarMenu } = this.props
 
     return (
       <Modal isOpen={isOpen} onRequestClose={toggleAvatarMenu} style={modalStyle}>
         <div className="AvatarModal">
-          <svg viewBox="0 0 24 24" className="AvatarModal-close" onClick={toggleAvatarMenu}>
-            <path d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
-          </svg>
-          <div className="AvatarModal-title">{course.name}</div>
+          <ModalCloseButton onClick={toggleAvatarMenu} />
+          <div className="AvatarModal-title">{name}</div>
           <div className="AvatarModal-chapters">
-            {course.chapters.map((chapter, i) => (
+            {chapters.map((chapter, i) => (
               <Link
+                key={i}
                 to={`/study/mathematical-statistics/chapter/${i + 1}`}
-                className={classnames('AvatarModal-chapters-avatar', { 'AvatarModal-chapters-avatar-active': course.currentChapter === i })}>
-                <Avatar chapter={chapter} onClick={this.onAvatarClick(i)} />
+                className={classnames('AvatarModal-chapters-avatar', { 'AvatarModal-chapters-avatar-active': currentChapter === i })}>
+                <Avatar chapter={chapter} chapterProgress={progress[i]} />
                 <div className="AvatarModal-chapters-avatar-title">{chapter.name}</div>
               </Link>
             ))}
@@ -63,9 +66,21 @@ class AvatarModal extends Component {
 
 }
 
-const mapStateToProps = (state) => ({
-  course: state.course,
-  isOpen: state.avatar,
-})
+const mapStateToProps = (state) => {
+  const { courseID, currentChapter, currentTask, progress } = state.course
+  const { name, description, chapters } = COURSES_DATA[courseID]
+
+  const isOpen = state.avatar
+
+  return {
+    isOpen,
+    name,
+    description,
+    chapters,
+    progress,
+    currentChapter,
+    currentTask,
+  }
+}
 
 export default connect(mapStateToProps, { toggleAvatarMenu, changeChapter })(AvatarModal)

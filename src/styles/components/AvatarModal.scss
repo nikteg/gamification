@@ -3,20 +3,6 @@
   max-width: 800px;
   position: relative;
 
-  &-close {
-    position: absolute;
-    right: -16px;
-    top: -16px;
-    width: 24px;
-    height: 24px;
-    fill: #263238;
-    cursor: pointer;
-
-    &:hover {
-      fill: #9E9E9E;
-    }
-  }
-
   &-title {
     font-size: 2em;
     padding: 0.5em 1em 1em;

@@ -1,12 +1,14 @@
 import React from 'react'
 
+import TeX from '../../../../components/TeX'
+
 export default {
   name: 'Normal distribution',
   tasks: [
     {
       name: 'Introduction',
-      progress: 0,
-      html: (props) => (
+      type: 'overview',
+      html: (
         <div className="Introduction">
 
           <h1>Normal distribution</h1>
@@ -71,7 +73,7 @@ export default {
 
             <div className="Introduction-part-content">
               <p>Since the area under the probability density function should always be equal to 1, it implicates
-              that -12e-(1/2)[(x-)/]2= 1. The link to the proof for this is given here: [link to proof].</p>
+              that <TeX data={'-12e-(1/2)[(x-)/]2= 1'} />. The link to the proof for this is given here: [link to proof].</p>
 
               <p>As you can see, the probability density function of the normal distribution requires only that mu is
               a real number and sigma is positive. And as you may already suspect, mu and sigma corresponds to the mean
@@ -79,6 +81,15 @@ export default {
               variable is symmetric, with the mean mu in its center. At mu+-sigma, one can find the points of inflection.</p>
             </div>
           </div>
+        </div>
+      ),
+    },
+    {
+      name: 'Something else',
+      type: 'exercise',
+      html: (
+        <div className="Introduction">
+          All of my wats
         </div>
       ),
     },
