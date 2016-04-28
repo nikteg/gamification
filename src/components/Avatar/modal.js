@@ -42,7 +42,10 @@ class AvatarModal extends Component {
     return (
       <Modal isOpen={isOpen} onRequestClose={toggleAvatarMenu} style={modalStyle}>
         <div className="AvatarModal">
-          <h1>{course.name}</h1>
+          <svg viewBox="0 0 24 24" className="AvatarModal-close" onClick={toggleAvatarMenu}>
+            <path d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
+          </svg>
+          <div className="AvatarModal-title">{course.name}</div>
           <div className="AvatarModal-chapters">
             {course.chapters.map((chapter, i) => (
               <Link

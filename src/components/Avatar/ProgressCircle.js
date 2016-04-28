@@ -23,6 +23,12 @@ const Icons = {
   ),
 }
 
+const checkIcon = (
+  <svg viewBox="-12 -12 40 40" className="ProgressCircle-check">
+    <path d="M13.5 2l-7.5 7.5-3.5-3.5-2.5 2.5 6 6 10-10z" fill="8BC34A#"></path>
+  </svg>
+)
+
 class ProgressCircle extends Component {
 
   static propTypes = {
@@ -58,7 +64,8 @@ class ProgressCircle extends Component {
           strokeDasharray={circumference}
           fill="none"
           style={{ strokeWidth: 6 + 12 * progress, strokeDashoffset: strokePercentage }} />
-        {Icons[this.props.type] || Icons['info']}
+        {progress !== 1 && <text x="120" y="120" fontSize="55" dy="16" textAnchor="middle" fill="#E0E0E0">{`${parseInt(progress * 100, 10)}%`}</text>}
+        {progress === 1 && checkIcon}
       </svg>
     )
   }

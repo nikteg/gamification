@@ -17,7 +17,7 @@ class NavBar extends Component {
     return (
       <div className="NavBar">
         <AvatarModal course={course} />
-        <div className="NavBar-logo">Gamif</div>
+        <div className="NavBar-logo">Gejmifü</div>
         <div className="NavBar-nav">
           <Link to="/" onlyActiveOnIndex className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Dashboard</Link>
           <Link to={course.started ? '/study/mathematical-statistics' : '/study'} className="NavBar-nav-link" activeStyle={{ backgroundColor: courseColor, color: 'white' }}>Study</Link>
