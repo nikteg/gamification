@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Motion, spring } from 'react-motion'
-import Graph from './Graph'
+import Graph from './Graph/index'
 
 const ExperimentTask = ({ width }) => (
   <Motion style={{ width: spring(width) }}>

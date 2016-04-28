@@ -1,0 +1,37 @@
+.Slider {
+  margin: 20px 0;
+  height: 40px;
+  display: flex;
+}
+
+.Slider-slider {
+  position: relative;
+  top: 18px;
+  width: 400px!important;
+}
+
+.Slider-value {
+  border: 2px solid #bbb;
+  border-radius: 4px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 20px;
+  height: 40px;
+  text-align: center;
+  width: 40px;
+}
+
+.Controls-button {
+  background: #5677FC;
+  border: 1px solid #4460CE;
+  border-radius: 5px;
+  color: white;
+  font: inherit;
+  margin-left: 20px;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  width: 160px;
+}
+

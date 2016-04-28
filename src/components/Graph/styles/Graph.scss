@@ -1,0 +1,15 @@
+.Graph-container {
+  margin: 30px;
+}
+
+.Graph-axis {
+  position: relative;
+  z-index: 2;
+
+  line,
+  path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+}
