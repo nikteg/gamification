@@ -79,8 +79,6 @@ class CourseBar extends Component {
     const numChapters = chapters.length
     const numTasks = chapter.tasks.length
 
-    console.log('old', currentChapter, currentTask)
-
     let newTask = currentTask + relativeIndex
     let newChapter = currentChapter
 
@@ -98,8 +96,6 @@ class CourseBar extends Component {
         newTask = 0
       }
     }
-
-    console.log('new', newChapter, newTask)
 
     const type = chapters[newChapter].tasks[newTask].type
 
@@ -119,8 +115,6 @@ class CourseBar extends Component {
 
     const numChapters = chapters.length
     const numTasks = chapter.tasks.length
-
-    console.log(chapter, numTasks, currentTask)
 
     let taskTitle = task.name
 
