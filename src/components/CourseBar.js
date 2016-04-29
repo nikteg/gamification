@@ -128,6 +128,7 @@ class CourseBar extends Component {
       const taskPrefix = {
         'exercise': 'Exercise',
         'experiment': 'Experiment',
+        'overview': 'Overview',
       }[task.type]
 
       taskTitle = `${taskPrefix}: ${task.name}`

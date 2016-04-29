@@ -13,6 +13,7 @@ class Chapter extends Component {
     chapter: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
+    chapterProgress: PropTypes.array.isRequired,
 
     changeChapter: PropTypes.func.isRequired,
   };
@@ -28,7 +29,7 @@ class Chapter extends Component {
   }
 
   render() {
-    const { chapter, location } = this.props
+    const { chapter, chapterProgress, location } = this.props
 
     if (!chapter) {
       return null
@@ -40,7 +41,7 @@ class Chapter extends Component {
         <h1 className="Chapter-title">{chapter.name}</h1>
         <h2 className="Chapter-title-tasks">Tasks</h2>
         <ul>
-          {chapter.tasks.map((task, i) => <li><Link to={`${location.pathname}/${task.type}/${i + 1}`}>{task.name}</Link></li>)}
+          {chapter.tasks.map((task, i) => <li><Link to={`${location.pathname}/${task.type}/${i + 1}`}>{task.name}</Link>{chapterProgress[i] && ' Done!'}</li>)}
         </ul>
       </div>
     )
@@ -50,9 +51,11 @@ class Chapter extends Component {
 
 const mapStateToProps = (state) => {
   const chapter = COURSES_DATA[state.course.courseID].chapters[state.course.currentChapter]
+  const chapterProgress = state.course.progress[state.course.currentChapter]
 
   return {
     chapter,
+    chapterProgress,
   }
 }
 
