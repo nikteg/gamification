@@ -41,7 +41,6 @@ class Task extends Component {
     return (
       <div className="Task">
         <CourseBar />
-        <h1 className="Task-title">{task.type} {task.name}</h1>
         {task.html}
       </div>
     )

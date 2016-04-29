@@ -81,6 +81,83 @@ export default {
               variable is symmetric, with the mean mu in its center. At mu+-sigma, one can find the points of inflection.</p>
             </div>
           </div>
+
+          <div className="Introduction-part">
+            <h3>How is it commonly used?</h3>
+
+            <div className="Introduction-part-content">
+              <p>In many cases, the normal distribution can be discovered directly by conducting an experiment of a chosen
+              random variable and observing the frequency of the outcomes. By graphing it and looking at the shape of the graph,
+              one can determine whether it resembles a normal distribution or not. In such a case, it is easy to use
+              the normal distribution directly to approximate the distribution of the samples.</p>
+
+              <p>However, sometimes the sample distribution of a random variable, say X, does not resemble a normal distribution.
+              In these cases, it is possible to observe the distribution of a statistic (such as the mean or standard deviation)
+              of X to see if it resembles a normal distribution. This is called point estimation.</p>
+
+              <p>Once a normal distribution is discovered, it may be of interest to find out the cumulative probability
+              distribution of the normal random variable. However, to find this, an integration over the probability density
+              function is required. This process is rather complex. Thus the normal random variable is often translated into a
+              standard normal random variable, with a standard normal distribution. The reason for this is simply because the
+              standard normal distribution has a single table that describes the cumulative probability distribution for
+              different standard deviations. [Link].</p>
+
+            </div>
+          </div>
+
+          <div className="Introduction-part">
+            <h3>Rule of thumb</h3>
+
+            <div className="Introduction-part-content">
+              <p>Because of its symmetricality and frequency of use, a shorthand for the distribution has been developed. As you can see in the figure below there is:</p>
+
+              <ul>
+                <li>a 68% chance that a random sample with a normal distribution to fall within 1 standard deviation from the expected value</li>
+                <li>a 95% chance that it falls within 2 standard deviations from the expected value</li>
+                <li>a 99% chance it falls between 3 standard deviations of the expected value</li>
+              </ul>
+
+              <img src="/emperical_rule.png" alt="Rule of thumb" />
+            </div>
+          </div>
+
+          <div className="Introduction-part">
+            <h3>Explanation of variables</h3>
+
+            <div className="Introduction-part-content">
+              <p>Lorem ipsum Eiusmod est cupidatat ut voluptate qui sit eiusmod quis consectetur quis est
+              aliquip commodo esse Ut sit occaecat enim velit dolore velit dolor irure ut proident.</p>
+            </div>
+          </div>
+
+          <h2>Mathematical proofs</h2>
+
+          <div className="Introduction-part">
+            <h3>Mathematical proofs</h3>
+
+            <div className="Introduction-part-content">
+              <p>Lorem ipsum Eiusmod est cupidatat ut voluptate qui sit eiusmod quis consectetur quis est
+              aliquip commodo esse Ut sit occaecat enim velit dolore velit dolor irure ut proident.</p>
+            </div>
+          </div>
+
+          <div className="Introduction-part">
+            <h3>Prerequisites</h3>
+
+            <div className="Introduction-part-content">
+              <ul>
+                <li>Expectation</li>
+                <li>Stochastic variable</li>
+                <li>Distribution</li>
+                <li>Standard deviation</li>
+                <li>Variance</li>
+                <li>Continuous probability distribution</li>
+                <li>Density functions</li>
+                <li>Cumulative distribution</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       ),
     },
