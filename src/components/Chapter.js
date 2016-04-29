@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { changeChapter } from '../actions/avatar'
+import { changeChapter, changeTask } from '../actions/avatar'
 
 import CourseBar from './CourseBar'
 
@@ -16,10 +16,12 @@ class Chapter extends Component {
     chapterProgress: PropTypes.array.isRequired,
 
     changeChapter: PropTypes.func.isRequired,
+    changeTask: PropTypes.func.isRequired,
   };
 
   componentWillMount() {
     this.props.changeChapter(this.props.params.chapterID - 1)
+    this.props.changeTask(0)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -59,4 +61,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { changeChapter })(Chapter)
+export default connect(mapStateToProps, { changeChapter, changeTask })(Chapter)
