@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 
-import { changeTask, changeChapter, toggleAvatarMenu } from '../actions/avatar'
+import { changeTask, changeChapter, toggleAvatarMenu, completeTask } from '../actions/avatar'
 import { showAwardPopup } from '../actions/awards'
 
 import Avatar from './Avatar'
@@ -30,6 +30,7 @@ class CourseBar extends Component {
     changeChapter: PropTypes.func.isRequired,
     toggleAvatarMenu: PropTypes.func.isRequired,
     showAwardPopup: PropTypes.func.isRequired,
+    completeTask: PropTypes.func.isRequired,
   };
 
   static contextTypes = {
@@ -49,6 +50,10 @@ class CourseBar extends Component {
           type: Math.random() > 0.5 ? AwardTypes.PACMAN : AwardTypes.TIME,
           date: new Date(),
         })
+      }
+
+      if (e.keyCode === 83) { // S
+        this.props.completeTask()
       }
     })
 
@@ -187,4 +192,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { changeTask, changeChapter, toggleAvatarMenu, showAwardPopup })(CourseBar)
+export default connect(mapStateToProps, { changeTask, changeChapter, toggleAvatarMenu, showAwardPopup, completeTask })(CourseBar)

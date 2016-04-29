@@ -7,4 +7,4 @@ export const changeChapter = createAction(COURSE_CHANGE_CHAPTER, chapter => chap
 export const changeTask = createAction(COURSE_CHANGE_TASK, task => task)
 export const completeTask = createAction(COURSE_COMPLETE_CURRENT_TASK)
 
-export const actions = { toggleAvatarMenu, changeChapter, changeTask }
+export const actions = { toggleAvatarMenu, changeChapter, changeTask, completeTask }
