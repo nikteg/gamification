@@ -1,12 +1,20 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import Modal from 'react-modal'
+import classnames from 'classnames'
 
-import { toggleAvatarMenu } from '../../actions/avatar'
+import { toggleAvatarMenu, changeChapter } from '../../actions/avatar'
+
+import COURSES_DATA from '../../courses'
+
+import Avatar from './index'
+import ModalCloseButton from '../ModalCloseButton'
 
 const modalStyle = {
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    zIndex: 11,
   },
   content: {
     top: '50%',
@@ -21,18 +29,36 @@ const modalStyle = {
 class AvatarModal extends Component {
 
   static propTypes = {
-    course: PropTypes.object.isRequired,
     isOpen: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
+    chapters: PropTypes.array.isRequired,
+    progress: PropTypes.array.isRequired,
+    currentChapter: PropTypes.number.isRequired,
+    currentTask: PropTypes.number.isRequired,
+
     toggleAvatarMenu: PropTypes.func.isRequired,
+    changeChapter: PropTypes.func.isRequired,
   };
 
   render() {
-    const { course, isOpen, toggleAvatarMenu } = this.props
+    const { isOpen, name, chapters, progress, currentChapter, toggleAvatarMenu } = this.props
 
     return (
       <Modal isOpen={isOpen} onRequestClose={toggleAvatarMenu} style={modalStyle}>
         <div className="AvatarModal">
-          <h1>{course.name}</h1>
+          <ModalCloseButton onClick={toggleAvatarMenu} />
+          <div className="AvatarModal-title">{name}</div>
+          <div className="AvatarModal-chapters">
+            {chapters.map((chapter, i) => (
+              <Link
+                key={i}
+                to={`/study/mathematical-statistics/chapter/${i + 1}`}
+                className={classnames('AvatarModal-chapters-avatar', { 'AvatarModal-chapters-avatar-active': currentChapter === i })}>
+                <Avatar chapter={chapter} chapterProgress={progress[i]} />
+                <div className="AvatarModal-chapters-avatar-title">{chapter.name}</div>
+              </Link>
+            ))}
+          </div>
         </div>
       </Modal>
     )
@@ -40,9 +66,21 @@ class AvatarModal extends Component {
 
 }
 
-const mapStateToProps = (state) => ({
-  course: state.course,
-  isOpen: state.avatar,
-})
+const mapStateToProps = (state) => {
+  const { courseID, currentChapter, currentTask, progress } = state.course
+  const { name, description, chapters } = COURSES_DATA[courseID]
 
-export default connect(mapStateToProps, { toggleAvatarMenu })(AvatarModal)
+  const isOpen = state.avatar
+
+  return {
+    isOpen,
+    name,
+    description,
+    chapters,
+    progress,
+    currentChapter,
+    currentTask,
+  }
+}
+
+export default connect(mapStateToProps, { toggleAvatarMenu, changeChapter })(AvatarModal)

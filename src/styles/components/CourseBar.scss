@@ -1,9 +1,26 @@
+$navBarHeight: 64px;
+$courseBarHeight: 80px;
+
 .CourseBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #5677fc;
   color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: $navBarHeight;
+  z-index: 10;
+  height: $courseBarHeight;
+
+  &-sticky-padding {
+    height: $courseBarHeight;
+  }
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+  }
 
   &-course-title, &-didyouknow {
     flex-basis: 360px;
@@ -17,14 +34,14 @@
   &-nav {
     display: flex;
     align-items: center;
-    padding: 0.5em;
     width: 480px;
+    background: rgba(255, 255, 255, 0.1);
 
     &-button {
       border: none;
       font-size: 2em;
       background: transparent;
-      color: rgba(255, 255, 255, 0.3);
+      color: rgba(38, 50, 56, 1);
       cursor: pointer;
       width: 64px;
       flex: none;
@@ -32,20 +49,21 @@
       user-select: none;
 
       &:hover {
-        color: rgba(255, 255, 255, 0.85);
+        color: rgba(69, 90, 100, 1);
       }
 
       &-disabled {
         pointer-events: none;
-        color: rgba(255, 255, 255, 0.1);
+        color: rgba(38, 50, 56, 0.25);
       }
 
       &-bright {
-        color: #8BC34A;
+        animation: pulsate 1s ease-in-out;
+        animation-iteration-count: infinite;
+      }
 
-        &:hover {
-          color: #AED581;
-        }
+      &-left {
+        transform: scale(-1, 1);
       }
 
       &:focus {
@@ -60,6 +78,7 @@
       flex-grow: 1;
       cursor: pointer;
       color: rgba(255, 255, 255, 0.85);
+      height: $courseBarHeight;
 
       svg {
         fill: rgba(255, 255, 255, 0.85);
@@ -87,10 +106,21 @@
 
         }
       }
+
+      .ProgressCircle {
+        width: 64px;
+        height: 64px;
+      }
     }
   }
 
   &-didyouknow {
     font-style: italic;
   }
+}
+
+@keyframes pulsate {
+  0% { transform: scale(1, 1); }
+  50% { transform: scale(1.25, 1.25); }
+  100% { transform: scale(1, 1); }
 }

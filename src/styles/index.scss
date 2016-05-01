@@ -105,10 +105,13 @@ body {
 }
 
 @import 'components/Avatar';
+@import 'components/AvatarModal';
 @import 'components/NavBar';
 @import 'components/CourseBar';
 @import 'components/Award';
 @import 'components/AwardPopup';
+@import 'components/Study';
 @import 'components/Experiment';
+@import 'components/ModalCloseButton';
 @import 'components/SizeController';
 @import 'components/Task';

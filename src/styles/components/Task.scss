@@ -1,5 +1,6 @@
-.task {
+.Task {
   padding: 1em;
+  margin: 0 auto;
 
   ul {
     list-style: none;
@@ -23,17 +24,63 @@
     }
   }
 
-  ul.navigation {
-    position: fixed;
-    right: 1em;
-    top: 128px;
+  .Introduction {
 
-    h1 {
-      font-size: 1em;
+    margin-right: 280px;
+
+    h1, h2 {
+      margin-left: 300px;
     }
 
     h2 {
-      font-size: 1em;
+      border-bottom: 1px solid #E0E0E0;
+      margin: 1em 0 0.5em 300px;
+      padding-bottom: 0.5em;
+    }
+
+    &-part {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1em;
+
+      h3 {
+        flex: 0 0 280px;
+        text-align: right;
+        margin: 0 20px 0 0;
+      }
+
+      p {
+        margin-top: 0;
+      }
+
+      p:last-child {
+        margin: 0;
+      }
+
+      &-content {
+        ul {
+          margin-left: 1em;
+          list-style: square;
+        }
+
+        h4 {
+          margin: 0 0 1em 0;
+        }
+
+        &-example {
+          padding: 1em;
+          background: #BBDEFB;
+          margin-bottom: 1em;
+          border-radius: 0.5em;
+
+          &::before {
+            content: 'Example';
+            font-weight: bold;
+            margin-bottom: 1em;
+            display: block;
+          }
+        }
+      }
     }
   }
 }
