@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Experiment from './Experiment'
 import { connect } from 'react-redux'
 import { changeTask, changeChapter, completeTask } from '../actions/avatar'
 
@@ -11,10 +12,11 @@ class Task extends Component {
   static propTypes = {
     task: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
-
     changeTask: PropTypes.func.isRequired,
     changeChapter: PropTypes.func.isRequired,
     completeTask: PropTypes.func.isRequired,
+    screenHeight: PropTypes.number.isRequired,
+    screenWidth: PropTypes.number.isRequired,
   };
 
   componentWillMount() {
@@ -49,7 +51,7 @@ class Task extends Component {
   };
 
   render() {
-    const { task } = this.props
+    const { task, screenHeight, screenWidth } = this.props
 
     if (!task) {
       return null
@@ -58,7 +60,15 @@ class Task extends Component {
     return (
       <div className="Task">
         <CourseBar />
-        {task.html}
+        {task.type === 'overview'
+          ? task.html
+          : <Experiment
+            title={task.name}
+            screenHeight={screenHeight}
+            screenWidth={screenWidth}
+            instructions={task.html}
+          />
+        }
       </div>
     )
   }
@@ -72,6 +82,8 @@ const mapStateToProps = (state) => {
 
   return {
     task,
+    screenHeight: state.screenSize.height,
+    screenWidth: state.screenSize.width,
   }
 }
 

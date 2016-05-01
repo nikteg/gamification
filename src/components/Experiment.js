@@ -23,8 +23,6 @@ class Experiment extends Component {
     const { instructions, screenHeight, screenWidth, title } = this.props
     const dividerPosition = this.dividerPosition
 
-    console.log(this.props)
-
     return (
       <div className="Experiment" style={{ minHeight: screenHeight - 80 }}>
 
@@ -44,7 +42,7 @@ class Experiment extends Component {
 }
 
 Experiment.propTypes = {
-  instructions: PropTypes.string.isRequired,
+  instructions: PropTypes.object.isRequired,
   screenWidth: PropTypes.number.isRequired,
   screenHeight: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,

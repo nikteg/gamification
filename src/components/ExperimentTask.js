@@ -5,8 +5,8 @@ import Graph from './Graph/index'
 const ExperimentTask = ({ width }) => (
   <Motion style={{ width: spring(width) }}>
     {({ width }) =>
-      <div className="main" style={{ width }}>
-        <h1 className="title">Explore</h1>
+      <div className="Experiment-main" style={{ width }}>
+        <h1 className="Experiment-title">Explore</h1>
         { width > 300 && <Graph width={width} />}
       </div>
     }

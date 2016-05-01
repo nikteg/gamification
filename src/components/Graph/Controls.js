@@ -26,7 +26,6 @@ class Controls extends Component {
 
     const hasData = Object.keys(data).length > 0
     const hasSelectedData = Object.keys(selectedData).length > 0
-    console.log(selectedData)
 
     return (
       <div className="Controls">

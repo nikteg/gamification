@@ -1,5 +1,8 @@
 import React from 'react'
 import ExperimentContainer from '../../../../containers/ExperimentContainer'
+import Exercise2 from './exercise2'
+import Exercise3 from './exercise3'
+import Exercise4 from './exercise4'
 
 import TeX from '../../../../components/TeX'
 
@@ -237,25 +240,19 @@ export default {
       ),
     },
     {
-      name: 'Conduct the experiment',
+      name: 'Choosing a subject to observe',
       type: 'exercise',
-      html: (
-        <ExperimentContainer />
-      ),
+      html: <Exercise2 />,
     },
     {
       name: 'Approximation',
       type: 'exercise',
-      html: (
-        <ExperimentContainer />
-      ),
+      html: <Exercise3 />,
     },
     {
       name: 'Standard Normal',
       type: 'exercise',
-      html: (
-        <ExperimentContainer />
-      ),
+      html: <Exercise4 />,
     },
   ],
 }
