@@ -41,7 +41,7 @@ class AvatarModal extends Component {
   };
 
   render() {
-    const { isOpen, name, chapters, progress, currentChapter, currentTask, toggleAvatarMenu } = this.props
+    const { isOpen, name, chapters, progress, currentChapter, toggleAvatarMenu } = this.props
 
     return (
       <Modal isOpen={isOpen} onRequestClose={toggleAvatarMenu} style={modalStyle}>

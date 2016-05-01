@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, IndexRoute, Redirect, Link } from 'react-router'
+import { Route, IndexRoute, Link } from 'react-router'
 import HomeContainer from '../containers/HomeContainer'
 import NotFound from '../components/NotFound'
 import ExperimentContainer from '../containers/ExperimentContainer'
