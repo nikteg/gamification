@@ -1,3 +1,7 @@
+.Controls {
+  margin-bottom: 30px;
+}
+
 .Slider {
   margin: 20px 0;
   height: 40px;
@@ -27,11 +31,16 @@
   border-radius: 5px;
   color: white;
   font: inherit;
-  margin-left: 20px;
   height: 40px;
   line-height: 40px;
   position: relative;
   text-align: center;
   width: 160px;
+
+  &:last-of-type,
+  & + & {
+    margin-left: 20px;
+  }
+
 }
 

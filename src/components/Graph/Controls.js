@@ -14,11 +14,22 @@ class Controls extends Component {
 
   render() {
     const { samplesToAdd } = this.state
-    const { data, addSamples, toggleBars, clearGraph, showBars } = this.props
+    const {
+      data,
+      selectedData,
+      deselectData,
+      addSamples,
+      toggleBars,
+      clearGraph,
+      showBars,
+    } = this.props
+
     const hasData = Object.keys(data).length > 0
+    const hasSelectedData = Object.keys(selectedData).length > 0
+    console.log(selectedData)
 
     return (
-      <div>
+      <div className="Controls">
         <div className="Slider">
 
           <Slider
@@ -49,11 +60,19 @@ class Controls extends Component {
           </button>
           }
 
+          { hasSelectedData && <button
+            className="Controls-button"
+            onClick={() => deselectData()}
+          >
+            Deselect Bars
+          </button>
+          }
+
           { hasData && <button
             className="Controls-button"
             onClick={() => clearGraph()}
           >
-            Reset
+            Reset Graph
           </button>
           }
         </div>
@@ -65,6 +84,8 @@ class Controls extends Component {
 
 Controls.propTypes = {
   data: PropTypes.object.isRequired,
+  selectedData: PropTypes.object.isRequired,
+  deselectData: PropTypes.func.isRequired,
   addSamples: PropTypes.func.isRequired,
   toggleBars: PropTypes.func.isRequired,
   clearGraph: PropTypes.func.isRequired,

@@ -1,7 +1,16 @@
-import d3 from 'd3'
-import colors from '../../helpers/colors'
+import _ from 'lodash'
 
-export function drawBars(node, graphSize, domain, data, isVisible) {
+export function drawBars(
+  node,
+  id,
+  graphSize,
+  domain,
+  data,
+  selectedData,
+  isVisible,
+  colors,
+  handleClick
+) {
   const bars = []
 
   for (let i = domain.x.min; i < domain.x.max; i++) {
@@ -11,7 +20,6 @@ export function drawBars(node, graphSize, domain, data, isVisible) {
   }
 
   const barWidth = graphSize.width / bars.length
-  console.log(barWidth)
   const barHeight = graphSize.height / domain.y.max
 
   node
@@ -19,17 +27,35 @@ export function drawBars(node, graphSize, domain, data, isVisible) {
     .data(bars)
     .enter()
     .append('rect')
-    .attr('fill', colors.green)
-    .attr('stroke', '#000')
-    .attr('opacity', isVisible ? 1 : 0)
-    .attr('x', function(d, i) {
-      return (i * (barWidth - 2)) + 2
+    .attr('class', 'set-' + id)
+    .attr('fill', (d, i) => {
+      if (Object.keys(selectedData).length > 0) {
+        const { start, end } = selectedData
+        return (start <= i && i <= end) ? colors.selected.fill : colors.fill
+      }
+      return colors.fill
     })
-    .attr('y', function(d, i) {
+    .attr('stroke', (d, i) => {
+      if (Object.keys(selectedData).length > 0) {
+        const { start, end } = selectedData
+        return (start <= i && i <= end) ? colors.selected.stroke : colors.stroke
+      }
+      return colors.stroke
+    })
+    .attr('opacity', isVisible ? 1 : 0)
+    .attr('x', (d, i) => {
+      return i * barWidth
+    })
+    .attr('y', (d, i) => {
       return graphSize.height - (d * barHeight)
     })
-    .attr('width', barWidth)
-    .attr('height', function(d) {
+    .attr('width', barWidth - 2)
+    .attr('height', (d) => {
       return d * barHeight
     })
+    .on('click', handleClick)
 }
+
+export function changeColor() {
+}
+

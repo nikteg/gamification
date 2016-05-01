@@ -1,10 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import d3 from 'd3'
-import ReactFauxDOM from 'react-faux-dom'
 import Controls from './Controls'
+import colorPalette from '../../helpers/colors'
 import { createGraph } from './area.js'
-import { createAxis } from './axis.js'
-import bars from './bars.js'
 import './styles/Graph.scss'
 
 class Graph extends Component {
@@ -13,7 +10,18 @@ class Graph extends Component {
 
     this.state = {
       data: {},
+      selectedData: {},
       showBars: true,
+      colors: {
+        bars: {
+          fill: 'transparent',
+          stroke: colorPalette.orange,
+          selected: {
+            fill: colorPalette.green,
+            stroke: '#000000',
+          },
+        },
+      },
       domain: {
         x: {
           label: '',
@@ -26,8 +34,9 @@ class Graph extends Component {
           max: 15,
         },
       },
-
     }
+
+    this.handleBarClick = this.handleBarClick.bind(this)
   }
 
   generateSamples(samplesToGenerate) {
@@ -36,8 +45,6 @@ class Graph extends Component {
 
     for (let i = 0; i < samplesToGenerate; i++) {
       const value = Math.floor(Math.random() * (domain.x.max - domain.x.min)) + domain.x.min
-      console.log(value)
-
       const currentValue = data[value]
       newData[value] = currentValue ? currentValue + 1 : 1
     }
@@ -50,14 +57,25 @@ class Graph extends Component {
     })
   }
 
+  handleBarClick(d, i) {
+    this.setState({
+      selectedData: {
+        start: 0,
+        end: i,
+      },
+    })
+  }
+
   render() {
-    const { data, domain, showBars } = this.state
+    const { data, selectedData, domain, colors, showBars } = this.state
     const { width } = this.props
     const margin = { top: 20, right: 50, bottom: 30, left: 80 }
 
     const graph = createGraph({ width, height: 400 }, margin, domain)
       .addAxises()
-      .addBars(data, showBars)
+      .addData(1, data)
+      .addBars(1, showBars, colors.bars, this.handleBarClick, selectedData)
+      .addLine(1, showBars)
 
     return (
       <div>
@@ -66,11 +84,14 @@ class Graph extends Component {
         <div style={{ marginLeft: margin.left, marginRight: margin.right }}>
           <Controls
             data={data}
+            selectedData={selectedData}
+            deselectData={() => this.setState({ selectedData: {} })}
             addSamples={(samplesToAdd) => this.generateSamples(samplesToAdd)}
             showBars={showBars}
             toggleBars={() => this.setState({ showBars: !showBars })}
             clearGraph={() => this.setState({
               data: {},
+              selectedData: {},
               showBars: true,
             })}
           />
