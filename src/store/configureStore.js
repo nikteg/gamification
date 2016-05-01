@@ -16,7 +16,7 @@ export default function configureStore({ initialState = {}, history }) {
 
   // Compose final middleware and use devtools in debug environment
   let middleware = applyMiddleware(thunk, routerMiddleware)
-  if (__DEBUG__) middleware = withDevTools(middleware)
+  // if (__DEBUG__) middleware = withDevTools(middleware)
 
   // Create final store and subscribe router in debug env ie. for devtools
   const store = middleware(createStore)(rootReducer, initialState)
