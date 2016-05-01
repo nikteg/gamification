@@ -4,18 +4,16 @@ import { Motion, spring } from 'react-motion'
 import Modal from 'react-modal'
 
 import Award from './Award'
+import ModalCloseButton from './ModalCloseButton'
 
 import { hideAwardPopup } from '../actions/awards'
 
-const modalStyle = (y, opacity) => ({
+const modalStyle = (y) => ({
   overlay: {
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    opacity: opacity,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    zIndex: 11,
   },
   content: {
-    backgroundColor: '#263238',
-    border: 'none',
-    boxShadow: '0 0 16px rgba(0, 0, 0, 0.25)',
     width: '480px',
     bottom: 'auto',
     left: '50%',
@@ -42,13 +40,11 @@ class AwardPopup extends Component {
     }
 
     return (
-      <Motion defaultStyle={{ y: -200, opacity: 0 }} style={{ y: spring(0, { stiffness: 200, damping: 15 }), opacity: spring(1) }}>
-        {({ y, opacity }) =>
-          <Modal isOpen onRequestClose={hideAwardPopup} style={modalStyle(y, opacity)}>
+      <Motion defaultStyle={{ y: -200 }} style={{ y: spring(0, { stiffness: 200, damping: 15 }) }}>
+        {({ y }) =>
+          <Modal isOpen onRequestClose={hideAwardPopup} style={modalStyle(y)}>
             <div className="AwardPopup">
-              <svg viewBox="0 0 24 24" className="AwardPopup-close" onClick={hideAwardPopup}>
-                <path d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
-              </svg>
+              <ModalCloseButton onClick={hideAwardPopup} />
               <div className="AwardPopup-title">Congrats!</div>
               <div className="AwardPopup-subtitle">New achievement</div>
               <Award award={award} />

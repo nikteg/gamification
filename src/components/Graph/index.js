@@ -75,7 +75,7 @@ class Graph extends Component {
       .addAxises()
       .addData(1, data)
       .addBars(1, showBars, colors.bars, this.handleBarClick, selectedData)
-      .addLine(1, showBars)
+      // .addLine(1, showBars)
 
     return (
       <div>

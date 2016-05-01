@@ -2,40 +2,23 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import ProgressCircle from './ProgressCircle'
 
-// import Modal from 'react-modal'
-
-// <Modal isOpen={avatarMenu} onRequestClose={toggleAvatarMenu} style={customStyles}>
-//   <div className="avatar-modal">
-//     <h1>{course.name}</h1>
-//     {this.menu()}
-//   </div>
-// </Modal>
-
-// const customStyles = {
-//   overlay: {
-//     backgroundColor: 'rgba(0, 0, 0, 0.75)',
-//   },
-//   content: {
-//     top: '50%',
-//     left: '50%',
-//     right: 'auto',
-//     bottom: 'auto',
-//     marginRight: '-50%',
-//     transform: 'translate(-50%, -50%)',
-//   },
-// }
-
 class Avatar extends Component {
   static propTypes = {
-    task: PropTypes.object.isRequired,
+    chapterProgress: PropTypes.array.isRequired,
   };
 
   render() {
-    const { task } = this.props
+    const { chapterProgress } = this.props
+
+    let progress = 0
+
+    if (chapterProgress) {
+      progress = chapterProgress.reduce((progress, done) => progress + (done ? 1 : 0), 0) / chapterProgress.length
+    }
 
     return (
       <div className="Avatar">
-        <ProgressCircle progress={task.progress / 100} type={task.type} />
+        <ProgressCircle progress={progress} type={'info'} />
       </div>
     )
   }

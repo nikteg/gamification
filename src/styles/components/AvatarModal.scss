@@ -1,0 +1,44 @@
+.AvatarModal {
+  text-align: center;
+  max-width: 800px;
+  position: relative;
+
+  &-title {
+    font-size: 2em;
+    padding: 0.5em 1em 1em;
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 0.5em;
+  }
+
+  &-chapters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &-avatar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      flex: 0 0 128px;
+      margin: 1em 0;
+      color: #1D1F21;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &-title {
+        margin-top: 0.5em;
+        font-size: 13px;
+        line-height: 1.5em;
+      }
+
+      &-active {
+        .AvatarModal-chapters-avatar-title {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
