@@ -72,12 +72,6 @@ class CourseBar extends Component {
     } else if (this.state.sticky) {
       this.setState({ sticky: false })
     }
-
-    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-      if (this.props.task.type === 'overview') {
-        this.props.completeTask()
-      }
-    }
   };
 
   navigate = (relativeIndex) => {
