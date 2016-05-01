@@ -66,7 +66,9 @@ class Task extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const task = COURSES_DATA[state.course.courseID].chapters[state.course.currentChapter].tasks[state.course.currentTask]
+  const task = COURSES_DATA[state.course.courseID]
+    .chapters[state.course.currentChapter]
+    .tasks[state.course.currentTask]
 
   return {
     task,

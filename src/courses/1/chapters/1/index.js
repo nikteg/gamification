@@ -1,4 +1,5 @@
 import React from 'react'
+import ExperimentContainer from '../../../../containers/ExperimentContainer'
 
 import TeX from '../../../../components/TeX'
 
@@ -236,12 +237,24 @@ export default {
       ),
     },
     {
-      name: 'Something else',
+      name: 'Conduct the experiment',
       type: 'exercise',
       html: (
-        <div className="Introduction">
-          All of my wats
-        </div>
+        <ExperimentContainer />
+      ),
+    },
+    {
+      name: 'Approximation',
+      type: 'exercise',
+      html: (
+        <ExperimentContainer />
+      ),
+    },
+    {
+      name: 'Standard Normal',
+      type: 'exercise',
+      html: (
+        <ExperimentContainer />
       ),
     },
   ],

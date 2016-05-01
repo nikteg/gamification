@@ -43,7 +43,14 @@ class Chapter extends Component {
         <h1 className="Chapter-title">{chapter.name}</h1>
         <h2 className="Chapter-title-tasks">Tasks</h2>
         <ul>
-          {chapter.tasks.map((task, i) => <li><Link to={`${location.pathname}/${task.type}/${i + 1}`}>{task.name}</Link>{chapterProgress[i] && ' Done!'}</li>)}
+          {chapter.tasks.map((task, i) => (
+            <li>
+              <Link to={`${location.pathname}/${task.type}/${i + 1}`}>
+                {task.name}
+              </Link>
+              {chapterProgress[i] && ' Done!'}
+            </li>
+          ))}
         </ul>
       </div>
     )
