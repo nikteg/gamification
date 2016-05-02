@@ -10,18 +10,15 @@ export default () => (
 		<ol>
 			<li>Expectation</li>
 			<li>Standard deviation</li>
-      <p>Once that is calculated, we can use the definition below to calculate the probability density for any value x.</p>
-	  <h4>Definition of the probability density function</h4>
+		</ol>
+		<p>Once that is calculated, we can use the definition below to calculate the probability density for any value x.</p>
+		<h4>Definition of the probability density function</h4>
 		<p>A random variable with the density:</p>
-		<p><TeX data={'f(x) = \\frac{1}{\\sqrt(2\\pi\\sigma)}e^{1/2((x-\\mu/)\\sigma)^2}'} /></p>
-		<p><TeX data={'-\\infty < \\mu < \\infty'}/></p>
-        <p><TeX data={'-\\infty < x < \\infty'}/></p>
-		<p><TeX data={'0 < \\sigma'}/></p>
+		<p>[Insert formulas]</p>
     </div>
 
     <div className="Experiment-part">
-      <h3 className="Experiment-subTitle">This experiment</h3>
-		
+		<h3 className="Experiment-subTitle">This experiment</h3>
 		<p>[Interactive graph hidden]
 		[Give a random sample with a size of 100, grouped by frequency and x value]</p>
 		<p>First we calculate the expectation of our random sample using the data provided above:</p>
