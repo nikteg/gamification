@@ -7,8 +7,11 @@ import Root from './containers/Root'
 import configureStore from './store/configureStore'
 import { resizeScreen } from './actions/screen'
 import { loginSuccess, logoutUser } from './actions/auth'
+import { showAwardPopup } from './actions/awards'
 import decode from 'jwt-decode'
 import moment from 'moment'
+
+import * as AwardTypes from './constants/AwardTypes'
 
 const historyConfig = { basename: __BASENAME__ }
 const history = useRouterHistory(createHistory)(historyConfig)
@@ -35,6 +38,32 @@ if (token !== null) {
     store.dispatch(logoutUser())
   }
 }
+
+let allTasksDone = false
+
+store.subscribe(() => {
+  if (allTasksDone) {
+    return
+  }
+
+  const state = store.getState()
+
+  const { currentChapter, currentTask, progress } = state.course
+
+  if (currentChapter == null || currentTask == null) {
+    return
+  }
+
+  allTasksDone = progress[currentChapter].every(done => done)
+
+  if (allTasksDone) {
+    setTimeout(() => store.dispatch(showAwardPopup({
+      name: 'Beginner\'s luck!',
+      type: AwardTypes.CHILD,
+      date: new Date(),
+    })), 1000)
+  }
+})
 
 ReactDOM.render(
   <Root history={history} routes={routes} store={store} />,

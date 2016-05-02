@@ -127,9 +127,8 @@ class CourseBar extends Component {
   };
 
   render() {
-    const { name, chapters, chapterProgress, chapter, task, currentChapter, currentTask, toggleAvatarMenu } = this.props
+    const { name, chapterProgress, chapter, task, currentTask, toggleAvatarMenu } = this.props
 
-    const numChapters = chapters.length
     const numTasks = chapter && chapter.tasks.length || 0
 
     const prevDisabled = !task || currentTask === 0
