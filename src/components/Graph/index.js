@@ -69,7 +69,7 @@ class Graph extends Component {
   render() {
     const { data, selectedData, domain, colors, showBars } = this.state
     const { width } = this.props
-    const margin = { top: 20, right: 50, bottom: 30, left: 80 }
+    const margin = { top: 20, right: 30, bottom: 30, left: 40 }
 
     const graph = createGraph({ width, height: 400 }, margin, domain)
       .addAxises()
