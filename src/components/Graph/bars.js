@@ -42,7 +42,7 @@ export function drawBars(
     })
     .attr('opacity', isVisible ? 1 : 0)
     .attr('x', (d, i) => {
-      return i * barWidth
+      return (i * barWidth) - (barWidth / 2) + 1
     })
     .attr('y', (d, i) => {
       return graphSize.height - (d * barHeight)

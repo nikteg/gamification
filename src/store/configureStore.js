@@ -1,14 +1,7 @@
-import { applyMiddleware, compose, createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 import { syncHistory } from 'redux-simple-router'
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers/rootReducer'
-
-function withDevTools(middleware) {
-  const devTools = window.devToolsExtension
-    ? window.devToolsExtension()
-    : require('../components/DevTools').instrument()
-  return compose(middleware, devTools)
-}
 
 export default function configureStore({ initialState = {}, history }) {
   // Sync with router via history instance (main.js)

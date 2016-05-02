@@ -44,15 +44,24 @@ class Controls extends Component {
           <button
             className="Controls-button"
             onClick={() => addSamples(samplesToAdd)}
+            style={{ width: 213 }}
           >
-            {`Add ${samplesToAdd} ${samplesToAdd > 1 ? 'samples' : 'sample'}`}
+            {`Generate ${samplesToAdd} ${samplesToAdd > 1 ? 'samples' : 'sample'}`}
           </button>
 
         </div>
 
         <div>
           { hasData && <button
-            className="Controls-button"
+            className="Controls-button--small"
+            onClick={() => clearGraph()}
+          >
+            Reset Graph
+          </button>
+          }
+
+          { hasData && <button
+            className="Controls-button--small"
             onClick={() => toggleBars()}
           >
             {`${showBars ? 'Hide' : 'Show'} Bars`}
@@ -60,18 +69,10 @@ class Controls extends Component {
           }
 
           { hasSelectedData && <button
-            className="Controls-button"
+            className="Controls-button--small"
             onClick={() => deselectData()}
           >
             Deselect Bars
-          </button>
-          }
-
-          { hasData && <button
-            className="Controls-button"
-            onClick={() => clearGraph()}
-          >
-            Reset Graph
           </button>
           }
         </div>

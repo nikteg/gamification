@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Controls from './Controls'
+import GraphInfo from './GraphInfo'
+import gaussian from 'gaussian'
 import colorPalette from '../../helpers/colors'
 import { createGraph } from './area.js'
 import './styles/Graph.scss'
@@ -12,6 +14,8 @@ class Graph extends Component {
       data: {},
       selectedData: {},
       showBars: true,
+      mean: 180,
+      variance: 50,
       colors: {
         bars: {
           fill: 'transparent',
@@ -40,12 +44,18 @@ class Graph extends Component {
   }
 
   generateSamples(samplesToGenerate) {
-    const { data, domain } = this.state
+    const { mean, variance } = this.state
+    const distribution = gaussian(mean, variance)
+
+    const { data } = this.state
     const newData = {}
 
     for (let i = 0; i < samplesToGenerate; i++) {
-      const value = Math.floor(Math.random() * (domain.x.max - domain.x.min)) + domain.x.min
-      const currentValue = data[value]
+      const value = distribution
+        .ppf(Math.random())
+        .toFixed(0)
+
+      const currentValue = newData[value] ? newData[value] : data[value]
       newData[value] = currentValue ? currentValue + 1 : 1
     }
 
@@ -67,7 +77,7 @@ class Graph extends Component {
   }
 
   render() {
-    const { data, selectedData, domain, colors, showBars } = this.state
+    const { data, mean, variance, selectedData, domain, colors, showBars } = this.state
     const { width } = this.props
     const margin = { top: 20, right: 30, bottom: 30, left: 40 }
 
@@ -95,6 +105,14 @@ class Graph extends Component {
               showBars: true,
             })}
           />
+
+        <GraphInfo
+          data={data}
+          domain={domain}
+          mean={mean}
+          variance={variance}
+        />
+
         </div>
       </div>
     )

@@ -1,5 +1,4 @@
 import React from 'react'
-import ExperimentContainer from '../../../../containers/ExperimentContainer'
 import Exercise2 from './exercise2'
 import Exercise3 from './exercise3'
 import Exercise4 from './exercise4'

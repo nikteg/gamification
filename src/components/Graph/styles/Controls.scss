@@ -3,7 +3,7 @@
 }
 
 .Slider {
-  margin: 20px 0;
+  margin: 20px 0 30px 0;
   height: 40px;
   display: flex;
 }
@@ -11,7 +11,7 @@
 .Slider-slider {
   position: relative;
   top: 18px;
-  width: 400px!important;
+  width: 300px!important;
 }
 
 .Slider-value {
@@ -34,13 +34,26 @@
   height: 40px;
   line-height: 40px;
   position: relative;
+  padding: 0 20px;
   text-align: center;
-  width: 160px;
 
   &:last-of-type,
   & + & {
     margin-left: 20px;
   }
+}
 
+.Controls-button--small {
+  @extend .Controls-button;
+  background: #888;
+  border-color: #444;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 15px;
+
+  &:last-of-type,
+  & + & {
+    margin-left: 15px;
+  }
 }
 
