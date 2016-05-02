@@ -95,7 +95,7 @@ export default {
               <h4>Definition of the probability density function</h4>
               <p>A random variable with the density:</p>
 
-              <p><TeX data={'f(x) = \\frac{1}{\\sqrt(2\\pi\\sigma)}e^{1/2((x-\\mu/)\\sigma)^2}'} /></p>
+              <p><TeX data={'f(x) = \\frac{1}{\\sqrt(2\\pi\\sigma)}e^{1/2((x-\\mu)\\sigma)^2}'} /></p>
 
               <p><TeX data={'-\\infty < \\mu < \\infty'}/></p>
               <p><TeX data={'-\\infty < x < \\infty'}/></p>
