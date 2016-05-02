@@ -21,7 +21,7 @@ class Chapter extends Component {
 
   componentWillMount() {
     this.props.changeChapter(this.props.params.chapterID - 1)
-    this.props.changeTask(0)
+    this.props.changeTask(null)
   }
 
   componentWillReceiveProps(nextProps) {

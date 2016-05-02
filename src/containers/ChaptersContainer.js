@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
 import Chapters from '../components/Chapters'
 
+import { changeTask, changeChapter } from '../actions/avatar'
+
 import COURSES_DATA from '../courses'
 
 const mapStateToProps = (state) => {
@@ -15,4 +17,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Chapters)
+export default connect(mapStateToProps, { changeTask, changeChapter })(Chapters)

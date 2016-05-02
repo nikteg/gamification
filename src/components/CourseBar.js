@@ -110,15 +110,10 @@ class CourseBar extends Component {
     this.navigate(1)
   };
 
-  render() {
-    const { name, chapters, chapterProgress, chapter, task, currentChapter, currentTask, toggleAvatarMenu } = this.props
-
-    const numChapters = chapters.length
-    const numTasks = chapter.tasks.length
-
+  taskTitle = (task) => {
     let taskTitle = task.name
 
-    if (task.type != null) {
+    if (task.type) {
       const taskPrefix = {
         'exercise': 'Exercise',
         'experiment': 'Experiment',
@@ -128,8 +123,17 @@ class CourseBar extends Component {
       taskTitle = `${taskPrefix}: ${task.name}`
     }
 
-    const prevDisabled = currentChapter === 0 && currentTask === 0
-    const nextDisabled = currentChapter === numChapters - 1 && currentTask === numTasks - 1
+    return taskTitle
+  };
+
+  render() {
+    const { name, chapters, chapterProgress, chapter, task, currentChapter, currentTask, toggleAvatarMenu } = this.props
+
+    const numChapters = chapters.length
+    const numTasks = chapter && chapter.tasks.length || 0
+
+    const prevDisabled = !task || currentTask === 0
+    const nextDisabled = !task || currentTask === numTasks - 1
 
     const courseColor = '#5677fc'
 
@@ -138,7 +142,7 @@ class CourseBar extends Component {
         <div className={classnames('CourseBar', { 'sticky': this.state.sticky })} style={{ backgroundColor: courseColor }}>
           <AwardPopup />
           <div className="CourseBar-course-title">{name}</div>
-          <div className="CourseBar-nav">
+          {chapter && <div className="CourseBar-nav">
             <button
               className={classnames('CourseBar-nav-button CourseBar-nav-button-left', { 'CourseBar-nav-button-disabled': prevDisabled })}
               title="Go back"
@@ -147,17 +151,17 @@ class CourseBar extends Component {
               <Avatar chapter={chapter} chapterProgress={chapterProgress} />
               <div className="CourseBar-nav-avatarbox-info">
                 <span className="CourseBar-nav-avatarbox-info-course-title">{chapter.name}</span>
-                <span className="CourseBar-nav-avatarbox-info-task-title">{taskTitle}{task.done && ' ✓'}</span>
+                {task && <span className="CourseBar-nav-avatarbox-info-task-title">{this.taskTitle(task)}{task.done && ' ✓'}</span>}
               </div>
             </div>
             <button
               className={classnames('CourseBar-nav-button CourseBar-nav-button-right', {
                 'CourseBar-nav-button-disabled': nextDisabled,
-                'CourseBar-nav-button-bright': task.done,
+                'CourseBar-nav-button-bright': task && task.done,
               })}
               title="Go forward"
               onClick={this.nextTask}>►</button>
-          </div>
+          </div>}
           <div className="CourseBar-didyouknow">{'Did you know?'}</div>
         </div>
         <div className="CourseBar-sticky-padding" />
@@ -167,13 +171,13 @@ class CourseBar extends Component {
 
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   const { courseID, currentChapter, currentTask, progress } = state.course
   const { name, description, chapters } = COURSES_DATA[courseID]
 
-  const chapter = chapters[currentChapter]
-  const task = chapter.tasks[currentTask]
-  const chapterProgress = progress[currentChapter]
+  const chapter = currentChapter != null && chapters[currentChapter]
+  const task = currentTask != null && chapter.tasks[currentTask]
+  const chapterProgress = currentChapter != null && progress[currentChapter]
 
   return {
     name,

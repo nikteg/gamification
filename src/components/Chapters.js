@@ -1,34 +1,50 @@
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { calcProgress } from '../selectors/chapter-progress.js'
 import ChapterBox from './ChapterBox'
 import CourseBar from './CourseBar'
 
 import '../styles/chapters.scss'
 
-const Chapters = ({ name, description, chapters, location }) => (
-  <div className="Chapters">
+class Chapters extends Component {
 
-    <CourseBar />
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    chapters: PropTypes.array.isRequired,
+    location: PropTypes.object.isRequired,
 
-    <div className="Chapters-container">
-      {chapters.map((chapter, i) => (
-        <ChapterBox
-          key={i}
-          number={i + 1}
-          title={chapter.name}
-          finished={calcProgress(chapter)}
-          url={`${location.pathname}/chapter/${i + 1}`}
-        />
-      ))}
-    </div>
+    changeTask: PropTypes.func.isRequired,
+    changeChapter: PropTypes.func.isRequired,
+  };
 
-  </div>
-)
+  componentDidMount() {
+    this.props.changeChapter(null)
+    this.props.changeTask(null)
+  }
 
-Chapters.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  chapters: PropTypes.array.isRequired,
+  render() {
+    const { chapters, location } = this.props
+
+    return (
+      <div className="Chapters">
+
+        <CourseBar />
+
+        <div className="Chapters-container">
+          {chapters.map((chapter, i) => (
+            <ChapterBox
+              key={i}
+              number={i + 1}
+              title={chapter.name}
+              finished={calcProgress(chapter)}
+              url={`${location.pathname}/chapter/${i + 1}`}
+            />
+          ))}
+        </div>
+
+      </div>
+    )
+  }
 }
 
 export default Chapters

@@ -12,7 +12,7 @@ class NavBar extends Component {
   render() {
     const { course } = this.props
 
-    const courseColor = course.started && '#5677fc' || '#37474F'
+    const courseColor = '#5677fc'
 
     return (
       <div className="NavBar">
@@ -20,7 +20,7 @@ class NavBar extends Component {
         <div className="NavBar-logo">Gejmifü</div>
         <div className="NavBar-nav">
           <Link to="/" onlyActiveOnIndex className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Dashboard</Link>
-          <Link to={course.started ? '/study/mathematical-statistics' : '/study'} className="NavBar-nav-link" activeStyle={{ backgroundColor: courseColor, color: 'white' }}>Study</Link>
+          <Link to="/study/mathematical-statistics" className="NavBar-nav-link" activeStyle={{ backgroundColor: courseColor, color: 'white' }}>Study</Link>
           <Link to="/users" className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Members</Link>
           <Link to="/tex" className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">TeX Test</Link>
         </div>
