@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, IndexRoute, Link } from 'react-router'
-import DashboardContainer from '../containers/DashboardContainer'
+import Dashboard from '../components/Dashboard'
 import NotFound from '../components/NotFound'
 import ExperimentContainer from '../containers/ExperimentContainer'
 import Chart from '../containers/ChartContainer'
@@ -34,7 +34,7 @@ export default (
     <Route path="experiment" component={ExperimentContainer} />
     <Route path="chapters" component={ChaptersContainer} />
     <Route path="404" component={NotFound} />
-    <Route path="dashboard" component={requireAuth(DashboardContainer)} />
+    <Route path="dashboard" component={requireAuth(Dashboard)} />
     <Route path="study">
       <IndexRoute component={requireAuth(Study)} />
       <Route path=":courseSlug">
