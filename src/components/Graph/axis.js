@@ -8,10 +8,10 @@ export function createAxis(DOMNode, graphSize, domain, data) {
 
   const dataArray = dataObjectToArray(data, domain)
   const maxYInData = Math.max.apply(Math, dataArray)
-  const maxY = (maxYInData > 5) ? maxYInData : domain.y.max 
+  const maxY = (maxYInData > 5) ? maxYInData : domain.y.max
 
   const yAxisScale = d3.scale.linear()
-    .domain([ domain.y.min, maxY])
+    .domain([ domain.y.min, maxY ])
     .range([ graphSize.height, 0 ])
 
   const xAxis = d3.svg.axis()

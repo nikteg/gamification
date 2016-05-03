@@ -14,7 +14,7 @@ export function drawBars(
   const bars = dataObjectToArray(data, domain)
 
   const maxYInData = Math.max.apply(Math, bars)
-  const maxY = (maxYInData > 5) ? maxYInData : domain.y.max 
+  const maxY = (maxYInData > 5) ? maxYInData : domain.y.max
 
   const barWidth = graphSize.width / bars.length
   const barHeight = graphSize.height / maxY
