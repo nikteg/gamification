@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import ExperimentInstructions from './ExperimentInstructions'
 import ExperimentTask from './ExperimentTask'
 import SizeController from './SizeController'
+import '../styles/components/Experiment.scss'
 
 class Experiment extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Experiment extends Component {
     const dividerPosition = this.dividerPosition
 
     return (
-      <div className="experiment" style={{ minHeight: screenHeight - 80 }}>
+      <div className="Experiment" style={{ minHeight: screenHeight - 80 }}>
 
         <ExperimentInstructions
           instructions={instructions}
@@ -41,7 +42,7 @@ class Experiment extends Component {
 }
 
 Experiment.propTypes = {
-  instructions: PropTypes.string.isRequired,
+  instructions: PropTypes.object.isRequired,
   screenWidth: PropTypes.number.isRequired,
   screenHeight: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,

@@ -1,14 +1,7 @@
-import { applyMiddleware, compose, createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 import { syncHistory } from 'redux-simple-router'
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers/rootReducer'
-
-function withDevTools(middleware) {
-  const devTools = window.devToolsExtension
-    ? window.devToolsExtension()
-    : require('../components/DevTools').default.instrument()
-  return compose(middleware, devTools)
-}
 
 export default function configureStore({ initialState = {}, history }) {
   // Sync with router via history instance (main.js)
@@ -16,7 +9,7 @@ export default function configureStore({ initialState = {}, history }) {
 
   // Compose final middleware and use devtools in debug environment
   let middleware = applyMiddleware(thunk, routerMiddleware)
-  if (__DEBUG__) middleware = withDevTools(middleware)
+  // if (__DEBUG__) middleware = withDevTools(middleware)
 
   // Create final store and subscribe router in debug env ie. for devtools
   const store = middleware(createStore)(rootReducer, initialState)
@@ -24,7 +17,7 @@ export default function configureStore({ initialState = {}, history }) {
 
   if (module.hot) {
     module.hot.accept('../reducers/rootReducer', () => {
-      const nextRootReducer = require('../reducers/rootReducer').default
+      const nextRootReducer = require('../reducers/rootReducer')
 
       store.replaceReducer(nextRootReducer)
     })

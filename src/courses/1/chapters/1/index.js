@@ -1,4 +1,7 @@
 import React from 'react'
+import Exercise2 from './exercise2'
+import Exercise3 from './exercise3'
+import Exercise4 from './exercise4'
 
 import TeX from '../../../../components/TeX'
 
@@ -91,7 +94,7 @@ export default {
               <h4>Definition of the probability density function</h4>
               <p>A random variable with the density:</p>
 
-              <p><TeX data={'f(x) = \\frac{1}{\\sqrt(2\\pi\\sigma)}e^{1/2((x-\\mu/)\\sigma)^2}'} /></p>
+              <p><TeX data={'f(x) = \\frac{1}{\\sqrt(2\\pi\\sigma)}e^{1/2((x-\\mu)\\sigma)^2}'} /></p>
 
               <p><TeX data={'-\\infty < \\mu < \\infty'}/></p>
               <p><TeX data={'-\\infty < x < \\infty'}/></p>
@@ -236,13 +239,19 @@ export default {
       ),
     },
     {
-      name: 'Something else',
+      name: 'Choosing a subject to observe',
       type: 'exercise',
-      html: (
-        <div className="Introduction">
-          All of my wats
-        </div>
-      ),
+      html: <Exercise2 />,
+    },
+    {
+      name: 'Approximation',
+      type: 'exercise',
+      html: <Exercise3 />,
+    },
+    {
+      name: 'Standard Normal',
+      type: 'exercise',
+      html: <Exercise4 />,
     },
   ],
 }
