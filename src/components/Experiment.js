@@ -20,7 +20,15 @@ class Experiment extends Component {
   }
 
   render() {
-    const { displayGraph, instructions, screenHeight, screenWidth, title } = this.props
+    const {
+      displayGraph,
+      instructions,
+      screenHeight,
+      screenWidth,
+      title,
+      taskNumber,
+    } = this.props
+
     const dividerPosition = this.dividerPosition
 
     return (
@@ -29,6 +37,7 @@ class Experiment extends Component {
         <ExperimentInstructions
           instructions={instructions}
           title={title}
+          taskNumber={taskNumber}
           width={dividerPosition}
         />
 
@@ -50,6 +59,7 @@ Experiment.propTypes = {
   screenWidth: PropTypes.number.isRequired,
   screenHeight: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
+  taskNumber: PropTypes.number.isRequired,
 }
 
 export default Experiment

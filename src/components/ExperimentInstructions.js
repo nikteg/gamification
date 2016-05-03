@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react'
+import { Link } from 'react-router'
 import { Motion, spring } from 'react-motion'
+import '../styles/components/Experiment.scss'
 
-const ExperimentInstructions = ({ instructions, title, width }) => (
+const ExperimentInstructions = ({ instructions, title, width, taskNumber }) => (
   <Motion style={{ width: spring(width), opacity: spring(width > 300 ? 1 : 0) }}>
     {({ opacity, width }) =>
       <div className="Experiment-sidebar" style={{ width, opacity }}>
@@ -10,7 +12,14 @@ const ExperimentInstructions = ({ instructions, title, width }) => (
 
         <div className="Experiment-content">{instructions}</div>
 
-        <button>Continue</button>
+        { taskNumber < 4 && (
+          <Link
+            className="Experiment-button"
+            to={`/study/mathematical-statistics/chapter/1/experiment/${taskNumber + 1}`}
+          >
+            Continue
+          </Link>
+        )}
 
       </div>
     }
@@ -20,6 +29,7 @@ const ExperimentInstructions = ({ instructions, title, width }) => (
 ExperimentInstructions.propTypes = {
   title: PropTypes.string.isRequired,
   instructions: PropTypes.object.isRequired,
+  taskNumber: PropTypes.number.isRequired,
 }
 
 export default ExperimentInstructions
