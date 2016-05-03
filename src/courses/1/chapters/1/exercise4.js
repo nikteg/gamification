@@ -14,7 +14,7 @@ export default () => (
 		</ol>
 		<p>Once that is calculated, we can use the definition below to calculate the probability density for any value x.</p>
 		<div className = "Experiment-formula">
-    	<b>Definition of the probability density function</b>
+      <b>Definition of the probability density function</b>
       <p>A random variable with the density:</p>
       <p><TeX data={'f(x) = \\frac{1}{\\sqrt(2\\pi\\sigma)}e^{1/2((x-\\mu)\\sigma)^2}'} /></p>
       <p><TeX data={'-\\infty < \\mu < \\infty'}/></p>

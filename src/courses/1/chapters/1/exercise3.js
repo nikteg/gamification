@@ -21,7 +21,7 @@ export default () => (
 		<a href="http://socr.ucla.edu/docs/resources/SOCR_Data/SOCR_Data_Dinov_020108_HeightsWeights.html">Link to dataset</a>
 		<p>If you take a look at the data-set, you can see that the dataset has a size of about 20 000 measures. With some educated guesses, we conclude that the heights would probably range from about 140 to 240 cm. This means the variance is rather small in contrast to the sample size. Thus, we decide to group the values to 1 integer.</p>
 		<p>To the right we have an interactive bar chart. Use it to explore the distribution of the data with different sample sizes.</p>
-    <div className="Experiment-instructions"> 
+    <div className="Experiment-instructions">
 		<b>Graph instructions:</b>
       <ol className="List-instructions">
         <li>To add more sample units to the graph, press “Add sample units”.</li>
