@@ -29,11 +29,25 @@ class AuthBox extends Component {
     auth: PropTypes.object.isRequired,
   };
 
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired,
+  };
+
   componentDidMount() {
     // DEBUG STUFF
     if (this.usernameInput && this.passwordInput) {
       this.usernameInput.value = 'nikteg'
       this.passwordInput.value = 'test'
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated !== this.props.auth.isAuthenticated) {
+      if (nextProps.auth.isAuthenticated) {
+        this.context.router.push(`/dashboard`)
+      } else {
+        this.context.router.push(`/`)
+      }
     }
   }
 
@@ -81,7 +95,6 @@ class AuthBox extends Component {
               <p><button onClick={this.register}>Register</button></p>
             </div>
           </Modal>
-          <p>{auth.statusText}</p>
           <input type="text" ref={node => this.usernameInput = node} placeholder="Username" />
           <input type="password" ref={node => this.passwordInput = node} placeholder="Password" />
           <button onClick={this.login} disabled={auth.isAuthenticating}>Login</button>
