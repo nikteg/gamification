@@ -1,16 +1,7 @@
 import React, { PropTypes } from 'react'
+import { dataObjectToArray } from './utils'
+import gaussian from 'gaussian'
 import './styles/GraphInfo.scss'
-
-function dataObjectToArray(dataObject, domain) {
-  const array = []
-
-  for (let i = domain.x.min; i < domain.x.max; i++) {
-    const occurences = dataObject[i]
-    array[i - domain.x.min] = occurences || 0
-  }
-
-  return array
-}
 
 const GraphInfo = ({ data, selectedData, domain, mean, variance }) => {
   const dataArray = dataObjectToArray(data, domain)
@@ -38,10 +29,14 @@ const GraphInfo = ({ data, selectedData, domain, mean, variance }) => {
       (selectedData.start <= i && i <= selectedData.end)
         ? sum + ((i + domain.x.min) * next)
         : sum
-    ), 0) / totalSum
+    ), 0)
 
-  const cumulativeDistributionSample = (selectedSum / totalSum).toFixed(2)
-  const cumulativeDistributionNormal = 0
+  const cumulativeDistributionSample = (selectedSum / totalSum).toFixed(3)
+
+  const normalDistribution = gaussian(mean, variance)
+
+  const cumulativeDistributionNormal = normalDistribution.cdf()
+
   const xPosition = 0
 
   return (

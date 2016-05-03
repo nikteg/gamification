@@ -1,10 +1,8 @@
 import d3 from 'd3'
-import gaussian from 'gaussian'
+import { dataObjectToArray } from './utils'
 
-export default function(node, domain, graphSize, data, isVisible) {
-  const mean = 0.001
-  const variance = 0.001
-  const normalDistribution = gaussian(mean, variance)
+export default function(node, domain, graphSize, data, distribution, isVisible) {
+  const dataArray = dataObjectToArray(data, domain)
 
   const scaleX = d3
     .scale
@@ -18,25 +16,21 @@ export default function(node, domain, graphSize, data, isVisible) {
     .domain([ domain.y.min, domain.y.max ])
     .range([ graphSize.height, 0 ])
 
+  const sampleSize = dataArray.reduce((sum, next) => (sum + next), 0)
+
   const line = d3
     .svg
     .line()
     .interpolate('cardinal')
-    .x((d) => (scaleX(d[0]) + 20 * 2))
-    .y((d) => (scaleY(normalDistribution.pdf(d[0]))))
-
-  const bars = []
-
-  for (let i = domain.x.min; i < domain.x.max; i++) {
-    const occurences = data[i]
-
-    bars[i - domain.x.min] = occurences || 0
-  }
+    .x((d, i) => (scaleX(domain.x.min + i) + 20 * 2))
+    .y((d, i) => (
+      scaleY(distribution.pdf(domain.x.min + i) * sampleSize)
+    ))
 
   node
     .append('path')
     .attr('fill', 'none')
     .attr('stroke', 'black')
     .attr('stroke-width', 1)
-    .attr('d', line(bars))
+    .attr('d', line(dataArray))
 }

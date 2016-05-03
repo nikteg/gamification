@@ -68,12 +68,14 @@ class Graph extends Component {
   }
 
   handleBarClick(d, i) {
-    this.setState({
-      selectedData: {
-        start: 0,
-        end: i,
-      },
-    })
+    const selectedData = {}
+
+    if (this.state.selectedData.end !== i) {
+      selectedData.start = 0
+      selectedData.end = i
+    }
+
+    this.setState({ selectedData })
   }
 
   render() {
@@ -82,10 +84,10 @@ class Graph extends Component {
     const margin = { top: 20, right: 30, bottom: 30, left: 40 }
 
     const graph = createGraph({ width, height: 400 }, margin, domain)
-      .addAxises()
       .addData(1, data)
+      .addAxises(1)
       .addBars(1, showBars, colors.bars, this.handleBarClick, selectedData)
-      // .addLine(1, showBars)
+      .addLine(1, gaussian(mean, variance), showBars)
 
     return (
       <div>

@@ -24,8 +24,8 @@ export function createGraph(size, margin, domain) {
     .append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
-  const addAxises = function() {
-    createAxis(graph, graphSize, domain)
+  const addAxises = function(dataId) {
+    createAxis(graph, graphSize, domain, graphElements[dataId])
     return this
   }
 
@@ -59,8 +59,8 @@ export function createGraph(size, margin, domain) {
     return this
   }
 
-  const addLine = function(id, showLine) {
-    line(graph, domain, graphSize, graphElements[id], showLine)
+  const addLine = function(id, distribution, showLine) {
+    line(graph, domain, graphSize, graphElements[id], distribution, showLine)
 
     return this
   }

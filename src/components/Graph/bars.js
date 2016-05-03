@@ -1,3 +1,5 @@
+import { dataObjectToArray } from './utils'
+
 export function drawBars(
   node,
   id,
@@ -9,16 +11,13 @@ export function drawBars(
   colors,
   handleClick
 ) {
-  const bars = []
+  const bars = dataObjectToArray(data, domain)
 
-  for (let i = domain.x.min; i < domain.x.max; i++) {
-    const occurences = data[i]
-
-    bars[i - domain.x.min] = occurences || 0
-  }
+  const maxYInData = Math.max.apply(Math, bars)
+  const maxY = (maxYInData > 5) ? maxYInData : domain.y.max 
 
   const barWidth = graphSize.width / bars.length
-  const barHeight = graphSize.height / domain.y.max
+  const barHeight = graphSize.height / maxY
 
   node
     .selectAll('rect')
