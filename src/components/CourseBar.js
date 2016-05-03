@@ -63,6 +63,7 @@ class CourseBar extends Component {
     task: PropTypes.object,
     currentChapter: PropTypes.number,
     currentTask: PropTypes.number,
+    color: PropTypes.string,
 
     changeTask: PropTypes.func.isRequired,
     changeChapter: PropTypes.func.isRequired,
@@ -164,7 +165,7 @@ class CourseBar extends Component {
   };
 
   render() {
-    const { name, chapters, chapterProgress, chapter, task, currentChapter, currentTask, toggleAvatarMenu } = this.props
+    const { name, chapters, chapterProgress, chapter, task, currentChapter, currentTask, toggleAvatarMenu, color } = this.props
 
     let prevDisabled = chapter && currentChapter === 0
     let nextDisabled = chapter && currentChapter === chapters.length - 1
@@ -174,11 +175,9 @@ class CourseBar extends Component {
       nextDisabled = currentTask === chapter.tasks.length - 1
     }
 
-    const courseColor = '#5677fc'
-
     return (
       <div>
-        <div className={classnames('CourseBar', { 'sticky': this.state.sticky })} style={{ backgroundColor: courseColor }}>
+        <div className={classnames('CourseBar', { 'sticky': this.state.sticky })} style={{ backgroundColor: color }}>
           <AwardPopup />
           <div className="CourseBar-course-title">{name}</div>
           {chapter && <div className="CourseBar-nav">
@@ -214,7 +213,7 @@ class CourseBar extends Component {
 
 const mapStateToProps = (state, props) => {
   const { courseID, currentChapter, currentTask, progress } = state.course
-  const { name, description, chapters } = COURSES_DATA[courseID]
+  const { name, description, chapters, color } = COURSES_DATA[courseID]
 
   const chapter = currentChapter != null ? chapters[currentChapter] : null
   const task = currentTask != null ? chapter.tasks[currentTask] : null
@@ -229,6 +228,7 @@ const mapStateToProps = (state, props) => {
     task,
     currentChapter,
     currentTask,
+    color,
   }
 }
 

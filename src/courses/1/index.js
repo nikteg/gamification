@@ -6,6 +6,7 @@ export default {
   name: 'Mathematical Statistics',
   description: 'Probability and statistics are two related but separate academic disciplines.' +
                'Statistical analysis often uses probability distributions, and the two topics are often studied together.',
+  color: '#5677fc',
   chapters: [
     normalDistribution,
     {

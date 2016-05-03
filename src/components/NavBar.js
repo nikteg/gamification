@@ -4,17 +4,18 @@ import { connect } from 'react-redux'
 import AvatarModal from './Avatar/modal'
 import AuthBox from './AuthBox'
 
+import COURSES_DATA from '../courses'
+
 class NavBar extends Component {
 
   static propTypes = {
     course: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
+    color: PropTypes.string.isRequired,
   };
 
   render() {
-    const { course, isAuthenticated } = this.props
-
-    const courseColor = '#5677fc'
+    const { course, isAuthenticated, color } = this.props
 
     return (
       <div className="NavBar">
@@ -23,7 +24,7 @@ class NavBar extends Component {
         <div className="NavBar-nav">
           <Link to="/" onlyActiveOnIndex className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Home</Link>
           {isAuthenticated && <Link to="/dashboard" className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Dashboard</Link>}
-          {isAuthenticated && <Link to="/study/mathematical-statistics" className="NavBar-nav-link" activeStyle={{ backgroundColor: courseColor, color: 'white' }}>Study</Link>}
+          {isAuthenticated && <Link to="/study/mathematical-statistics" className="NavBar-nav-link" activeStyle={{ backgroundColor: color, color: 'white' }}>Study</Link>}
         </div>
         <AuthBox />
       </div>
@@ -32,9 +33,18 @@ class NavBar extends Component {
 
 }
 
-const mapStateToProps = (state) => ({
-  course: state.course,
-  isAuthenticated: state.auth.isAuthenticated,
-})
+const mapStateToProps = (state) => {
+  const { course, auth } = state
+  const { isAuthenticated } = auth
+  const { courseID } = course
+
+  const color = COURSES_DATA[courseID].color
+
+  return {
+    course,
+    isAuthenticated,
+    color,
+  }
+}
 
 export default connect(mapStateToProps, null, null, { pure: false })(NavBar)
