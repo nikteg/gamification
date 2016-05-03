@@ -17,7 +17,7 @@ const NAVBAR_HEIGHT = 64
 
 const DID_YOU_KNOW = [
   {
-    text: 'that the poisson distribution can often used to broadly predict the outcome of a professional soccer game',
+    text: 'that the poisson distribution can often be used to broadly predict the outcome of a professional soccer game',
     url: 'http://www.pinnaclesports.com/en/betting-articles/soccer/how-to-calculate-poisson-distribution',
   },
   {
