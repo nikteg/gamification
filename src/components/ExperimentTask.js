@@ -2,18 +2,18 @@ import React, { PropTypes } from 'react'
 import { Motion, spring } from 'react-motion'
 import Graph from './Graph/index'
 
-const ExperimentTask = ({ width }) => (
+const ExperimentTask = ({ isVisible, width }) => (
   <Motion style={{ width: spring(width) }}>
     {({ width }) =>
       <div className="Experiment-main" style={{ width }}>
-        <h1 className="Experiment-title">Explore</h1>
-        { width > 300 && <Graph width={width} />}
+        { isVisible && width > 300 && <Graph width={width} /> }
       </div>
     }
   </Motion>
 )
 
 ExperimentTask.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
   width: PropTypes.number.isRequired,
 }
 

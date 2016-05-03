@@ -67,6 +67,7 @@ class Task extends Component {
             screenHeight={screenHeight}
             screenWidth={screenWidth}
             instructions={task.html}
+            displayGraph={task.useGraph}
           />
         }
       </div>

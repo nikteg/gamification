@@ -1,0 +1,14 @@
+.VisibilityControl {
+  border-top: 1px solid #ddd;
+  margin-top: 12px;
+  padding-top: 15px;
+  width: 100%;
+
+  label {
+    margin-left: 4px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

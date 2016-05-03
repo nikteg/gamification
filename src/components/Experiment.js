@@ -7,7 +7,7 @@ import '../styles/components/Experiment.scss'
 class Experiment extends Component {
   constructor(props) {
     super(props)
-    this.state = { dividerPosition: 35 } // in percentage
+    this.state = { dividerPosition: 50 } // in percentage
     this.handleResize = this.handleResize.bind(this)
   }
 
@@ -20,11 +20,11 @@ class Experiment extends Component {
   }
 
   render() {
-    const { instructions, screenHeight, screenWidth, title } = this.props
+    const { displayGraph, instructions, screenHeight, screenWidth, title } = this.props
     const dividerPosition = this.dividerPosition
 
     return (
-      <div className="Experiment" style={{ minHeight: screenHeight - 80 }}>
+      <div className="Experiment" style={{ height: screenHeight - 240 }}>
 
         <ExperimentInstructions
           instructions={instructions}
@@ -34,7 +34,10 @@ class Experiment extends Component {
 
         <SizeController translate={this.handleResize} position={dividerPosition} />
 
-        <ExperimentTask width={screenWidth - dividerPosition} />
+        <ExperimentTask
+          isVisible={displayGraph}
+          width={screenWidth - dividerPosition}
+        />
 
       </div>
     )
@@ -42,6 +45,7 @@ class Experiment extends Component {
 }
 
 Experiment.propTypes = {
+  displayGraph: PropTypes.bool.isRequired,
   instructions: PropTypes.object.isRequired,
   screenWidth: PropTypes.number.isRequired,
   screenHeight: PropTypes.number.isRequired,
