@@ -215,34 +215,40 @@ export default {
             <h3 id="variables">Explanation of variables</h3>
 
             <div className="Introduction-part-content">
-              <h4><TeX data={'\\sigma'} />: Standard deviation</h4>
-              <p>
-              The standard deviation is a measure of how spread out from the expectation the numbers are.
-              A distribution with a larger standard deviation means that the values are spread out more
-              than a distribution with a small standard deviation.</p>
-
-              <h4><TeX data={'\\mu'} />: Expectation</h4>
-              <p>
-              This describes the expectation from the random variable <TeX data={'X'} />.
-              The expectation is the value of <TeX data={'X'} /> that is most probable.
-              </p>
-
-              <h4><TeX data={'X'} />: Random variable</h4>
-              <p>
-              A random variable is a variable that can assume many different values, <TeX data={'x'} />. For each <TeX data={'x'} /> in <TeX data={'X'} />,
-              there is a probability <TeX data={'P(X = x)'} /> which describes the probability
-              the random variable <TeX data={'X'} /> assumes the value <TeX data={'x'} />
-              </p>
-
-              <h4><TeX data={'x'} />: specific value of <TeX data={'X'} /></h4>
-              <p>
-              This is a specific value of the random variable <TeX data={'X'} />.
-              </p>
-
-              <h4><TeX data={'P(X = x)'} />: Probability for <TeX data={'x'} /></h4>
-              <p>
-              This describes the probability that the random variable <TeX data={'X'} /> assumes the value <TeX data={'x'} />.
-              </p>
+              <div className="Introduction-part-content-variable">
+                <h4><TeX data={'\\sigma'} />: Standard deviation</h4>
+                <p>
+                The standard deviation is a measure of how spread out from the expectation the numbers are.
+                A distribution with a larger standard deviation means that the values are spread out more
+                than a distribution with a small standard deviation.</p>
+              </div>
+              <div className="Introduction-part-content-variable">
+                <h4><TeX data={'\\mu'} />: Expectation</h4>
+                <p>
+                This describes the expectation from the random variable <TeX data={'X'} />.
+                The expectation is the value of <TeX data={'X'} /> that is most probable.
+                </p>
+              </div>
+              <div className="Introduction-part-content-variable">
+                <h4><TeX data={'X'} />: Random variable</h4>
+                <p>
+                A random variable is a variable that can assume many different values, <TeX data={'x'} />. For each <TeX data={'x'} /> in <TeX data={'X'} />,
+                there is a probability <TeX data={'P(X = x)'} /> which describes the probability
+                the random variable <TeX data={'X'} /> assumes the value <TeX data={'x'} />
+                </p>
+              </div>
+              <div className="Introduction-part-content-variable">
+                <h4><TeX data={'x'} />: specific value of <TeX data={'X'} /></h4>
+                <p>
+                This is a specific value of the random variable <TeX data={'X'} />.
+                </p>
+              </div>
+              <div className="Introduction-part-content-variable">
+                <h4><TeX data={'P(X = x)'} />: Probability for <TeX data={'x'} /></h4>
+                <p>
+                This describes the probability that the random variable <TeX data={'X'} /> assumes the value <TeX data={'x'} />.
+                </p>
+              </div>
             </div>
           </div>
 

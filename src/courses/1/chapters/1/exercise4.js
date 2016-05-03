@@ -1,4 +1,5 @@
 import React from 'react'
+import TeX from '../../../../components/TeX'
 
 export default () => (
   <div>
@@ -12,10 +13,16 @@ export default () => (
 			<li>Standard deviation</li>
 		</ol>
 		<p>Once that is calculated, we can use the definition below to calculate the probability density for any value x.</p>
-		<h4>Definition of the probability density function</h4>
-		<p>A random variable with the density:</p>
-		<p>[Insert formulas]</p>
+		<div className = "Experiment-formula">
+    	<b>Definition of the probability density function</b>
+      <p>A random variable with the density:</p>
+      <p><TeX data={'f(x) = \\frac{1}{\\sqrt(2\\pi\\sigma)}e^{1/2((x-\\mu)\\sigma)^2}'} /></p>
+      <p><TeX data={'-\\infty < \\mu < \\infty'}/></p>
+      <p><TeX data={'-\\infty < x < \\infty'}/></p>
+      <p><TeX data={'0 < \\sigma'}/></p>
+      <p>is said to have a normal distribution with parameters <TeX data={'\\mu'} /> and <TeX data={'\\sigma'}/>.</p>
     </div>
+  </div>
 
     <div className="Experiment-part">
 		<h3 className="Experiment-subTitle">This experiment</h3>
@@ -26,12 +33,14 @@ export default () => (
 		<p>Secondly we we calculate the standard deviation:</p>
 		<p>[If answer is correct, then show graph to the right]</p>
 		<p>To the right we have an interactive graph showing the heights and frequency of each height in bars as the one in the previous step. This time we have an approximation using a normal distributed curve behind the bars in gray.</p>
-		<p>Instructions: </p>
-		<p>To adjust the cumulative distribution of the normal distributed chart, use the big slider.</p>
+		<div className="Experiment-instructions">
+      <b>Graph instructions:</b>
+      <p>To adjust the cumulative distribution of the normal distributed chart, use the big slider.</p>
+    </div>
 	</div>
 
     <div className="Experiment-answer">
-      <p>Now compare the values of the two charts when using different sample sizes.</p>
+      <b>Now compare the values of the two charts when using different sample sizes.</b>
       <ol className="Experiment-listMargin">
         <li>How good is the normal approximation of our sample distribution? With large sample size. With small sample size.</li>
         <li>What does the expectation tell us? </li>
