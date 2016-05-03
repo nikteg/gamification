@@ -12,6 +12,7 @@ $courseBarHeight: 80px;
   top: $navBarHeight;
   z-index: 10;
   height: $courseBarHeight;
+  overflow: hidden;
 
   &-sticky-padding {
     height: $courseBarHeight;
@@ -34,6 +35,7 @@ $courseBarHeight: 80px;
   &-didyouknow {
     font-size: 0.9em;
     line-height: 1em;
+    padding: 0 1em;
 
     &:hover a {
       opacity: 1;
@@ -64,6 +66,7 @@ $courseBarHeight: 80px;
     align-items: center;
     width: 480px;
     background: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
 
     &-button {
       border: none;
