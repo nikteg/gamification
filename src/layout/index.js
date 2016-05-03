@@ -11,7 +11,7 @@ export const Header = (props) => (
 
 export const Footer = (props) => (
   <div className="Footer">
-    Footer #yolo
+    Gamification of Learning – DATX02-16-42
   </div>
 )
 
