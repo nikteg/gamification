@@ -35,6 +35,25 @@
   max-width: 760px;
 }
 
+.Experiment-instructions{
+  padding: 10px;
+  padding-right: 20px;
+  border-radius: 10px;
+  background: #87A8D4;
+}
+
+.Experiment-answer{
+  margin-top: 20px;
+  padding: 10px;
+  padding-right: 20px;
+  border-radius: 10px;
+  background: #DECCA6; 
+}
+
+.List-instructions{
+  list-style-type: disc;
+}
+
 .Experiment-main {
   background: #f2f2f2;
   overflow: hidden;

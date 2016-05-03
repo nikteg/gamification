@@ -17,28 +17,24 @@ export default () => (
 		<a href="http://socr.ucla.edu/docs/resources/SOCR_Data/SOCR_Data_Dinov_020108_HeightsWeights.html">Link to dataset</a>
 		<p>If you take a look at the data-set, you can see that the dataset has a size of about 20 000 measures. With some educated guesses, we conclude that the heights would probably range from about 140 to 240 cm. This means the variance is rather small in contrast to the sample size. Thus, we decide to group the values to 1 integer.</p>
 		<p>To the right we have an interactive bar chart. Use it to explore the distribution of the data with different sample sizes.</p>
-		<p>Instructions:</p>
-		<ul>
-			<li>To add more sample units to the graph, press “Add sample units”.</li>
-			<li>In order to change the amount of new sample units added, use the slider to the left of the button. </li>
-			<li>By hovering the mouse over a bar it shows the x and y value of the bar on top of the bar.</li>
-			<li>By pressing a hovered bar, it shows the cumulative probability distribution P(X = x), where x is the x value of the bar clicked on.</li>
-		</ul>
+    <div className="Experiment-instructions"> 
+		Instructions:
+      <ol className="List-instructions">
+        <li>To add more sample units to the graph, press “Add sample units”.</li>
+        <li>In order to change the amount of new sample units added, use the slider to the left of the button. </li>
+        <li>By hovering the mouse over a bar it shows the x and y value of the bar on top of the bar.</li>
+        <li>By pressing a hovered bar, it shows the cumulative probability distribution P(X = x), where x is the x value of the bar clicked on.</li>
+      </ol>
+    </div>
   </div>
 
     <div className="Experiment-answer">
-      <p>Experiments and observations</p>
+      Experiments and observations
       <ol className="Experiment-listMargin">
         <li>How does the distribution look when we use a small sample size? Say, 25.</li>
         <li>What happens when we use a  bigger sample size? Say, 5000.</li>
-        <li>What would happen if we don’t group the data(Imagine each sample unit has infinite decimals)? Why does this happen?</li>
-        <li>What happens if we group the data too much?</li>
         <li>How is the data distributed? What kind of distribution does it resemble?</li>
-        <li>Is the distribution continuous or discrete? How do we know?</li>
-        <li>What is the probability that a person is less than 180 cm tall (according to our random sample)?</li>
         <li>What is the probability that a person is more than 200 cm tall (according to our random sample)?</li>
-        <li>What is the probability that a person is between 140-160 cm tall (according to our random sample)? </li>
-        <li>Is it possible to find out the probability for a person to be exactly 150 cm tall with this graph? Why or why not? </li>
       </ol>
     </div>
 
