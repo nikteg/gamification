@@ -22,7 +22,7 @@ class NavBar extends Component {
         <AvatarModal course={course} />
         <div className="NavBar-logo">Gejmifü</div>
         <div className="NavBar-nav">
-          <Link to="/" onlyActiveOnIndex className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Home</Link>
+          {!isAuthenticated && <Link to="/" onlyActiveOnIndex className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Home</Link>}
           {isAuthenticated && <Link to="/dashboard" className="NavBar-nav-link" activeClassName="NavBar-nav-link-active">Dashboard</Link>}
           {isAuthenticated && <Link to="/study/mathematical-statistics" className="NavBar-nav-link" activeStyle={{ backgroundColor: color, color: 'white' }}>Study</Link>}
         </div>

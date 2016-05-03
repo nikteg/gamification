@@ -12,14 +12,9 @@ import Chapters from '../containers/ChaptersContainer'
 import CourseBar from '../components/CourseBar'
 import Chapter from '../components/Chapter'
 import Task from '../components/Task'
+import Home from '../components/Home'
 
 import { Wrapper } from '../layout'
-
-const Home = (props) => (
-  <div className="Home">
-    Welcome to this website
-  </div>
-)
 
 const Study = (props) => (
   <div className="Study">
