@@ -79,27 +79,20 @@ class CourseBar extends Component {
     const numChapters = chapters.length
     const numTasks = chapter.tasks.length
 
-    let newTask = currentTask + relativeIndex
-    let newChapter = currentChapter
+    // Just navigate chapters when no task is selected
+    if (currentTask == null) {
+      const newChapter = Math.max(0, Math.min(numChapters - 1, currentChapter + relativeIndex))
 
-    // new task (-1) -> prev last task
-    if (newTask < 0) {
-      if (currentChapter > 0) {
-        newChapter = currentChapter - 1
-        newTask = chapters[newChapter].tasks.length - 1
-        console.log('here', chapters[newChapter].tasks)
-      }
-    // new task (num tasks) -> next first task
-    } else if (newTask >= numTasks) {
-      if (currentChapter + 1 < numChapters) {
-        newChapter = currentChapter + 1
-        newTask = 0
-      }
+      this.context.router.push(`/study/mathematical-statistics/chapter/${newChapter + 1}`)
+
+      return
     }
 
-    const type = chapters[newChapter].tasks[newTask].type
+    const newTask = Math.max(0, Math.min(numTasks - 1, currentTask + relativeIndex))
 
-    this.context.router.push(`/study/mathematical-statistics/chapter/${newChapter + 1}/${type}/${newTask + 1}`)
+    const type = chapters[currentChapter].tasks[newTask].type
+
+    this.context.router.push(`/study/mathematical-statistics/chapter/${currentChapter + 1}/${type}/${newTask + 1}`)
   };
 
   previousTask = (e) => {
@@ -127,12 +120,15 @@ class CourseBar extends Component {
   };
 
   render() {
-    const { name, chapterProgress, chapter, task, currentTask, toggleAvatarMenu } = this.props
+    const { name, chapters, chapterProgress, chapter, task, currentChapter, currentTask, toggleAvatarMenu } = this.props
 
-    const numTasks = chapter && chapter.tasks.length || 0
+    let prevDisabled = chapter && currentChapter === 0
+    let nextDisabled = chapter && currentChapter === chapters.length - 1
 
-    const prevDisabled = !task || currentTask === 0
-    const nextDisabled = !task || currentTask === numTasks - 1
+    if (task) {
+      prevDisabled = currentTask === 0
+      nextDisabled = currentTask === chapter.tasks.length - 1
+    }
 
     const courseColor = '#5677fc'
 
