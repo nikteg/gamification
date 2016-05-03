@@ -34,16 +34,16 @@ $courseBarHeight: 80px;
   &-didyouknow {
     font-size: 0.9em;
     line-height: 1em;
-    opacity: 0.5;
-    transition: opacity .25s;
 
-    &:hover {
+    &:hover a {
       opacity: 1;
     }
 
     a {
+      opacity: 0.5;
       color: white;
       text-decoration: none;
+      transition: opacity .25s;
 
       &:hover {
         text-decoration: underline;
@@ -51,7 +51,7 @@ $courseBarHeight: 80px;
     }
 
     &::before {
-      content: 'Did you know that ';
+      content: 'Did you know ';
     }
 
     &::after {

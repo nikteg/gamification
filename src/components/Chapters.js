@@ -12,6 +12,7 @@ class Chapters extends Component {
     description: PropTypes.string.isRequired,
     chapters: PropTypes.array.isRequired,
     location: PropTypes.object.isRequired,
+    progress: PropTypes.array.isRequired,
 
     changeTask: PropTypes.func.isRequired,
     changeChapter: PropTypes.func.isRequired,
@@ -23,7 +24,7 @@ class Chapters extends Component {
   }
 
   render() {
-    const { chapters, location } = this.props
+    const { chapters, location, progress } = this.props
 
     return (
       <div className="Chapters">
@@ -36,7 +37,7 @@ class Chapters extends Component {
               key={i}
               number={i + 1}
               title={chapter.name}
-              finished={calcProgress(chapter)}
+              finished={calcProgress(progress[i])}
               url={`${location.pathname}/chapter/${i + 1}`}
             />
           ))}

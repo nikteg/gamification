@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import Modal from 'react-modal'
+
+import { actions as authActions } from '../actions/auth'
 
 const customStyles = {
   overlay: {
@@ -16,7 +19,7 @@ const customStyles = {
   },
 }
 
-export default class AuthBox extends Component {
+class AuthBox extends Component {
   static propTypes = {
     loginUser: PropTypes.func.isRequired,
     logoutUser: PropTypes.func.isRequired,
@@ -62,17 +65,16 @@ export default class AuthBox extends Component {
 
     if (auth.isAuthenticated) {
       return (
-        <div className="profile">
-          <Link to={`/users/${auth.username}`}>{auth.username}</Link>
-          <div className="image" />
-          <input type="button" value="Logout" onClick={logoutUser} />
+        <div className="AuthBox">
+          <Link to={`/users/${auth.username}`}>{auth.username}<div className="AuthBox-image" /></Link>
+          <button onClick={logoutUser}>Logout</button>
         </div>
       )
     } else {
       return (
-        <div className="profile">
+        <div className="AuthBox">
           <Modal isOpen={auth.registerModal} onRequestClose={hideRegisterModal} style={customStyles}>
-            <div className="register-modal">
+            <div className="AuthBox-modal">
               {auth.registerFail && <p>Something went wrong, username already in use perhaps?</p>}
               <p><input type="text" ref={this.registerPasswordRef} placeholder="Username" /></p>
               <p><input type="password" ref={node => this.registerPasswordInput = node} placeholder="Password" /></p>
@@ -82,10 +84,16 @@ export default class AuthBox extends Component {
           <p>{auth.statusText}</p>
           <input type="text" ref={node => this.usernameInput = node} placeholder="Username" />
           <input type="password" ref={node => this.passwordInput = node} placeholder="Password" />
-          <input type="button" value="Login" onClick={this.login} disabled={auth.isAuthenticating} />
+          <button onClick={this.login} disabled={auth.isAuthenticating}>Login</button>
           <button onClick={showRegisterModal}>Register</button>
         </div>
       )
     }
   }
 }
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+})
+
+export default connect(mapStateToProps, authActions)(AuthBox)

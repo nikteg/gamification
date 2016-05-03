@@ -1,5 +1,5 @@
-export function calcProgress(chapter) {
-  return chapter.tasks.reduce((total, task) => (
-    total + (task.done ? 1 : 0)
-  ), 0) / chapter.tasks.length * 100 || 0
+export function calcProgress(tasks) {
+  return tasks.reduce((total, task) => (
+    total + (task ? 1 : 0)
+  ), 0) / tasks.length * 100 || 0
 }

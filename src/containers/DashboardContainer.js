@@ -1,17 +1,18 @@
 import { connect } from 'react-redux'
 import { actions as counterActions } from '../actions/counter'
-import Home from '../components/Home'
+import Dashboard from '../components/Dashboard'
 
 import COURSES_DATA from '../courses'
 
 const mapStateToProps = (state) => {
-  const { currentChapter } = state.course
+  const { currentChapter, progress } = state.course
   const chapters = COURSES_DATA[state.course.courseID].chapters
 
   return {
     currentChapter,
     chapters,
+    progress,
   }
 }
 
-export default connect(mapStateToProps, counterActions)(Home)
+export default connect(mapStateToProps, counterActions)(Dashboard)

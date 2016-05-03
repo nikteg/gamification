@@ -3,9 +3,8 @@ import DashboardBox from './DashboardBox'
 import StudyStreak from './StudyStreak'
 import RecentActivity from './RecentActivity'
 import { calcProgress } from '../selectors/chapter-progress.js'
-import '../styles/home.scss'
 
-const Home = ({ chapters, currentChapter }) => (
+const Home = ({ chapters, currentChapter, progress }) => (
   <div className="Dashboard">
 
     <div className="Dashboard-section">
@@ -17,13 +16,14 @@ const Home = ({ chapters, currentChapter }) => (
             return chapter
           }
         })
-        .map(chapter => (
+        .map((chapter, i) => (
           <DashboardBox
             key={chapter.number}
-            chapter={chapter.number}
+            chapter={chapter.number + 1}
             title={chapter.name}
             styles={{}}
-            completed={calcProgress(chapter)}
+            completed={calcProgress(progress[chapter.number])}
+            url={`/study/mathematical-statistics/chapter/${chapter.number + 1}`}
           />
       ))}
     </div>

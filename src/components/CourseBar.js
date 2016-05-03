@@ -17,19 +17,19 @@ const NAVBAR_HEIGHT = 64
 
 const DID_YOU_KNOW = [
   {
-    text: 'the poisson distribution can often used to broadly predict the outcome of a professional soccer game',
+    text: 'that the poisson distribution can often used to broadly predict the outcome of a professional soccer game',
     url: 'http://www.pinnaclesports.com/en/betting-articles/soccer/how-to-calculate-poisson-distribution',
   },
   {
-    text: 'the first application of the normal distribution was applied by Galileo Galilei during an analysis of errors of astronomical observations due to errors in measurement of instrument and observer',
+    text: 'that the first application of the normal distribution was applied by Galileo Galilei during an analysis of errors of astronomical observations due to errors in measurement of instrument and observer',
     url: 'http://onlinestatbook.com/2/normal_distribution/history_normal.html',
   },
   {
-    text: 'human characteristics such as length, weight and strength is often said to be normal distributed',
+    text: 'that human characteristics such as length, weight and strength is often said to be normal distributed',
     url: 'http://onlinestatbook.com/2/normal_distribution/history_normal.html',
   },
   {
-    text: 'the Central Limit Theorem states that sampling distribution of the mean of any independent random variable behaves like a normal distribution given the sample size is large enough',
+    text: 'that the Central Limit Theorem states that sampling distribution of the mean of any independent random variable behaves like a normal distribution given the sample size is large enough',
     url: 'http://stattrek.com/statistics/dictionary.aspx?definition=Central%20limit%20theorem',
   },
 ]

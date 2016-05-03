@@ -6,7 +6,7 @@ import { changeTask, changeChapter } from '../actions/avatar'
 import COURSES_DATA from '../courses'
 
 const mapStateToProps = (state) => {
-  const { courseID } = state.course
+  const { courseID, progress } = state.course
 
   const { name, description, chapters } = COURSES_DATA[courseID]
 
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
     name,
     description,
     chapters,
+    progress,
   }
 }
 
