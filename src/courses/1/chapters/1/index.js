@@ -240,17 +240,17 @@ export default {
     },
     {
       name: 'Choosing a subject to observe',
-      type: 'exercise',
+      type: 'experiment',
       html: <Exercise2 />,
     },
     {
       name: 'Approximation',
-      type: 'exercise',
+      type: 'experiment',
       html: <Exercise3 />,
     },
     {
       name: 'Standard Normal',
-      type: 'exercise',
+      type: 'experiment',
       html: <Exercise4 />,
     },
   ],

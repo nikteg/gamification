@@ -7,6 +7,7 @@ import { showAwardPopup } from '../actions/awards'
 
 import Avatar from './Avatar'
 import AwardPopup from './AwardPopup'
+import TaskIcon from './TaskIcon'
 
 import * as AwardTypes from '../constants/AwardTypes'
 
@@ -183,7 +184,10 @@ class CourseBar extends Component {
               <Avatar chapter={chapter} chapterProgress={chapterProgress} />
               <div className="CourseBar-nav-avatarbox-info">
                 <span className="CourseBar-nav-avatarbox-info-course-title">{chapter.name}</span>
-                {task && <span className="CourseBar-nav-avatarbox-info-task-title">{this.taskTitle(task)}{chapterProgress[currentTask] && ' ✓'}</span>}
+                {task && <span className="CourseBar-nav-avatarbox-info-task-title">
+                  <TaskIcon type={task.type} />
+                  {task.name}{chapterProgress[currentTask] && ' ✓'}
+                </span>}
               </div>
             </div>
             <button

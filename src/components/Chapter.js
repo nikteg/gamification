@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import { changeChapter, changeTask } from '../actions/avatar'
 
 import CourseBar from './CourseBar'
+import TaskIcon from './TaskIcon'
 
 import COURSES_DATA from '../courses'
 
@@ -14,6 +15,7 @@ class Chapter extends Component {
     params: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     chapterProgress: PropTypes.array.isRequired,
+    chapterIndex: PropTypes.number.isRequired,
 
     changeChapter: PropTypes.func.isRequired,
     changeTask: PropTypes.func.isRequired,
@@ -31,7 +33,7 @@ class Chapter extends Component {
   }
 
   render() {
-    const { chapter, chapterProgress, location } = this.props
+    const { chapter, chapterProgress, location, chapterIndex } = this.props
 
     if (!chapter) {
       return null
@@ -40,15 +42,15 @@ class Chapter extends Component {
     return (
       <div className="Chapter">
         <CourseBar />
-        <h1 className="Chapter-title">{chapter.name}</h1>
-        <h2 className="Chapter-title-tasks">Tasks</h2>
+        <h1 className="Chapter-title">{`Chapter ${chapterIndex}: ${chapter.name}`}</h1>
         <ul>
           {chapter.tasks.map((task, i) => (
             <li>
+              <TaskIcon type={task.type} />
               <Link to={`${location.pathname}/${task.type}/${i + 1}`}>
                 {task.name}
               </Link>
-              {chapterProgress[i] && ' Done!'}
+              {chapterProgress[i] && <span className="Chapter-done">✓</span>}
             </li>
           ))}
         </ul>
@@ -62,9 +64,12 @@ const mapStateToProps = (state) => {
   const chapter = COURSES_DATA[state.course.courseID].chapters[state.course.currentChapter]
   const chapterProgress = state.course.progress[state.course.currentChapter]
 
+  const chapterIndex = state.course.currentChapter + 1
+
   return {
     chapter,
     chapterProgress,
+    chapterIndex,
   }
 }
 
