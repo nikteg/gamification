@@ -117,6 +117,12 @@ class CourseBar extends Component {
     const numChapters = chapters.length
     const numTasks = chapter.tasks.length
 
+    if (document.body.scrollTop >= NAVBAR_HEIGHT) {
+      document.body.scrollTop = NAVBAR_HEIGHT
+    } else {
+      document.body.scrollTop = 0
+    }
+
     // Just navigate chapters when no task is selected
     if (currentTask == null) {
       const newChapter = Math.max(0, Math.min(numChapters - 1, currentChapter + relativeIndex))
