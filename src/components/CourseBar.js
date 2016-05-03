@@ -146,13 +146,12 @@ class CourseBar extends Component {
               <Avatar chapter={chapter} chapterProgress={chapterProgress} />
               <div className="CourseBar-nav-avatarbox-info">
                 <span className="CourseBar-nav-avatarbox-info-course-title">{chapter.name}</span>
-                {task && <span className="CourseBar-nav-avatarbox-info-task-title">{this.taskTitle(task)}{task.done && ' ✓'}</span>}
+                {task && <span className="CourseBar-nav-avatarbox-info-task-title">{this.taskTitle(task)}{chapterProgress[currentTask] && ' ✓'}</span>}
               </div>
             </div>
             <button
               className={classnames('CourseBar-nav-button CourseBar-nav-button-right', {
                 'CourseBar-nav-button-disabled': nextDisabled,
-                'CourseBar-nav-button-bright': task && task.done,
               })}
               title="Go forward"
               onClick={this.nextTask}>►</button>
