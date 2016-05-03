@@ -108,6 +108,7 @@ class Graph extends Component {
 
         <GraphInfo
           data={data}
+          selectedData={selectedData}
           domain={domain}
           mean={mean}
           variance={variance}
