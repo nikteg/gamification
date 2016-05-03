@@ -19,25 +19,21 @@ export default {
         <div className="Introduction">
 
           <div className="Introduction-nav">
+            <h3 className = "Introduction-nav-h3">Table of contents</h3>
             <ul>
-              <li>
-                <a onClick={scrollTo('intro')}>Introduction to the concept</a>
-                <ul>
-                  <li><a onClick={scrollTo('what')}>What is it?</a></li>
-                  <li><a onClick={scrollTo('other')}>Other examples of continuous distributions</a></li>
-                  <li><a onClick={scrollTo('why')}>Why is it important?</a></li>
-                  <li><a onClick={scrollTo('examples')}>Examples of uses</a></li>
-                </ul>
+              <li><a className="title" onClick={scrollTo('intro')}>Introduction to the concept</a>
+              <li><a onClick={scrollTo('what')}>What is it?</a></li>
+              <li><a onClick={scrollTo('other')}>Other examples of continuous distributions</a></li>
+              <li><a onClick={scrollTo('why')}>Why is it important?</a></li>
+              <li><a onClick={scrollTo('examples')}>Examples of uses</a></li>
+
               </li>
-              <li>
-                <a onClick={scrollTo('properties')}>Properties and functions</a>
-                <ul>
-                  <li><a onClick={scrollTo('definition')}>Definition</a></li>
-                  <li><a onClick={scrollTo('how')}>How is it commonly used?</a></li>
-                  <li><a onClick={scrollTo('rule')}>Rule of thumb</a></li>
-                  <li><a onClick={scrollTo('variables')}>Explanation of variables</a></li>
-                  <li><a onClick={scrollTo('prerequisites')}>Prerequisites</a></li>
-                </ul>
+              <li><a className="title" onClick={scrollTo('properties')}>Properties and functions</a>
+              <li><a onClick={scrollTo('definition')}>Definition</a></li>
+              <li><a onClick={scrollTo('how')}>How is it commonly used?</a></li>
+              <li><a onClick={scrollTo('rule')}>Rule of thumb</a></li>
+              <li><a onClick={scrollTo('variables')}>Explanation of variables</a></li>
+              <li><a onClick={scrollTo('prerequisites')}>Prerequisites</a></li>
               </li>
             </ul>
           </div>
@@ -135,11 +131,10 @@ export default {
               The link to the proof for this is given here: [link to proof].</p>
 
               <p>As you can see, the probability density function of the normal distribution requires
-              only that mu is a real number and sigma is positive. And as you may already suspect, mu and
-              sigma corresponds to the expectation and standard deviation of the normal random variable.</p>
+              only that <TeX data={'\\mu'}/> is a real number and <TeX data={'\\sigma'}/> is positive. And as you may already suspect, <TeX data={'\\mu'}/> and <TeX data={'\\sigma'}/> corresponds to the expectation and standard deviation of the normal random variable.</p>
 
               <p>The graph of the density function of the normal random variable is symmetric,
-              with the expectation mu in its center. At <TeX data={'\\mu\\pm\\sigma'}/>, one can find the points of inflection.</p>
+              with the expectation <TeX data={'\\mu'}/> in its center. At <TeX data={'\\mu\\pm\\sigma'}/>, one can find the points of inflection.</p>
             </div>
           </div>
 
