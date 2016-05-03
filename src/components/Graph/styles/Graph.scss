@@ -2,6 +2,45 @@
   margin: 30px;
 }
 
+.Graph {
+  position: relative;
+  margin: 20px auto;
+}
+
+.Graph-bar:hover {
+  cursor: pointer;
+}
+
+.Graph-noDataText {
+  color: #666;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: -20px;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  top: 50%;
+  width: 100%;
+}
+
+.Graph-label {
+  margin: 0;
+  font-weight: 700;
+
+  &:first-of-type {
+    left: 15px;
+    top: -25px;
+    position: absolute;
+  }
+
+  &:last-of-type {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    text-align: right;
+  }
+}
+
 .Graph-axis {
   position: relative;
   z-index: 2;

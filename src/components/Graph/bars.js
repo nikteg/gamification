@@ -1,40 +1,33 @@
-import { dataObjectToArray } from './utils'
-
 export function drawBars(
   node,
-  id,
   graphSize,
   domain,
   data,
-  selectedData,
+  selectedDataRange,
   isVisible,
   colors,
-  handleClick
+  handleClick,
+  maxY,
 ) {
-  const bars = dataObjectToArray(data, domain)
-
-  const maxYInData = Math.max.apply(Math, bars)
-  const maxY = (maxYInData > 5) ? maxYInData : domain.y.max
-
-  const barWidth = graphSize.width / bars.length
+  const barWidth = graphSize.width / data.length
   const barHeight = graphSize.height / maxY
 
   node
     .selectAll('rect')
-    .data(bars)
+    .data(data)
     .enter()
     .append('rect')
-    .attr('class', 'set-' + id)
+    .attr('class', 'Graph-bar')
     .attr('fill', (d, i) => {
-      if (Object.keys(selectedData).length > 0) {
-        const { start, end } = selectedData
+      if (Object.keys(selectedDataRange).length > 0) {
+        const { start, end } = selectedDataRange
         return (start <= i && i <= end) ? colors.selected.fill : colors.fill
       }
       return colors.fill
     })
     .attr('stroke', (d, i) => {
-      if (Object.keys(selectedData).length > 0) {
-        const { start, end } = selectedData
+      if (Object.keys(selectedDataRange).length > 0) {
+        const { start, end } = selectedDataRange
         return (start <= i && i <= end) ? colors.selected.stroke : colors.stroke
       }
       return colors.stroke
@@ -51,8 +44,5 @@ export function drawBars(
       return d * barHeight
     })
     .on('click', handleClick)
-}
-
-export function changeColor() {
 }
 

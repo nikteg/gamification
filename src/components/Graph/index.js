@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import Controls from './Controls'
 import GraphInfo from './GraphInfo'
+import AddData from './AddData'
 import gaussian from 'gaussian'
 import colorPalette from '../../helpers/colors'
 import { createGraph } from './area.js'
@@ -13,27 +13,29 @@ class Graph extends Component {
     this.state = {
       data: {},
       selectedData: {},
-      showBars: true,
-      mean: 180,
-      variance: 50,
+      showSampleDistribution: true,
+      showNormalDistribution: true,
+      mean: 173,
+      variance: 23.544,
+      xPosition: 153,
       colors: {
         bars: {
           fill: 'transparent',
-          stroke: colorPalette.orange,
+          stroke: colorPalette.green,
           selected: {
             fill: colorPalette.green,
-            stroke: '#000000',
+            stroke: colorPalette.greenDark,
           },
         },
       },
       domain: {
         x: {
-          label: '',
-          min: 155,
-          max: 205,
+          label: 'Height (cm)',
+          min: 153,
+          max: 190,
         },
         y: {
-          label: '',
+          label: 'Persons',
           min: 0,
           max: 15,
         },
@@ -79,34 +81,50 @@ class Graph extends Component {
   }
 
   render() {
-    const { data, mean, variance, selectedData, domain, colors, showBars } = this.state
-    const { width } = this.props
-    const margin = { top: 20, right: 30, bottom: 30, left: 40 }
+    const {
+      data,
+      mean,
+      variance,
+      selectedData,
+      domain,
+      colors,
+      showSampleDistribution,
+      showNormalDistribution,
+      xPosition,
+    } = this.state
 
-    const graph = createGraph({ width, height: 400 }, margin, domain)
-      .addData(1, data)
-      .addAxises(1)
-      .addBars(1, showBars, colors.bars, this.handleBarClick, selectedData)
-      .addLine(1, gaussian(mean, variance), showBars)
+    const { width } = this.props
+    const margin = { top: 20, right: 40, bottom: 30, left: 50 }
+    const graphSize = { width, height: 360 }
+    const normalDistribution = gaussian(mean, variance)
+
+    const graph = createGraph(graphSize, margin, domain, data, selectedData)
+      .addAxises()
+      .addBars(showSampleDistribution, colors.bars, this.handleBarClick)
+      .addLine(normalDistribution, showNormalDistribution)
+
+    if (xPosition > domain.x.min && showNormalDistribution) {
+      graph.addFilledCurve(normalDistribution, xPosition)
+    }
 
     return (
       <div>
-        {graph.render()}
 
-        <div style={{ marginLeft: margin.left, marginRight: margin.right }}>
-          <Controls
-            data={data}
-            selectedData={selectedData}
-            deselectData={() => this.setState({ selectedData: {} })}
-            addSamples={(samplesToAdd) => this.generateSamples(samplesToAdd)}
-            showBars={showBars}
-            toggleBars={() => this.setState({ showBars: !showBars })}
-            clearGraph={() => this.setState({
-              data: {},
-              selectedData: {},
-              showBars: true,
-            })}
-          />
+        <div className="Graph">
+
+          <p className="Graph-label">{domain.y.label}</p>
+
+          { Object.keys(data).length === 0 &&
+            <p className="Graph-noDataText">No data</p>
+          }
+
+          {graph.render()}
+
+          <p className="Graph-label" style={{ paddingLeft: margin.left }}>
+            {domain.x.label}
+          </p>
+
+        </div>
 
         <GraphInfo
           data={data}
@@ -114,9 +132,28 @@ class Graph extends Component {
           domain={domain}
           mean={mean}
           variance={variance}
+          showSampleDistribution={showSampleDistribution}
+          showNormalDistribution={showNormalDistribution}
+          toggleSampleDistributionVisibility={() => this.setState({
+            showSampleDistribution: !showSampleDistribution,
+          })}
+          toggleNormalDistributionVisibility={() => this.setState({
+            showNormalDistribution: !showNormalDistribution,
+          })}
+          xPosition={xPosition}
+          updateXPosition={(xPosition) => this.setState({ xPosition })}
+          addData={(
+            <AddData
+              domain={domain}
+              addSamples={(samplesToAdd) => this.generateSamples(samplesToAdd)}
+              data={data}
+              clearGraph={() => this.setState({
+                data: {},
+                selectedData: {},
+              })}
+            />
+          )}
         />
-
-        </div>
       </div>
     )
   }

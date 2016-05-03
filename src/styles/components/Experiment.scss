@@ -6,7 +6,7 @@
 }
 
 .Experiment-sidebar {
-  overflow: hidden;
+  overflow: scroll;
   padding: 30px;
 }
 
@@ -66,6 +66,27 @@
 
 .Experiment-main {
   background: #f2f2f2;
-  overflow: hidden;
+  overflow: scroll;
   padding: 30px;
 }
+
+.Experiment-button {
+  &, &:visited {
+    background: #5677FC;
+    border: 1px solid #3C53B1;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-size: 18px;
+    margin-top: 30px;
+    padding: 10px 20px;
+    transition: opacity .3s ease;
+    text-decoration: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: .85;
+  }
+}
+
