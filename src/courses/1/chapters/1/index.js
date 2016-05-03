@@ -238,11 +238,11 @@ export default {
         </div>
       ),
     },
-    {
-      name: 'Choosing a subject to observe',
-      type: 'experiment',
-      html: <Exercise2 />,
-    },
+    // {
+    //   name: 'Choosing a subject to observe',
+    //   type: 'experiment',
+    //   html: <Exercise2 />,
+    // },
     {
       name: 'Approximation',
       type: 'experiment',
