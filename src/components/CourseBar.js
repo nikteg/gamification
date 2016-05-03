@@ -7,12 +7,50 @@ import { showAwardPopup } from '../actions/awards'
 
 import Avatar from './Avatar'
 import AwardPopup from './AwardPopup'
+import TaskIcon from './TaskIcon'
 
 import * as AwardTypes from '../constants/AwardTypes'
 
 import COURSES_DATA from '../courses'
 
 const NAVBAR_HEIGHT = 64
+
+const DID_YOU_KNOW = [
+  {
+    text: 'the poisson distribution can often used to broadly predict the outcome of a professional soccer game',
+    url: 'http://www.pinnaclesports.com/en/betting-articles/soccer/how-to-calculate-poisson-distribution',
+  },
+  {
+    text: 'the first application of the normal distribution was applied by Galileo Galilei during an analysis of errors of astronomical observations due to errors in measurement of instrument and observer',
+    url: 'http://onlinestatbook.com/2/normal_distribution/history_normal.html',
+  },
+  {
+    text: 'human characteristics such as length, weight and strength is often said to be normal distributed',
+    url: 'http://onlinestatbook.com/2/normal_distribution/history_normal.html',
+  },
+  {
+    text: 'the Central Limit Theorem states that sampling distribution of the mean of any independent random variable behaves like a normal distribution given the sample size is large enough',
+    url: 'http://stattrek.com/statistics/dictionary.aspx?definition=Central%20limit%20theorem',
+  },
+]
+
+class DidYouKnow extends Component {
+
+  state = {
+    element: null,
+  };
+
+  componentWillMount() {
+    this.setState({ element: DID_YOU_KNOW[Math.floor(Math.random() * DID_YOU_KNOW.length)] })
+  }
+
+  render() {
+    return (
+      <a href={this.state.element.url}>{this.state.element.text}</a>
+    )
+  }
+
+}
 
 class CourseBar extends Component {
 
@@ -79,27 +117,20 @@ class CourseBar extends Component {
     const numChapters = chapters.length
     const numTasks = chapter.tasks.length
 
-    let newTask = currentTask + relativeIndex
-    let newChapter = currentChapter
+    // Just navigate chapters when no task is selected
+    if (currentTask == null) {
+      const newChapter = Math.max(0, Math.min(numChapters - 1, currentChapter + relativeIndex))
 
-    // new task (-1) -> prev last task
-    if (newTask < 0) {
-      if (currentChapter > 0) {
-        newChapter = currentChapter - 1
-        newTask = chapters[newChapter].tasks.length - 1
-        console.log('here', chapters[newChapter].tasks)
-      }
-    // new task (num tasks) -> next first task
-    } else if (newTask >= numTasks) {
-      if (currentChapter + 1 < numChapters) {
-        newChapter = currentChapter + 1
-        newTask = 0
-      }
+      this.context.router.push(`/study/mathematical-statistics/chapter/${newChapter + 1}`)
+
+      return
     }
 
-    const type = chapters[newChapter].tasks[newTask].type
+    const newTask = Math.max(0, Math.min(numTasks - 1, currentTask + relativeIndex))
 
-    this.context.router.push(`/study/mathematical-statistics/chapter/${newChapter + 1}/${type}/${newTask + 1}`)
+    const type = chapters[currentChapter].tasks[newTask].type
+
+    this.context.router.push(`/study/mathematical-statistics/chapter/${currentChapter + 1}/${type}/${newTask + 1}`)
   };
 
   previousTask = (e) => {
@@ -127,12 +158,15 @@ class CourseBar extends Component {
   };
 
   render() {
-    const { name, chapterProgress, chapter, task, currentTask, toggleAvatarMenu } = this.props
+    const { name, chapters, chapterProgress, chapter, task, currentChapter, currentTask, toggleAvatarMenu } = this.props
 
-    const numTasks = chapter && chapter.tasks.length || 0
+    let prevDisabled = chapter && currentChapter === 0
+    let nextDisabled = chapter && currentChapter === chapters.length - 1
 
-    const prevDisabled = !task || currentTask === 0
-    const nextDisabled = !task || currentTask === numTasks - 1
+    if (task) {
+      prevDisabled = currentTask === 0
+      nextDisabled = currentTask === chapter.tasks.length - 1
+    }
 
     const courseColor = '#5677fc'
 
@@ -150,18 +184,20 @@ class CourseBar extends Component {
               <Avatar chapter={chapter} chapterProgress={chapterProgress} />
               <div className="CourseBar-nav-avatarbox-info">
                 <span className="CourseBar-nav-avatarbox-info-course-title">{chapter.name}</span>
-                {task && <span className="CourseBar-nav-avatarbox-info-task-title">{this.taskTitle(task)}{task.done && ' ✓'}</span>}
+                {task && <span className="CourseBar-nav-avatarbox-info-task-title">
+                  <TaskIcon type={task.type} />
+                  {task.name}{chapterProgress[currentTask] && ' ✓'}
+                </span>}
               </div>
             </div>
             <button
               className={classnames('CourseBar-nav-button CourseBar-nav-button-right', {
                 'CourseBar-nav-button-disabled': nextDisabled,
-                'CourseBar-nav-button-bright': task && task.done,
               })}
               title="Go forward"
               onClick={this.nextTask}>►</button>
           </div>}
-          <div className="CourseBar-didyouknow">{'Did you know?'}</div>
+          <div className="CourseBar-didyouknow"><DidYouKnow /></div>
         </div>
         <div className="CourseBar-sticky-padding" />
       </div>

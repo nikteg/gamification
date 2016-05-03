@@ -23,12 +23,40 @@ $courseBarHeight: 80px;
   }
 
   &-course-title, &-didyouknow {
-    flex-basis: 360px;
+    flex-basis: 512px;
     padding: 0.5em;
   }
 
   &-course-title {
     font-size: 2em;
+  }
+
+  &-didyouknow {
+    font-size: 0.9em;
+    line-height: 1em;
+    opacity: 0.5;
+    transition: opacity .25s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &::before {
+      content: 'Did you know that ';
+    }
+
+    &::after {
+      content: '?';
+    }
   }
 
   &-nav {
@@ -103,7 +131,7 @@ $courseBarHeight: 80px;
         }
 
         &-task-title {
-
+          font-size: 0.9em;
         }
       }
 
@@ -112,10 +140,6 @@ $courseBarHeight: 80px;
         height: 64px;
       }
     }
-  }
-
-  &-didyouknow {
-    font-style: italic;
   }
 }
 
