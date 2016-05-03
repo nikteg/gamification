@@ -107,9 +107,11 @@ class CourseBar extends Component {
     if (document.body.scrollTop > NAVBAR_HEIGHT) {
       if (!this.state.sticky) {
         this.setState({ sticky: true })
+        document.querySelector('.Introduction-nav').className = 'Introduction-nav Introduction-nav-sticky'
       }
     } else if (this.state.sticky) {
       this.setState({ sticky: false })
+      document.querySelector('.Introduction-nav').className = 'Introduction-nav'
     }
   };
 

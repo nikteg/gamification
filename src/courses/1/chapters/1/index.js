@@ -1,9 +1,13 @@
 import React from 'react'
-import Exercise2 from './exercise2'
+// import Exercise2 from './exercise2'
 import Exercise3 from './exercise3'
 import Exercise4 from './exercise4'
 
 import TeX from '../../../../components/TeX'
+
+const scrollTo = (id) => (e) => {
+  document.body.scrollTop = document.getElementById(id).offsetTop - 96
+}
 
 export default {
   name: 'Normal distribution',
@@ -14,12 +18,36 @@ export default {
       html: (
         <div className="Introduction">
 
+          <div className="Introduction-nav">
+            <ul>
+              <li>
+                <a onClick={scrollTo('intro')}>Introduction to the concept</a>
+                <ul>
+                  <li><a onClick={scrollTo('what')}>What is it?</a></li>
+                  <li><a onClick={scrollTo('other')}>Other examples of continuous distributions</a></li>
+                  <li><a onClick={scrollTo('why')}>Why is it important?</a></li>
+                  <li><a onClick={scrollTo('examples')}>Examples of uses</a></li>
+                </ul>
+              </li>
+              <li>
+                <a onClick={scrollTo('properties')}>Properties and functions</a>
+                <ul>
+                  <li><a onClick={scrollTo('definition')}>Definition</a></li>
+                  <li><a onClick={scrollTo('how')}>How is it commonly used?</a></li>
+                  <li><a onClick={scrollTo('rule')}>Rule of thumb</a></li>
+                  <li><a onClick={scrollTo('variables')}>Explanation of variables</a></li>
+                  <li><a onClick={scrollTo('prerequisites')}>Prerequisites</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
           <h1>Normal distribution</h1>
 
-          <h2>Introduction to the concept</h2>
+          <h2 id="intro">Introduction to the concept</h2>
 
           <div className="Introduction-part">
-            <h3>What is it?</h3>
+            <h3 id="what">What is it?</h3>
 
             <div className="Introduction-part-content">
               <p>
@@ -36,7 +64,7 @@ export default {
           </div>
 
           <div className="Introduction-part">
-            <h3>Other examples of continuous distributions</h3>
+            <h3 id="other">Other examples of continuous distributions</h3>
 
             <div className="Introduction-part-content">
               <ul>
@@ -49,7 +77,7 @@ export default {
           </div>
 
           <div className="Introduction-part">
-            <h3>Why is it important?</h3>
+            <h3 id="why">Why is it important?</h3>
 
             <div className="Introduction-part-content">
               <p>The main reason the normal distribution is useful is because of the Central Limit Theorem,
@@ -73,7 +101,7 @@ export default {
           </div>
 
           <div className="Introduction-part">
-            <h3>Examples of uses</h3>
+            <h3 id="examples">Examples of uses</h3>
 
             <div className="Introduction-part-content">
               <ul>
@@ -85,10 +113,10 @@ export default {
             </div>
           </div>
 
-          <h2>Properties and functions</h2>
+          <h2 id="properties">Properties and functions</h2>
 
           <div className="Introduction-part">
-            <h3>Definition</h3>
+            <h3 id="definition">Definition</h3>
 
             <div className="Introduction-part-content">
               <h4>Definition of the probability density function</h4>
@@ -116,7 +144,7 @@ export default {
           </div>
 
           <div className="Introduction-part">
-            <h3>How is it commonly used?</h3>
+            <h3 id="how">How is it commonly used?</h3>
 
             <div className="Introduction-part-content">
               <p>In some cases, the normal distribution can be discovered directly when conducting an experiment of
@@ -168,7 +196,7 @@ export default {
           </div>
 
           <div className="Introduction-part">
-            <h3>Rule of thumb</h3>
+            <h3 id="rule">Rule of thumb</h3>
 
             <div className="Introduction-part-content">
               <p>Because of its symmetricality and frequency of use, a shorthand for the distribution has been developed. As you can see in the figure below there is:</p>
@@ -184,7 +212,7 @@ export default {
           </div>
 
           <div className="Introduction-part">
-            <h3>Explanation of variables</h3>
+            <h3 id="variables">Explanation of variables</h3>
 
             <div className="Introduction-part-content">
               <h4><TeX data={'\\sigma'} />: Standard deviation</h4>
@@ -219,7 +247,7 @@ export default {
           </div>
 
           <div className="Introduction-part">
-            <h3>Prerequisites</h3>
+            <h3 id="prerequisites">Prerequisites</h3>
 
             <div className="Introduction-part-content">
               <ul>

@@ -25,7 +25,44 @@
 
   .Introduction {
 
-    margin-right: 280px;
+    &-nav {
+      position: absolute;
+      right: 180px;
+      top: 128px;
+      bottom: -128px;
+      background: #fafafa;
+      padding: 3em 2em;
+      z-index: 9;
+      border-left: 1px solid #bbb;
+      border-right: 1px solid #bbb;
+
+      &-sticky {
+        top: 64px;
+        position: fixed;
+      }
+
+      ul {
+        list-style: circle;
+        padding-left: 1em;
+
+        a {
+          cursor: pointer;
+          font-weight: bold;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        ul {
+          a {
+            font-weight: normal;
+          }
+        }
+      }
+    }
+
+    margin-right: 680px;
 
     h1, h2 {
       margin-left: 300px;
@@ -69,7 +106,7 @@
 
         &-example {
           padding: 1em;
-          background: #BBDEFB;
+          background: #E3F2FD;
           margin-bottom: 1em;
           border-radius: 0.5em;
 
