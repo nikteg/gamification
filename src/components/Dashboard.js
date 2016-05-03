@@ -37,7 +37,7 @@ const Dashboard = ({ chapters, currentChapter, progress }) => (
           'Completed task in chapter 3',
           'Received the "Geek" achievemet',
           'Received the "Experiment" achievemet',
-          'Completed chapther 2',
+          'Completed chapter 2',
         ]} />
       </div>
 
