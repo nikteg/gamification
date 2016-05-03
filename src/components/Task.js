@@ -10,7 +10,7 @@ import COURSES_DATA from '../courses'
 class Task extends Component {
 
   static propTypes = {
-    task: PropTypes.object.isRequired,
+    task: PropTypes.object,
     params: PropTypes.object.isRequired,
     changeTask: PropTypes.func.isRequired,
     changeChapter: PropTypes.func.isRequired,
@@ -77,7 +77,7 @@ class Task extends Component {
 
 const mapStateToProps = (state) => {
   const { currentTask } = state.course
-  const task = currentTask != null && COURSES_DATA[state.course.courseID].chapters[state.course.currentChapter].tasks[state.course.currentTask]
+  const task = currentTask != null ? COURSES_DATA[state.course.courseID].chapters[state.course.currentChapter].tasks[state.course.currentTask] : null
 
   return {
     task,

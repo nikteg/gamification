@@ -33,8 +33,8 @@ class AvatarModal extends Component {
     name: PropTypes.string.isRequired,
     chapters: PropTypes.array.isRequired,
     progress: PropTypes.array.isRequired,
-    currentChapter: PropTypes.number.isRequired,
-    currentTask: PropTypes.number.isRequired,
+    currentChapter: PropTypes.number,
+    currentTask: PropTypes.number,
 
     toggleAvatarMenu: PropTypes.func.isRequired,
     changeChapter: PropTypes.func.isRequired,

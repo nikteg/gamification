@@ -39,7 +39,7 @@ export default class User extends Component {
         <ul>
           <li>ID: {user.id}</li>
           <li>Username: {user.username}</li>
-          {awards.map(award => <Award award={award} />)}
+          {awards.map((award, i) => <Award key={i} award={award} />)}
         </ul>
       </div>
     )

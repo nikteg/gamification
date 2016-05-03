@@ -59,10 +59,10 @@ class CourseBar extends Component {
     description: PropTypes.string.isRequired,
     chapters: PropTypes.array.isRequired,
     chapterProgress: PropTypes.array.isRequired,
-    chapter: PropTypes.object.isRequired,
-    task: PropTypes.object.isRequired,
-    currentChapter: PropTypes.number.isRequired,
-    currentTask: PropTypes.number.isRequired,
+    chapter: PropTypes.object,
+    task: PropTypes.object,
+    currentChapter: PropTypes.number,
+    currentTask: PropTypes.number,
 
     changeTask: PropTypes.func.isRequired,
     changeChapter: PropTypes.func.isRequired,
@@ -210,9 +210,9 @@ const mapStateToProps = (state, props) => {
   const { courseID, currentChapter, currentTask, progress } = state.course
   const { name, description, chapters } = COURSES_DATA[courseID]
 
-  const chapter = currentChapter != null && chapters[currentChapter]
-  const task = currentTask != null && chapter.tasks[currentTask]
-  const chapterProgress = currentChapter != null && progress[currentChapter]
+  const chapter = currentChapter != null ? chapters[currentChapter] : null
+  const task = currentTask != null ? chapter.tasks[currentTask] : null
+  const chapterProgress = currentChapter != null ? progress[currentChapter] : []
 
   return {
     name,

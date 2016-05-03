@@ -11,7 +11,7 @@ import COURSES_DATA from '../courses'
 class Chapter extends Component {
 
   static propTypes = {
-    chapter: PropTypes.object.isRequired,
+    chapter: PropTypes.object,
     params: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     chapterProgress: PropTypes.array.isRequired,
@@ -45,7 +45,7 @@ class Chapter extends Component {
         <h1 className="Chapter-title">{`Chapter ${chapterIndex}: ${chapter.name}`}</h1>
         <ul>
           {chapter.tasks.map((task, i) => (
-            <li>
+            <li key={i}>
               <TaskIcon type={task.type} />
               <Link to={`${location.pathname}/${task.type}/${i + 1}`}>
                 {task.name}
@@ -62,7 +62,7 @@ class Chapter extends Component {
 
 const mapStateToProps = (state) => {
   const chapter = COURSES_DATA[state.course.courseID].chapters[state.course.currentChapter]
-  const chapterProgress = state.course.progress[state.course.currentChapter]
+  const chapterProgress = state.course.progress[state.course.currentChapter] || []
 
   const chapterIndex = state.course.currentChapter + 1
 

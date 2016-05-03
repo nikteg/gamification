@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react'
 class TaskIcon extends Component {
 
   static propTypes = {
-    type: PropTypes.oneOf('overview', 'exercise', 'experiment'),
+    type: PropTypes.oneOf([ 'overview', 'exercise', 'experiment' ]),
   };
 
   render() {
