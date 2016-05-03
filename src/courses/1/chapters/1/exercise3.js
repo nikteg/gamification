@@ -15,7 +15,7 @@ export default () => (
 		<h3 className="Experiment-subTitle">This experiment</h3>
 		<p>In this experiment, we would begin with measuring the height of different people. Luckily, we already have a dataset of measured heights available to us.</p>
 		<a href="http://socr.ucla.edu/docs/resources/SOCR_Data/SOCR_Data_Dinov_020108_HeightsWeights.html">Link to dataset</a>
-		<p>If you take a look at the data-set, you can see that the dataset has a size of about 20 000 measures. With some educated guesses, we conclude that the heights would probably range from about 140 to 240 cm. his means the variance is rather small in contrast to the sample size. Thus, we decide to group the values to 1 integer.</p>
+		<p>If you take a look at the data-set, you can see that the dataset has a size of about 20 000 measures. With some educated guesses, we conclude that the heights would probably range from about 140 to 240 cm. This means the variance is rather small in contrast to the sample size. Thus, we decide to group the values to 1 integer.</p>
 		<p>To the right we have an interactive bar chart. Use it to explore the distribution of the data with different sample sizes.</p>
 		<p>Instructions:</p>
 		<ul>
