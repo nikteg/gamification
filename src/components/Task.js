@@ -33,6 +33,7 @@ class Task extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.params.taskID !== this.props.params.taskID) {
       this.props.changeTask(nextProps.params.taskID - 1)
+      document.querySelector('.Experiment-sidebar').scrollTop = 0
     }
 
     if (nextProps.params.chapterID !== this.props.params.chapterID) {
