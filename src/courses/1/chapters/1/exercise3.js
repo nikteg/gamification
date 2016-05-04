@@ -9,8 +9,8 @@ export default () => (
 		<p>Graphing can be done once we have gathered our random sample. Let X be a random variable containing the distribution of the subject and x be one of the values of X.</p>
     <div className="Experiment-formula">
       <b>The sample distribution can then be graphed by:</b>
-      <p><TeX data={'Y'}/> axis: frequency of <TeX data={'X = x'}/></p>
-      <p><TeX data={'X'}/> axis: <TeX data={'x'}/></p>
+      <p><TeX data={'Y'}/> axis: number of persons with the height x</p>
+      <p><TeX data={'X'}/> axis: height <TeX data={'x'}/></p>
     </div>
 		<p>Whether <TeX data={'X'}/>is discrete or continuous, it is often necessary to group the sample units in intervals to make sure the data on the graph isn’t too spread out, especially if the sample size is small in comparison to its variance. The most common groups are 10 integer intervals (e.g the interval located at <TeX data={'x = 0'}/> contains all values of <TeX data={'x'}/> from -5 to 5) and 1 integer intervals (e.g the interval located at <TeX data={'x = 0'}/> contains all values of <TeX data={'x'}/> from -0.5 to 0.5). </p>
 		</div>

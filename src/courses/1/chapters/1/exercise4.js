@@ -26,12 +26,6 @@ export default () => (
 
     <div className="Experiment-part">
 		<h3 className="Experiment-subTitle">This experiment</h3>
-		<p>[Interactive graph hidden]
-		[Give a random sample with a size of 100, grouped by frequency and x value]</p>
-		<p>First we calculate the expectation of our random sample using the data provided above:</p>
-		<p>[input]</p>
-		<p>Secondly we we calculate the standard deviation:</p>
-		<p>[If answer is correct, then show graph to the right]</p>
 		<p>To the right we have an interactive graph showing the heights and frequency of each height in bars as the one in the previous step. This time we have an approximation using a normal distributed curve behind the bars in gray.</p>
 		<div className="Experiment-instructions">
       <b>Graph instructions:</b>

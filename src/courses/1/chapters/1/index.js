@@ -19,21 +19,24 @@ export default {
         <div className="Introduction">
 
           <div className="Introduction-nav">
-            <h3 className = "Introduction-nav-h3">Table of contents</h3>
+            <h3 className = "Introduction-nav-h3"><u>Table of contents</u></h3>
             <ul>
               <li><a className="title" onClick={scrollTo('intro')}>Introduction to the concept</a>
-              <li><a onClick={scrollTo('what')}>What is it?</a></li>
-              <li><a onClick={scrollTo('other')}>Other examples of continuous distributions</a></li>
-              <li><a onClick={scrollTo('why')}>Why is it important?</a></li>
-              <li><a onClick={scrollTo('examples')}>Examples of uses</a></li>
-
+              <ul>
+                <li><a onClick={scrollTo('what')}>What is it?</a></li>
+                <li><a onClick={scrollTo('other')}>Other examples of continuous distributions</a></li>
+                <li><a onClick={scrollTo('why')}>Why is it important?</a></li>
+                <li><a onClick={scrollTo('examples')}>Examples of uses</a></li>
+              </ul>
               </li>
               <li><a className="title" onClick={scrollTo('properties')}>Properties and functions</a>
-              <li><a onClick={scrollTo('definition')}>Definition</a></li>
-              <li><a onClick={scrollTo('how')}>How is it commonly used?</a></li>
-              <li><a onClick={scrollTo('rule')}>Rule of thumb</a></li>
-              <li><a onClick={scrollTo('variables')}>Explanation of variables</a></li>
-              <li><a onClick={scrollTo('prerequisites')}>Prerequisites</a></li>
+              <ul>
+                <li><a onClick={scrollTo('definition')}>Definition</a></li>
+                <li><a onClick={scrollTo('how')}>How is it commonly used?</a></li>
+                <li><a onClick={scrollTo('rule')}>Rule of thumb</a></li>
+                <li><a onClick={scrollTo('variables')}>Explanation of variables</a></li>
+                <li><a onClick={scrollTo('prerequisites')}>Prerequisites</a></li>
+              </ul>
               </li>
             </ul>
           </div>
@@ -202,7 +205,7 @@ export default {
                 <li>a 99% hance that it is within 3 standard deviations from the expectation</li>
               </ul>
 
-              <img src="/emperical_rule.png" alt="Rule of thumb" />
+              <img className="Introduction-part-content-image" src="/emperical_rule.png" alt="Rule of thumb" />
             </div>
           </div>
 
@@ -268,21 +271,21 @@ export default {
       ),
     },
     {
-      name: 'Choosing a subject to observe',
+      name: 'Experiment: Choosing a subject to observe',
       type: 'experiment',
       html: <Exercise2 />,
       useGraph: false,
       taskNumber: 2,
     },
     {
-      name: 'Approximation',
+      name: 'Experiment: Conducting the experiment',
       type: 'experiment',
       html: <Exercise3 />,
       useGraph: true,
       taskNumber: 3,
     },
     {
-      name: 'Standard Normal',
+      name: 'Experiment: Approximation',
       type: 'experiment',
       html: <Exercise4 />,
       useGraph: true,
