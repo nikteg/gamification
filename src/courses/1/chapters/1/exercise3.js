@@ -38,7 +38,7 @@ export default () => (
         <li>How does the distribution look when we use a small sample size? Say, 25.</li>
         <li>What happens when we use a  bigger sample size? Say, 5000.</li>
         <li>How is the data distributed? What kind of distribution does it resemble?</li>
-        <li>What is the probability that a person is more than 200 cm tall (according to our random sample)?</li>
+        <li>What is the probability that a person is more than 175 cm tall (according to our sample)?</li>
       </ol>
     </div>
 
