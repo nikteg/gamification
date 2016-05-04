@@ -39,13 +39,15 @@
   padding: 10px;
   padding-right: 20px;
   border: 1px solid #D3DDED;
-  //background: #F0F3F7;
+  
+  &-list{
+    list-style-type: disc;
+  }
 }
 
 .Experiment-formula{
   padding: 20px;
   padding-right: 20px;
-  //background: #eee;
   border: 1px solid #ddd;
 }
 
@@ -54,11 +56,6 @@
   padding: 10px;
   padding-right: 20px;
   border: 1px solid #E8DFCC;
-  //background: #FAF8F2; 
-}
-
-.List-instructions{
-  list-style-type: disc;
 }
 
 .Experiment-main {

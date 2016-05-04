@@ -20,7 +20,6 @@ const ExperimentInstructions = ({ instructions, title, width, taskNumber }) => (
             Continue
           </Link>
         )}
-
       </div>
     }
   </Motion>

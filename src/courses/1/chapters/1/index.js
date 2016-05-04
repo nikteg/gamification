@@ -17,27 +17,20 @@ export default {
       type: 'overview',
       html: (
         <div className="Introduction">
-
           <div className="Introduction-nav">
-            <h3 className = "Introduction-nav-h3"><u>Table of contents</u></h3>
+            <h3 className= "Introduction-nav-h3">Table of contents</h3>
             <ul>
-              <li><a className="title" onClick={scrollTo('intro')}>Introduction to the concept</a>
-              <ul>
-                <li><a onClick={scrollTo('what')}>What is it?</a></li>
-                <li><a onClick={scrollTo('other')}>Other examples of continuous distributions</a></li>
-                <li><a onClick={scrollTo('why')}>Why is it important?</a></li>
-                <li><a onClick={scrollTo('examples')}>Examples of uses</a></li>
-              </ul>
-              </li>
-              <li><a className="title" onClick={scrollTo('properties')}>Properties and functions</a>
-              <ul>
-                <li><a onClick={scrollTo('definition')}>Definition</a></li>
-                <li><a onClick={scrollTo('how')}>How is it commonly used?</a></li>
-                <li><a onClick={scrollTo('rule')}>Rule of thumb</a></li>
-                <li><a onClick={scrollTo('variables')}>Explanation of variables</a></li>
-                <li><a onClick={scrollTo('prerequisites')}>Prerequisites</a></li>
-              </ul>
-              </li>
+              <li className="Introduction-nav-item-title"><a onClick={scrollTo('intro')}>Introduction to the concept</a></li>
+              <li><a onClick={scrollTo('what')}>What is it?</a></li>
+              <li><a onClick={scrollTo('other')}>Other examples of continuous distributions</a></li>
+              <li><a onClick={scrollTo('why')}>Why is it important?</a></li>
+              <li><a onClick={scrollTo('examples')}>Examples of uses</a></li>
+              <li className="Introduction-nav-item-title"><a onClick={scrollTo('properties')}>Properties and functions</a></li>
+              <li><a onClick={scrollTo('definition')}>Definition</a></li>
+              <li><a onClick={scrollTo('how')}>How is it commonly used?</a></li>
+              <li><a onClick={scrollTo('rule')}>Rule of thumb</a></li>
+              <li><a onClick={scrollTo('variables')}>Explanation of variables</a></li>
+              <li><a onClick={scrollTo('prerequisites')}>Prerequisites</a></li>
             </ul>
           </div>
 

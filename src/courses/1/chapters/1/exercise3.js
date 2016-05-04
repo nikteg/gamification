@@ -23,7 +23,7 @@ export default () => (
 		<p>To the right we have an interactive bar chart. Use it to explore the distribution of the data with different sample sizes.</p>
     <div className="Experiment-instructions">
 		<b>Graph instructions:</b>
-      <ol className="List-instructions">
+      <ol className="Experiment-instructions-list">
         <li>To add more sample units to the graph, press “Add sample units”.</li>
         <li>In order to change the amount of new sample units added, use the slider to the left of the button. </li>
         <li>By hovering the mouse over a bar it shows the x and y value of the bar on top of the bar.</li>
