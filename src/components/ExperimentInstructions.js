@@ -15,7 +15,7 @@ class ExperimentInstructions extends Component {
     done: PropTypes.bool.isRequired,
 
     completeTask: PropTypes.func.isRequired,
-  }
+  };
 
   static contextTypes = {
     router: React.PropTypes.object.isRequired,
