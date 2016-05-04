@@ -14,7 +14,7 @@ class Graph extends Component {
       data: {},
       selectedData: {},
       showSampleDistribution: true,
-      showNormalDistribution: true,
+      showNormalDistribution: this.props.showNormal,
       mean: 173,
       variance: 23.544,
       xPosition: 153,
@@ -93,7 +93,7 @@ class Graph extends Component {
       xPosition,
     } = this.state
 
-    const { width } = this.props
+    const { width, showNormal } = this.props
     const margin = { top: 20, right: 40, bottom: 30, left: 50 }
     const graphSize = { width, height: 360 }
     const normalDistribution = gaussian(mean, variance)
@@ -107,6 +107,8 @@ class Graph extends Component {
 
     graph.addBars(showSampleDistribution, colors.bars, this.handleBarClick)
     graph.addLine(normalDistribution, showNormalDistribution)
+
+    console.log(showNormal)
 
     return (
       <div>
@@ -161,6 +163,7 @@ class Graph extends Component {
 }
 
 Graph.propTypes = {
+  showNormal: PropTypes.bool.isRequired,
   width: PropTypes.number.isRequired,
 }
 

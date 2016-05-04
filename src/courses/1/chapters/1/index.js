@@ -253,6 +253,7 @@ export default {
       type: 'experiment',
       html: <Exercise3 />,
       useGraph: true,
+      showNormal: false,
       taskNumber: 3,
     },
     {
@@ -260,6 +261,7 @@ export default {
       type: 'experiment',
       html: <Exercise4 />,
       useGraph: true,
+      showNormal: true,
       taskNumber: 4,
     },
   ],

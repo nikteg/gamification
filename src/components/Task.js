@@ -66,6 +66,7 @@ class Task extends Component {
           : <Experiment
             title={task.name}
             taskNumber={task.taskNumber}
+            showNormal={task.showNormal}
             screenHeight={screenHeight}
             screenWidth={screenWidth}
             instructions={task.html}
