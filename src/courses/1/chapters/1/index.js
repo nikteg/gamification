@@ -18,7 +18,8 @@ export default {
       html: (
         <div className="Introduction">
           <div className="Introduction-nav">
-            <h3 className= "Introduction-nav-h3">Table of contents</h3>
+            <h3 className="Introduction-nav-title">Table of contents</h3>
+
             <ul>
               <li className="Introduction-nav-item-title"><a onClick={scrollTo('intro')}>Introduction to the concept</a></li>
               <li><a onClick={scrollTo('what')}>What is it?</a></li>
@@ -42,15 +43,11 @@ export default {
             <h3 id="what">What is it?</h3>
 
             <div className="Introduction-part-content">
-              <p>
-              When graphing the distribution of some gathered data or statistic, the graph sometimes form a bell-shape (figure 1).
+              <p>When graphing the distribution of some gathered data or statistic, the graph sometimes form a bell-shape (figure 1).
               Any distribution with a graph resembling this bell-shape is said to have a normal distribution.
-              Alternatively, the normal distribution is also called a gaussian distribution or less formally a bell curve; because of its shape.
-              </p>
-              <p>
-              The normal distribution is a continuous probability distribution whose pattern is commonly found in the real world, often in the form of random errors.
-              Two examples where we can find a normal distribution are the size of living tissue in different individuals of the same species, and errors in machine produced objects.
-              </p>
+              Alternatively, the normal distribution is also called a gaussian distribution or less formally a bell curve; because of its shape.</p>
+              <p>The normal distribution is a continuous probability distribution whose pattern is commonly found in the real world, often in the form of random errors.
+              Two examples where we can find a normal distribution are the size of living tissue in different individuals of the same species, and errors in machine produced objects.</p>
               <img src="/bellcurve.gif" alt="" />
             </div>
           </div>
@@ -123,8 +120,7 @@ export default {
               <p>is said to have a normal distribution with parameters <TeX data={'\\mu'} /> and <TeX data={'\\sigma'}/>.</p>
 
               <p>Since the area under the probability density function should always be equal to 1,
-              it implicates that <TeX data={'\\int_{-\\infty}^{\\infty}{\\frac{1}{\\sqrt(2\\pi\\sigma)}e^{1/2((x-\\mu/)\\sigma)^2}}'} />
-              The link to the proof for this is given here: [link to proof].</p>
+              it implicates that <TeX data={'\\int_{-\\infty}^{\\infty}{\\frac{1}{\\sqrt(2\\pi\\sigma)}e^{1/2((x-\\mu/)\\sigma)^2}}'} /></p>
 
               <p>As you can see, the probability density function of the normal distribution requires
               only that <TeX data={'\\mu'}/> is a real number and <TeX data={'\\sigma'}/> is positive. And as you may already suspect, <TeX data={'\\mu'}/> and <TeX data={'\\sigma'}/> corresponds to the expectation and standard deviation of the normal random variable.</p>
@@ -174,14 +170,12 @@ export default {
               using something called a standard normal, than finding out the cumulative distribution of a binomial distribution.
               </p>
 
-              <p>
-              Once a normal distribution is discovered, it is often of interest to find out the cumulative
+              <p>Once a normal distribution is discovered, it is often of interest to find out the cumulative
               distribution function of the normal distribution. However, to find this, an integration over
               the probability density function is required. This process is rather complex. Thus the normal random
               variable is often translated into a standard normal random variable, with a standard normal distribution.
               The reason for standardizing the normal random variable is simply because the standard normal distribution
-              has a single table that describes the cumulative distribution for almost all values. [Link].
-              </p>
+              has a single table that describes the cumulative distribution for almost all values.</p>
 
             </div>
           </div>
@@ -208,37 +202,28 @@ export default {
             <div className="Introduction-part-content">
               <div className="Introduction-part-content-variable">
                 <h4><TeX data={'\\sigma'} />: Standard deviation</h4>
-                <p>
-                The standard deviation is a measure of how spread out from the expectation the numbers are.
+                <p>The standard deviation is a measure of how spread out from the expectation the numbers are.
                 A distribution with a larger standard deviation means that the values are spread out more
                 than a distribution with a small standard deviation.</p>
               </div>
               <div className="Introduction-part-content-variable">
                 <h4><TeX data={'\\mu'} />: Expectation</h4>
-                <p>
-                This describes the expectation from the random variable <TeX data={'X'} />.
-                The expectation is the value of <TeX data={'X'} /> that is most probable.
-                </p>
+                <p>This describes the expectation from the random variable <TeX data={'X'} />.
+                The expectation is the value of <TeX data={'X'} /> that is most probable.</p>
               </div>
               <div className="Introduction-part-content-variable">
                 <h4><TeX data={'X'} />: Random variable</h4>
-                <p>
-                A random variable is a variable that can assume many different values, <TeX data={'x'} />. For each <TeX data={'x'} /> in <TeX data={'X'} />,
+                <p>A random variable is a variable that can assume many different values, <TeX data={'x'} />. For each <TeX data={'x'} /> in <TeX data={'X'} />,
                 there is a probability <TeX data={'P(X = x)'} /> which describes the probability
-                the random variable <TeX data={'X'} /> assumes the value <TeX data={'x'} />
-                </p>
+                the random variable <TeX data={'X'} /> assumes the value <TeX data={'x'} /></p>
               </div>
               <div className="Introduction-part-content-variable">
                 <h4><TeX data={'x'} />: specific value of <TeX data={'X'} /></h4>
-                <p>
-                This is a specific value of the random variable <TeX data={'X'} />.
-                </p>
+                <p>This is a specific value of the random variable <TeX data={'X'} />.</p>
               </div>
               <div className="Introduction-part-content-variable">
                 <h4><TeX data={'P(X = x)'} />: Probability for <TeX data={'x'} /></h4>
-                <p>
-                This describes the probability that the random variable <TeX data={'X'} /> assumes the value <TeX data={'x'} />.
-                </p>
+                <p>This describes the probability that the random variable <TeX data={'X'} /> assumes the value <TeX data={'x'} />.</p>
               </div>
             </div>
           </div>
