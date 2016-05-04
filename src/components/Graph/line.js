@@ -35,7 +35,7 @@ export function filledCurve(node, domain, graphSize, data, distribution, x, y, x
     .attr('y2', 0)
     .selectAll('stop')
     .data([
-      { offset: '100%', color: 'rgba(0, 0, 0, .5)' },
+      { offset: '100%', color: 'rgba(0, 0, 0, .7)' },
       { offset: '100%', color: 'transparent' },
     ])
     .enter()

@@ -32,7 +32,7 @@ class Experiment extends Component {
     const dividerPosition = this.dividerPosition
 
     return (
-      <div className="Experiment" style={{ height: screenHeight - 240 }}>
+      <div className="Experiment" style={{ height: screenHeight - 144 }}>
 
         <ExperimentInstructions
           instructions={instructions}
