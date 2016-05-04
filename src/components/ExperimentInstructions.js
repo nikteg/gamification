@@ -1,34 +1,62 @@
-import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
+import React, { Component, PropTypes } from 'react'
 import { Motion, spring } from 'react-motion'
-import '../styles/components/Experiment.scss'
+import { connect } from 'react-redux'
+import classnames from 'classnames'
 
-const ExperimentInstructions = ({ instructions, title, width, taskNumber }) => (
-  <Motion style={{ width: spring(width), opacity: spring(width > 300 ? 1 : 0) }}>
-    {({ opacity, width }) =>
-      <div className="Experiment-sidebar" style={{ width, opacity }}>
+import { completeTask } from '../actions/avatar'
 
-        <h1 className="Experiment-title">{title}</h1>
+class ExperimentInstructions extends Component {
 
-        <div className="Experiment-content">{instructions}</div>
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    instructions: PropTypes.object.isRequired,
+    width: PropTypes.number.isRequired,
+    taskNumber: PropTypes.number.isRequired,
+    done: PropTypes.bool.isRequired,
 
-        { taskNumber < 4 && (
-          <Link
-            className="Experiment-button"
-            to={`/study/mathematical-statistics/chapter/1/experiment/${taskNumber + 1}`}
-          >
-            Continue
-          </Link>
-        )}
-      </div>
+    completeTask: PropTypes.func.isRequired,
+  }
+
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired,
+  };
+
+  onDone = (num) => (e) => {
+    this.props.completeTask()
+
+    if (num < 5) {
+      this.context.router.push(`/study/mathematical-statistics/chapter/1/experiment/${num}`)
     }
-  </Motion>
-)
+  };
 
-ExperimentInstructions.propTypes = {
-  title: PropTypes.string.isRequired,
-  instructions: PropTypes.object.isRequired,
-  taskNumber: PropTypes.number.isRequired,
+  render() {
+    const { instructions, title, width, taskNumber, done } = this.props
+
+    return (
+      <Motion style={{ width: spring(width), opacity: spring(width > 300 ? 1 : 0) }}>
+        {({ opacity, width }) =>
+          <div className="Experiment-sidebar" style={{ width, opacity }}>
+
+            <h1 className="Experiment-title">{title}</h1>
+
+            <div className="Experiment-content">{instructions}</div>
+
+            <a className={classnames('Experiment-button', { 'Experiment-button-done': done })} onClick={this.onDone(taskNumber + 1)}>Done</a>
+          </div>
+        }
+      </Motion>
+    )
+  }
+
 }
 
-export default ExperimentInstructions
+const mapStateToProps = (state, props) => {
+  const { currentChapter, currentTask, progress } = state.course
+  const done = progress[currentChapter][currentTask]
+
+  return {
+    done,
+  }
+}
+
+export default connect(mapStateToProps, { completeTask })(ExperimentInstructions)

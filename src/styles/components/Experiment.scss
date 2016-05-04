@@ -39,7 +39,7 @@
   padding: 10px;
   padding-right: 20px;
   border: 1px solid #D3DDED;
-  
+
   &-list{
     list-style-type: disc;
   }
@@ -81,6 +81,12 @@
   &:hover {
     cursor: pointer;
     opacity: .85;
+  }
+
+  &-done {
+    pointer-events: none;
+    background: lighten(#5677FC, 25%);
+    border-color: lighten(#3C53B1, 25%);
   }
 }
 
