@@ -100,12 +100,13 @@ class Graph extends Component {
 
     const graph = createGraph(graphSize, margin, domain, data, selectedData)
       .addAxises()
-      .addBars(showSampleDistribution, colors.bars, this.handleBarClick)
-      .addLine(normalDistribution, showNormalDistribution)
 
     if (xPosition > domain.x.min && showNormalDistribution) {
       graph.addFilledCurve(normalDistribution, xPosition)
     }
+
+    graph.addBars(showSampleDistribution, colors.bars, this.handleBarClick)
+    graph.addLine(normalDistribution, showNormalDistribution)
 
     return (
       <div>
