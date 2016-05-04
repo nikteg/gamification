@@ -23,7 +23,6 @@ export const Wrapper = (props) => (
         {props.children}
       </div>
     </div>
-    <Footer />
   </div>
 )
 
