@@ -33,7 +33,7 @@ export default () => (
     </div>
 
     <div className="Experiment-part">
-      <p className="Experiment-question">Once we have concluded that the subject is fit for conducting a statistical experiment.Now there are a few questions we may want to find the answers to. Here are a few examples:</p>
+      <p className="Experiment-question">Once we have concluded that the subject is fit for conducting a statistical experiment. Now there are a few questions we may want to find the answers to. Here are a few examples:</p>
       <ul className="Experiment-listMargin">
         <li className="Experiment-question">What is the most common height?</li>
         <li className="Experiment-question">How does the height vary from person to person? Are there large variations or do many people have the same height?</li>
