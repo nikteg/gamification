@@ -252,13 +252,16 @@ export default {
       type: 'experiment',
       html: <Exercise3 />,
       useGraph: true,
+      showNormal: true,
       taskNumber: 2,
+
     },
     {
       name: 'Experiment: Approximation',
       type: 'experiment',
       html: <Exercise4 />,
       useGraph: true,
+      showNormal: true,
       taskNumber: 3,
     },
   ],

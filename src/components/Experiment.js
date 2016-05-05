@@ -27,6 +27,7 @@ class Experiment extends Component {
       screenWidth,
       title,
       taskNumber,
+      showNormal,
     } = this.props
 
     const dividerPosition = this.dividerPosition
@@ -45,6 +46,7 @@ class Experiment extends Component {
 
         <ExperimentTask
           isVisible={displayGraph}
+          showNormal={showNormal}
           width={screenWidth - dividerPosition}
         />
 
@@ -55,6 +57,7 @@ class Experiment extends Component {
 
 Experiment.propTypes = {
   displayGraph: PropTypes.bool.isRequired,
+  showNormal: PropTypes.bool.isRequired,
   instructions: PropTypes.object.isRequired,
   screenWidth: PropTypes.number.isRequired,
   screenHeight: PropTypes.number.isRequired,
