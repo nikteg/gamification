@@ -24,10 +24,9 @@ export default () => (
     <div className="Experiment-instructions">
 		<b>Graph instructions:</b>
       <ol className="Experiment-instructions-list">
-        <li>To add more sample units to the graph, press “Add sample units”.</li>
-        <li>In order to change the amount of new sample units added, use the slider to the left of the button. </li>
-        <li>By hovering the mouse over a bar it shows the x and y value of the bar on top of the bar.</li>
-        <li>By pressing a hovered bar, it shows the cumulative probability distribution <TeX data={'P(X = x)'}/>, where <TeX data={'x'}/> is the <TeX data={'x'}/> value of the bar clicked on.</li>
+        <li>To add more sample units to the graph, press “Add samples”.</li>
+        <li>In order to change the amount of new sample units added, use the slider above the button. </li>
+        <li>By pressing a bar, the cumulative distribution <TeX data={'P(X \\leq x)'}/> will be shown, where <TeX data={'x'}/> is the <TeX data={'x'}/> value of the bar clicked on.</li>
       </ol>
     </div>
   </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import Exercise2 from './exercise2'
 import Exercise3 from './exercise3'
 import Exercise4 from './exercise4'
 
@@ -249,25 +248,18 @@ export default {
       ),
     },
     {
-      name: 'Experiment: Choosing a subject to observe',
-      type: 'experiment',
-      html: <Exercise2 />,
-      useGraph: false,
-      taskNumber: 2,
-    },
-    {
       name: 'Experiment: Conducting the experiment',
       type: 'experiment',
       html: <Exercise3 />,
       useGraph: true,
-      taskNumber: 3,
+      taskNumber: 2,
     },
     {
       name: 'Experiment: Approximation',
       type: 'experiment',
       html: <Exercise4 />,
       useGraph: true,
-      taskNumber: 4,
+      taskNumber: 3,
     },
   ],
 }

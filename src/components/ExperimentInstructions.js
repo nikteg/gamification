@@ -24,7 +24,7 @@ class ExperimentInstructions extends Component {
   onDone = (num) => (e) => {
     this.props.completeTask()
 
-    if (num < 5) {
+    if (num < 4) {
       this.context.router.push(`/study/mathematical-statistics/chapter/1/experiment/${num}`)
     }
   };
