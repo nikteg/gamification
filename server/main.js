@@ -22,6 +22,7 @@ const paths = config.utils_paths
 const app = new Koa()
 
 if (config.env !== 'development') {
+  app.proxy = true
   app.use(forceHTTPS())
 }
 
