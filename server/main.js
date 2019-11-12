@@ -15,10 +15,15 @@ import multipart from './middleware/multipart'
 // Routes
 import auth from './routes/auth'
 import users from './routes/users'
+import forceHTTPS from './util/forceHTTPS'
 
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
+
+if (config.env !== 'development') {
+  app.use(forceHTTPS())
+}
 
 app.use(convert(koabody({ multipart: true })))
 app.use(multipart)
